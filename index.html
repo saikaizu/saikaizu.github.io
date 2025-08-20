@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
     <!--Replace with your tailwind.css once created-->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
+    <!-- Tailwind CSS CDN - VERSI TERBARU UNTUK KOMPATIBILITAS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <!-- Include Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
@@ -126,109 +128,112 @@
       </svg>
     </div>
 <section id="Experiences" class="bg-white border-b py-8">
-  <div class="container max-w-5xl mx-auto m-8 animate__animated animate__fadeIn">
-    <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800 transition-transform duration-300 transform hover:scale-110">
-      Experiences
-    </h2>
-    <div class="w-full mb-4">
-      <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
-    </div>
-    
-    <!-- Bagian Carousel Start -->
-    <!-- ID ini unik untuk setiap carousel, pastikan sama dengan yang ada di script -->
-    <div id="experience-carousel" class="relative w-full" data-carousel="slide">
-        
-        <!-- Carousel wrapper -->
-        <div class="relative h-auto overflow-hidden rounded-lg">
-             
-            <!-- Item 1: PT. Golden Flexible Packaging -->
-            <div class="duration-700 ease-in-out" data-carousel-item="active">
-                <div class="p-6 bg-white shadow-md rounded-lg mb-8">
-                    <div class="flex flex-col items-center text-center">
-                        <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3 transition-transform duration-300 transform hover:scale-110">
-                            PT. Golden Flexible Packaging
-                        </h3>
-                        <div class="mb-4">
-                            <!-- Ganti src ke path gambar yang benar -->
-                            <img src="./gfplogo.jpg" alt="GFP Logo" class="rounded-lg shadow-md h-32 transition-transform duration-300 transform hover:scale-110">
-                        </div>
-                        <ul class="list-disc list-inside text-gray-600 mb-8 transition-transform duration-300 transform hover:scale-110 text-left">
-                            <li>PIC Software</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+    <div class="container max-w-5xl mx-auto m-8 animate__animated animate__fadeIn">
+      <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800 transition-transform duration-300 transform hover:scale-110">
+        Experiences
+      </h2>
+      <div class="w-full mb-4">
+        <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+      </div>
+      
+      <!-- Bagian Carousel Start -->
+      <!-- ID ini unik untuk setiap carousel, pastikan sama dengan yang ada di script -->
+      <div id="experience-carousel" class="relative w-full" data-carousel="slide">
+          
+          <!-- Carousel wrapper -->
+          <div class="relative h-auto overflow-hidden rounded-lg">
+               
+              <!-- Item 1: PT. Golden Flexible Packaging -->
+              <div class="duration-700 ease-in-out" data-carousel-item="active">
+                  <div class="p-6 bg-white shadow-md rounded-lg mb-8">
+                      <div class="flex flex-col items-center text-center">
+                          <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3 transition-transform duration-300 transform hover:scale-110">
+                              PT. Golden Flexible Packaging
+                          </h3>
+                          <div class="mb-4">
+                              <!-- Ganti src ke path gambar yang benar -->
+                              <img src="./gfplogo.jpg" alt="GFP Logo" class="rounded-lg shadow-md h-32 transition-transform duration-300 transform hover:scale-110">
+                          </div>
+                          <ul class="list-disc list-inside text-gray-600 mb-8 transition-transform duration-300 transform hover:scale-110 text-left">
+                              <li>PIC Software</li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
 
-            <!-- Item 2: PT. POS Indonesia -->
-            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <div class="p-6 bg-white shadow-md rounded-lg mb-8">
-                    <div class="flex flex-col items-center text-center">
-                        <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3 transition-transform duration-300 transform hover:scale-110">
-                            PT. POS Indonesia
-                        </h3>
-                        <div class="mb-4">
-                            <!-- Ganti src ke path gambar yang benar -->
-                            <img src="./poslogo.jpg" alt="POS Indonesia Logo" class="rounded-lg shadow-md h-32 transition-transform duration-300 transform hover:scale-110">
-                        </div>
-                        <ul class="list-disc list-inside text-gray-600 mb-8 transition-transform duration-300 transform hover:scale-110 text-left">
-                            <li>Merawat komputer kantor</li>
-                            <li>Menyortir surat</li>
-                            <li>Mencetak resi barang luar negeri</li>
-                            <li>Membuat laporan</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Item 3: PT. Agrobisnis Banten Mandiri -->
-            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <div class="p-6 bg-white shadow-md rounded-lg mb-8">
-                    <div class="flex flex-col items-center text-center">
-                        <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3 transition-transform duration-300 transform hover:scale-110">
-                            PT. Agrobisnis Banten Mandiri
-                        </h3>
-                        <div class="mb-4">
-                            <!-- Ganti src ke path gambar yang benar -->
-                            <img src="./abmlogo.jpg" alt="Agrobanten Logo" class="rounded-lg shadow-md h-32 transition-transform duration-300 transform hover:scale-110">
-                        </div>
-                        <ul class="list-disc list-inside text-gray-600 mb-8 transition-transform duration-300 transform hover:scale-110 text-left">
-                            <li>Memeriksa relasi database</li>
-                            <li>Membuat UML</li>
-                            <li>Mempelajari struktur kode aplikasi</li>
-                            <li>Membuat laporan</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+              <!-- Item 2: PT. POS Indonesia -->
+              <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                  <div class="p-6 bg-white shadow-md rounded-lg mb-8">
+                      <div class="flex flex-col items-center text-center">
+                          <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3 transition-transform duration-300 transform hover:scale-110">
+                              PT. POS Indonesia
+                          </h3>
+                          <div class="mb-4">
+                              <!-- Ganti src ke path gambar yang benar -->
+                              <img src="./poslogo.jpg" alt="POS Indonesia Logo" class="rounded-lg shadow-md h-32 transition-transform duration-300 transform hover:scale-110">
+                          </div>
+                          <ul class="list-disc list-inside text-gray-600 mb-8 transition-transform duration-300 transform hover:scale-110 text-left">
+                              <li>Merawat komputer kantor</li>
+                              <li>Menyortir surat</li>
+                              <li>Mencetak resi barang luar negeri</li>
+                              <li>Membuat laporan</li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+              
+              <!-- Item 3: PT. Agrobisnis Banten Mandiri -->
+              <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                  <div class="p-6 bg-white shadow-md rounded-lg mb-8">
+                      <div class="flex flex-col items-center text-center">
+                          <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3 transition-transform duration-300 transform hover:scale-110">
+                              PT. Agrobisnis Banten Mandiri
+                          </h3>
+                          <div class="mb-4">
+                              <!-- Ganti src ke path gambar yang benar -->
+                              <img src="./abmlogo.jpg" alt="Agrobanten Logo" class="rounded-lg shadow-md h-32 transition-transform duration-300 transform hover:scale-110">
+                          </div>
+                          <ul class="list-disc list-inside text-gray-600 mb-8 transition-transform duration-300 transform hover:scale-110 text-left">
+                              <li>Memeriksa relasi database</li>
+                              <li>Membuat UML</li>
+                              <li>Mempelajari struktur kode aplikasi</li>
+                              <li>Membuat laporan</li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
 
-        </div>
-        
-        <!-- Slider indicators -->
-        <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-            <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-        </div>
-        
-        <!-- Slider controls -->
-        <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
-                </svg>
-                <span class="sr-only">Previous</span>
-            </span>
-        </button>
-        <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-                </svg>
-                <span class="sr-only">Next</span>
-            </span>
-        </button>
+          </div>
+          
+          <!-- Slider indicators -->
+          <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+              <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+              <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+              <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+          </div>
+          
+          <!-- Slider controls -->
+          <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+              <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                  <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+                  </svg>
+                  <span class="sr-only">Previous</span>
+              </span>
+          </button>
+          <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+              <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                  <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                  </svg>
+                  <span class="sr-only">Next</span>
+              </span>
+          </button>
+      </div>
+      <!-- Bagian Carousel End -->
+      
     </div>
-    <!-- Bagian Carousel End -->
+  </section>
     
   </div>
 </section>
