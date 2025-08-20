@@ -1,35 +1,104 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="id">
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>
-    Sai Pratama - Portofolio
+      Sai Pratama - Portofolio
     </title>
-    <meta name="description" content="Simple landind page" />
+    <meta name="description" content="Simple landing page" />
     <meta name="keywords" content="" />
     <meta name="author" content="" />
-    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
-    <!--Replace with your tailwind.css once created-->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
     <!-- Tailwind CSS CDN - VERSI TERBARU UNTUK KOMPATIBILITAS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Include Animate.css -->
+    <!-- Animate.css CDN untuk animasi -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-
     <!-- Define your gradient here - use online tools to find a gradient matching your branding-->
     <style>
     .gradient {
-    background: linear-gradient(90deg, #000428  0%, #004e92 100%);
+      background: linear-gradient(90deg, #000428 0%, #004e92 100%);
     }
-    </style>
-    <style>
     .dark-mode .dark\:bg-gray-900 {
-    background-color: #111827 !important;
+      background-color: #111827 !important;
     }
     .dark-mode .dark\:text-gray-300 {
-    color: #D1D5DB !important;
+      color: #D1D5DB !important;
+    }
+    
+    /* CSS untuk animasi background shapes */
+    .animated-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1; /* Pastikan di belakang konten */
+      pointer-events: none; /* Biar gak ganggu klik */
+    }
+
+    .shape {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      animation: move-shapes 15s linear infinite;
+    }
+
+    .shape:nth-child(1) {
+      width: 80px;
+      height: 80px;
+      left: 10%;
+      top: 20%;
+      animation-duration: 10s;
+    }
+
+    .shape:nth-child(2) {
+      width: 120px;
+      height: 120px;
+      left: 30%;
+      top: 70%;
+      animation-duration: 18s;
+      animation-delay: 2s;
+    }
+
+    .shape:nth-child(3) {
+      width: 60px;
+      height: 60px;
+      left: 50%;
+      top: 40%;
+      animation-duration: 12s;
+    }
+
+    .shape:nth-child(4) {
+      width: 150px;
+      height: 150px;
+      left: 70%;
+      top: 80%;
+      animation-duration: 20s;
+      animation-delay: 3s;
+    }
+
+    .shape:nth-child(5) {
+      width: 90px;
+      height: 90px;
+      left: 90%;
+      top: 10%;
+      animation-duration: 15s;
+    }
+
+    @keyframes move-shapes {
+      0% {
+        transform: translateY(0) scale(1) rotate(0deg);
+        opacity: 0.5;
+      }
+      50% {
+        opacity: 0.2;
+      }
+      100% {
+        transform: translateY(-100vh) scale(1.5) rotate(360deg);
+        opacity: 0;
+      }
     }
     </style>
     <!--Start of Tawk.to Script-->
@@ -45,89 +114,100 @@
     })();
     </script>
     <!--End of Tawk.to Script-->
-  </head>
-  <body id="Home" class="leading-normal tracking-normal text-white gradient dark:bg-gray-800 dark:text-gray-300" style="font-family: 'Source Sans Pro', sans-serif;">
-    <!--Nav-->
-    <nav id="header" class="fixed w-full z-30 top-0 text-white transition-colors duration-300 ease-in-out">
-      <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
-        <div class="pl-4 flex items-center transition-transform duration-300 transform hover:scale-110">
-          <a class="toggleColour text-yellow-400 no-underline hover:text-white font-bold text-2xl lg:text-4xl" href="#">
-            <!--Icon from: http://www.potlabicons.com/ -->
-            <svg class="h-8 fill-current inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.005 512.005">
-              <image href="./kaizubuild.png" x="0" y="0" width="100%" height="100%" />
-            </svg>
-            SAI PRATAMA
-          </a>
-        </div>
-        <div class="block lg:hidden pr-4">
-          <button id="nav-toggle" class="flex items-center p-1 text-yellow-400 hover:text-blue-600 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-          <svg class="fill-current h-6 w-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-            <title>Menu</title>
-            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-          </svg>
-          </button>
-        </div>
-        <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20" id="nav-content">
-          <ul class="list-reset lg:flex justify-end flex-1 items-center">
-            <li class="mr-3">
-              <a class="inline-block py-2 px-4 font-bold no-underline hover:text-yellow-400 transition-transform duration-300 transform hover:scale-110" href="#Home">Home</a>
-            </li>
-            <li class="mr-3">
-              <a class="font-semibold inline-block no-underline hover:text-yellow-400 hover:text-underline py-2 px-4 transition-transform duration-300 transform hover:scale-110" href="#Experiences">Experiences</a>
-            </li>
-            <li class="mr-3">
-              <a class="font-semibold inline-block no-underline hover:text-yellow-400 hover:text-underline py-2 px-4 transition-transform duration-300 transform hover:scale-110" href="#Skills">Skills</a>
-            </li>
-          </ul>
-        </nav>
-        <!--Hero-->
-        <div class="pt-24">
-          <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
-            <!--Left Col-->
-            <div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left transition-transform duration-300 transform hover:scale-110">
-              <p class="font-semibold hover:text-yellow-400 uppercase tracking-loose w-full transition-transform duration-300 transform hover:scale-105">Hello everyone! Welcome to My Profile!</p>
-              <h1 class="font-semibold hover:text-yellow-400 my-4 text-5xl font-bold leading-tight uppercase tracking-loose w-full transition-transform duration-300 transform hover:scale-105">
-              SAI PRATAMA
-              </h1>
-              <p class="font-semibold hover:text-yellow-400 leading-normal text-2xl mb-8 uppercase tracking-loose w-full transition-transform duration-300 transform hover:scale-105">
-                Student | IT Enthusiast
-              </p>
-              <a class="font-semibold hover:text-yellow-400 transition-transform duration-300 transform hover:scale-110" href="https://www.smkn1-tng.sch.id/">SMK Negeri 1 Tangerang (2017-2020)</a>
-              <p class="text-gray-600 italic hover:text-yellow-400 transition-transform duration-300 transform hover:scale-110">Teknik Komputer dan Jaringan</p>
-              <a class="font-semibold hover:text-yellow-400 transition-transform duration-300 transform hover:scale-110" href="https://pddikti.kemdikbud.go.id/data_pt/MkU2MjlCMTUtOTBCMC00MDAxLTk1RDAtMDI2QTMwQzhEODE0">Universitas Pamulang</a>
-              <p class="text-gray-600 italic hover:text-yellow-400 transition-transform duration-300 transform hover:scale-110">Teknik Informatika</p>
-              <a href="https://api.whatsapp.com/send/?phone=6281315255532&text=Assalamu%27alaikum+Sai" target="_blank" rel="noopener noreferrer">
-                <button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out hover:bg-green-600">
-                Whatsapp
-                </button>
-              </a>
-            </div>
-            <!--Right Col-->
-            <div class="w-full md:w-3/5 py-6 text-center transition-transform duration-500 transform hover:scale-110">
-              <img class="w-full md:w-4/5 z-50" src="./Sai_Hero.png" />
-            </div>
-          </div>
-        </div>
-        <div class="relative -mt-12 lg:-mt-24">
-          <svg viewBox="0 0 1428 174" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-              <g transform="translate(-2.000000, 44.000000)" fill="#FFFFFF" fill-rule="nonzero">
-              <path d="M0,0 C90.7283404,0.927527913 147.912752,27.187927 291.910178,59.9119003 C387.908462,81.7278826 543.605069,89.334785 759,82.7326078 C469.336065,156.254352 216.336065,153.6679 0,74.9732496" opacity="0.100000001"></path>
-              <path
-                d="M100,104.708498 C277.413333,72.2345949 426.147877,52.5246657 546.203633,45.5787101 C666.259389,38.6327546 810.524845,41.7979068 979,55.0741668 C931.069965,56.122511 810.303266,74.8455141 616.699903,111.243176 C423.096539,147.640838 250.863238,145.462612 100,104.708498 Z"
-                opacity="0.100000001"
-              ></path>
-            <path d="M1046,51.6521276 C1130.83045,29.328812 1279.08318,17.607883 1439,40.1656806 L1439,120 C1271.17211,77.9435312 1140.17211,55.1609071 1046,51.6521276 Z" id="Path-4" opacity="0.200000003"></path>
-          </g>
-          <g transform="translate(-4.000000, 76.000000)" fill="#FFFFFF" fill-rule="nonzero">
-            <path
-              d="M0.457,34.035 C57.086,53.198 98.208,65.809 123.822,71.865 C181.454,85.495 234.295,90.29 272.033,93.459 C311.355,96.759 396.635,95.801 461.025,91.663 C486.76,90.01 518.727,86.372 556.926,80.752 C595.747,74.596 622.372,70.008 636.799,66.991 C663.913,61.324 712.501,49.503 727.605,46.128 C780.47,34.317 818.839,22.532 856.324,15.904 C922.689,4.169 955.676,2.522 1011.185,0.432 C1060.705,1.477 1097.39,3.129 1121.236,5.387 C1161.703,9.219 1208.621,17.821 1235.4,22.304 C1285.855,30.748 1354.351,47.432 1440.886,72.354 L1441.191,104.352 L1.121,104.031 L0.457,34.035 Z"
-            ></path>
-          </g>
-        </g>
-      </svg>
+</head>
+<body id="Home" class="leading-normal tracking-normal text-white gradient dark:bg-gray-800 dark:text-gray-300" style="font-family: 'Source Sans Pro', sans-serif;">
+  
+  <!-- Animated Background Shapes -->
+  <div class="animated-background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
+
+  <!--Nav-->
+  <nav id="header" class="fixed w-full z-30 top-0 text-white transition-colors duration-300 ease-in-out">
+    <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
+      <div class="pl-4 flex items-center transition-transform duration-300 transform hover:scale-110">
+        <a class="toggleColour text-yellow-400 no-underline hover:text-white font-bold text-2xl lg:text-4xl" href="#">
+          <!-- Menggunakan nama aset 'kaizubuild.png' sebagai teks placeholder -->
+          <img class="h-8 fill-current inline" src="./kaizubuild.png" alt="kaizubuild.png Logo" />
+          SAI PRATAMA
+        </a>
+      </div>
+      <div class="block lg:hidden pr-4">
+        <button id="nav-toggle" class="flex items-center p-1 text-yellow-400 hover:text-blue-600 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+        <svg class="fill-current h-6 w-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <title>Menu</title>
+          <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+        </svg>
+        </button>
+      </div>
+      <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20" id="nav-content">
+        <ul class="list-reset lg:flex justify-end flex-1 items-center">
+          <li class="mr-3">
+            <a class="inline-block py-2 px-4 font-bold no-underline hover:text-yellow-400 transition-transform duration-300 transform hover:scale-110" href="#Home">Home</a>
+          </li>
+          <li class="mr-3">
+            <a class="font-semibold inline-block no-underline hover:text-yellow-400 hover:text-underline py-2 px-4 transition-transform duration-300 transform hover:scale-110" href="#Experiences">Experiences</a>
+          </li>
+          <li class="mr-3">
+            <a class="font-semibold inline-block no-underline hover:text-yellow-400 hover:text-underline py-2 px-4 transition-transform duration-300 transform hover:scale-110" href="#Skills">Skills</a>
+          </li>
+        </ul>
+      </div>
     </div>
-<section id="Experiences" class="bg-white border-b py-8">
+  </nav>
+  <!--Hero-->
+  <div class="pt-24">
+    <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+      <!--Left Col-->
+      <div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left transition-transform duration-300 transform hover:scale-110">
+        <p class="font-semibold hover:text-yellow-400 uppercase tracking-loose w-full transition-transform duration-300 transform hover:scale-105">Hello everyone! Welcome to My Profile!</p>
+        <h1 class="font-semibold hover:text-yellow-400 my-4 text-5xl font-bold leading-tight uppercase tracking-loose w-full transition-transform duration-300 transform hover:scale-105">
+          SAI PRATAMA
+        </h1>
+        <p class="font-semibold hover:text-yellow-400 leading-normal text-2xl mb-8 uppercase tracking-loose w-full transition-transform duration-300 transform hover:scale-105">
+          Student | IT Enthusiast
+        </p>
+        <a class="font-semibold hover:text-yellow-400 transition-transform duration-300 transform hover:scale-110" href="https://www.smkn1-tng.sch.id/">SMK Negeri 1 Tangerang (2017-2020)</a>
+        <p class="text-gray-600 italic hover:text-yellow-400 transition-transform duration-300 transform hover:scale-110">Teknik Komputer dan Jaringan</p>
+        <a class="font-semibold hover:text-yellow-400 transition-transform duration-300 transform hover:scale-110" href="https://pddikti.kemdikbud.go.id/data_pt/MkU2MjlCMTUtOTBCMC00MDAxLTk1RDAtMDI2QTMwQzhEODE0">Universitas Pamulang</a>
+        <p class="text-gray-600 italic hover:text-yellow-400 transition-transform duration-300 transform hover:scale-110">Teknik Informatika</p>
+        <a href="https://api.whatsapp.com/send/?phone=6281315255532&text=Assalamu%27alaikum+Sai" target="_blank" rel="noopener noreferrer">
+          <button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out hover:bg-green-600">
+          Whatsapp
+          </button>
+        </a>
+      </div>
+      <!--Right Col-->
+      <div class="w-full md:w-3/5 py-6 text-center transition-transform duration-500 transform hover:scale-110">
+        <!-- Menggunakan nama aset 'Sai_Pratama.png' sebagai teks placeholder -->
+        <img class="w-full md:w-4/5 z-50" src="./Sai_Hero.png" alt="Sai Pratama" />
+      </div>
+    </div>
+  </div>
+  <div class="relative -mt-12 lg:-mt-24">
+    <svg viewBox="0 0 1428 174" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-2.000000, 44.000000)" fill="#FFFFFF" fill-rule="nonzero">
+        <path d="M0,0 C90.7283404,0.927527913 147.912752,27.187927 291.910178,59.9119003 C387.908462,81.7278826 543.605069,89.334785 759,82.7326078 C469.336065,156.254352 216.336065,153.6679 0,74.9732496" opacity="0.100000001"></path>
+        <path
+          d="M100,104.708498 C277.413333,72.2345949 426.147877,52.5246657 546.203633,45.5787101 C666.259389,38.6327546 810.524845,41.7979068 979,55.0741668 C931.069965,56.122511 810.303266,74.8455141 616.699903,111.243176 C423.096539,147.640838 250.863238,145.462612 100,104.708498 Z"
+          opacity="0.100000001"
+        ></path>
+        <path d="M1046,51.6521276 C1130.83045,29.328812 1279.08318,17.607883 1439,40.1656806 L1439,120 C1271.17211,77.9435312 1140.17211,55.1609071 1046,51.6521276 Z" id="Path-4" opacity="0.200000003"></path>
+        </g>
+        <g transform="translate(-4.000000, 76.000000)" fill="#FFFFFF" fill-rule="nonzero">
+        <path
+          d="M0.457,34.035 C57.086,53.198 98.208,65.809 123.822,71.865 C181.454,85.495 234.295,90.29 272.033,93.459 C311.355,96.759 396.635,95.801 461.025,91.663 C486.76,90.01 518.727,86.372 556.926,80.752 C595.747,74.596 622.372,70.008 636.799,66.991 C663.913,61.324 712.501,49.503 727.605,46.128 C780.47,34.317 818.839,22.532 856.324,15.904 C922.689,4.169 955.676,2.522 1011.185,0.432 C1060.705,1.477 1097.39,3.129 1121.236,5.387 C1161.703,9.219 1208.621,17.821 1235.4,22.304 C1285.855,30.748 1354.351,47.432 1440.886,72.354 L1441.191,104.352 L1.121,104.031 L0.457,34.035 Z"
+        ></path>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <section id="Experiences" class="bg-white border-b py-8">
     <div class="container max-w-5xl mx-auto m-8 animate__animated animate__fadeIn">
       <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800 transition-transform duration-300 transform hover:scale-110">
         Experiences
@@ -142,7 +222,7 @@
           
           <!-- Carousel wrapper -->
           <div class="relative h-auto overflow-hidden rounded-lg">
-               
+                  
               <!-- Item 1: PT. Golden Flexible Packaging -->
               <div class="duration-700 ease-in-out" data-carousel-item="active">
                   <div class="p-6 bg-white shadow-md rounded-lg mb-8">
@@ -151,7 +231,7 @@
                               PT. Golden Flexible Packaging
                           </h3>
                           <div class="mb-4">
-                              <!-- Ganti src ke path gambar yang benar -->
+                              <!-- Menggunakan nama aset 'Golden_Flexible_Packaging.png' sebagai teks placeholder -->
                               <img src="./gfplogo.jpg" alt="GFP Logo" class="rounded-lg shadow-md h-32 transition-transform duration-300 transform hover:scale-110">
                           </div>
                           <ul class="list-disc list-inside text-gray-600 mb-8 transition-transform duration-300 transform hover:scale-110 text-left">
@@ -169,8 +249,8 @@
                               PT. POS Indonesia
                           </h3>
                           <div class="mb-4">
-                              <!-- Ganti src ke path gambar yang benar -->
-                              <img src="./poslogo.jpg" alt="POS Indonesia Logo" class="rounded-lg shadow-md h-32 transition-transform duration-300 transform hover:scale-110">
+                              <!-- Menggunakan nama aset 'Pos_Indonesia.png' sebagai teks placeholder -->
+                              <img src="./poslogo.jpg" class="rounded-lg shadow-md h-32 transition-transform duration-300 transform hover:scale-110">
                           </div>
                           <ul class="list-disc list-inside text-gray-600 mb-8 transition-transform duration-300 transform hover:scale-110 text-left">
                               <li>Merawat komputer kantor</li>
@@ -190,7 +270,7 @@
                               PT. Agrobisnis Banten Mandiri
                           </h3>
                           <div class="mb-4">
-                              <!-- Ganti src ke path gambar yang benar -->
+                              <!-- Menggunakan nama aset 'Agrobisnis_Banten_Mandiri.png' sebagai teks placeholder -->
                               <img src="./abmlogo.jpg" alt="Agrobanten Logo" class="rounded-lg shadow-md h-32 transition-transform duration-300 transform hover:scale-110">
                           </div>
                           <ul class="list-disc list-inside text-gray-600 mb-8 transition-transform duration-300 transform hover:scale-110 text-left">
@@ -234,13 +314,10 @@
       
     </div>
   </section>
-    
-  </div>
-</section>
-  <section  id="Skills" class="bg-white border-b py-8">
+  <section id="Skills" class="bg-white border-b py-8">
     <div class="container mx-auto flex flex-wrap pt-4 pb-12">
       <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800 transition-transform duration-300 transform hover:scale-110">
-      Skills
+        Skills
       </h2>
       <div class="w-full mb-4 ">
         <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
@@ -249,7 +326,8 @@
       <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink transition-transform duration-300 transform hover:scale-110">
         <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
           <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-            <img src="./laravellogo.png" alt="Laravel" class="mx-auto my-4 transition-transform duration-500 transform hover:scale-110" style="max-width: 120px;">
+            <!-- Menggunakan nama aset 'Laravel.png' sebagai teks placeholder -->
+            <img src="laravellogo.png" alt="Laravel" class="mx-auto my-4 transition-transform duration-500 transform hover:scale-110" style="max-width: 120px;">
           </a>
         </div>
         <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
@@ -264,7 +342,8 @@
       <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink transition-transform duration-500 transform hover:scale-110">
         <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
           <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-            <img src="./hardwarelogobaru.png" alt="Hardware Troubleshoot" class="mx-auto my-4 transition-transform duration-500 transform hover:scale-110" style="max-width: 120px;">
+            <!-- Menggunakan nama aset 'Hardware_Troubleshoot.png' sebagai teks placeholder -->
+            <img src="hardwarelogobaru.png" alt="Hardware Troubleshoot" class="mx-auto my-4 transition-transform duration-500 transform hover:scale-110" style="max-width: 120px;">
           </a>
         </div>
         <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
@@ -279,6 +358,7 @@
       <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink transition-transform duration-500 transform hover:scale-110">
         <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
           <a href="#" class="flex flex-wrap no-underline hover:no-underline">
+            <!-- Menggunakan nama aset 'Linux.png' sebagai teks placeholder -->
             <img src="./linuxlogo.svg" alt="Logo 3" class="mx-auto my-4 transition-transform duration-500 transform hover:scale-110" style="max-width: 120px;">
           </a>
         </div>
@@ -294,12 +374,12 @@
     <div id="disqus_thread"></div>
     <script>
     /**
-    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+    * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
     */
     /*
     var disqus_config = function () {
-    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
     this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     */
@@ -470,6 +550,7 @@ body.classList.toggle('dark');
 document.getElementById('current-year').textContent = new Date().getFullYear();
 </script>
 
+<!-- Flowbite JavaScript untuk fungsionalitas carousel -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 
 </body>
