@@ -435,11 +435,22 @@ document.getElementById('current-year').textContent = new Date().getFullYear();
   document.addEventListener('DOMContentLoaded', function() {
     new Splide('.splide', {
       perPage: 1,
-      type: 'fade', // Ini kuncinya! Ubah jenis transisi jadi "fade".
-      rewind: true, // Ini bikin dia balik ke awal pas udah di ujung
+      type: 'fade', // Tambahin ini!
+      rewind: true, // Biar pas udah di slide terakhir, balik lagi ke awal
       arrows: true,
       pagination: true,
-      easing: 'cubic-bezier(0.25, 1, 0.5, 1)', // Ini nambahin efek slow-mo yang estetik banget
+    }).mount();
+  });
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    new Splide('.splide', {
+      perPage: 1,
+      type: 'slide', // Ini udah default, tapi bisa ditulis juga
+      arrows: true,
+      pagination: true,
+      easing: 'cubic-bezier(.42,.01,1,.99)', // Coba tambahin kode ini!
     }).mount();
   });
 </script>
