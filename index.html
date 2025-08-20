@@ -434,10 +434,12 @@ document.getElementById('current-year').textContent = new Date().getFullYear();
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     new Splide('.splide', {
-      perPage: 1, // Ini kuncinya! Cuma tampil 1 slide per halaman.
-      type: 'loop', // Tetap bisa muter terus
-      arrows: true, // Tunjukin tombol panah "next" dan "prev"
-      pagination: true, // Tunjukin titik-titik navigasi di bawah
+      perPage: 1,
+      type: 'fade', // Ini kuncinya! Ubah jenis transisi jadi "fade".
+      rewind: true, // Ini bikin dia balik ke awal pas udah di ujung
+      arrows: true,
+      pagination: true,
+      easing: 'cubic-bezier(0.25, 1, 0.5, 1)', // Ini nambahin efek slow-mo yang estetik banget
     }).mount();
   });
 </script>
