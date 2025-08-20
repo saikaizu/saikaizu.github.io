@@ -434,16 +434,10 @@ document.getElementById('current-year').textContent = new Date().getFullYear();
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     new Splide('.splide', {
-      perPage: 3, // Tiga slide per halaman di desktop
-      breakpoints: {
-        768: { // Saat ukuran layar di bawah 768px (hp/tablet)
-          perPage: 1, // Jadi satu slide per halaman
-        },
-      },
-      gap: '1rem', // Jarak antar slide
-      type: 'loop', // Bisa looping terus
-      autoplay: true, // Otomatis berputar
-      pauseOnHover: true, // Berhenti saat kursor di atas slide
+      perPage: 1, // Ini kuncinya! Cuma tampil 1 slide per halaman.
+      type: 'loop', // Tetap bisa muter terus
+      arrows: true, // Tunjukin tombol panah "next" dan "prev"
+      pagination: true, // Tunjukin titik-titik navigasi di bawah
     }).mount();
   });
 </script>
