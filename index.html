@@ -114,6 +114,144 @@
     })();
     </script>
     <!--End of Tawk.to Script-->
+
+    <style>
+    /* Styling khusus untuk tombol chat */
+    #whatsapp-chat-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+        cursor: pointer;
+        /* Animasi Pop */
+        animation: pulse-ring 1.5s infinite;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    #whatsapp-chat-button:hover {
+        transform: scale(1.1);
+    }
+    
+    /* Animasi pulse ala Gen Z biar keliatan 'Ready to Chat' */
+    @keyframes pulse-ring {
+        0% {
+            box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+        }
+        70% {
+            box-shadow: 0 0 0 20px rgba(76, 175, 80, 0);
+        }
+        100% {
+            box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+        }
+    }
+
+    /* Style untuk Pop-up Panel (ala Tawk.to) */
+    #whatsapp-chat-panel {
+        position: fixed;
+        bottom: 100px; /* Di atas tombol */
+        right: 20px;
+        z-index: 999;
+        width: 300px;
+        background-color: #ffffff; /* Putih di light mode */
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.3s ease-in-out;
+        /* Tambah dark mode support */
+        transition-property: background-color, opacity, visibility, transform;
+    }
+
+    #whatsapp-chat-panel.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    /* Dark Mode overrides for panel */
+    .dark-mode #whatsapp-chat-panel {
+        background-color: #1F2937; /* Background gelap */
+    }
+
+    .dark-mode #whatsapp-chat-panel .text-gray-800 {
+        color: #D1D5DB !important;
+    }
+    
+</style>
+
+<div id="whatsapp-chat-button" class="bg-green-500 w-16 h-16 rounded-full flex items-center justify-center shadow-lg transition-all duration-300">
+    <svg class="w-8 h-8 text-white" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12.01 2.01C6.49 2.01 2 6.5 2 12.01c0 3.01 1.25 5.74 3.28 7.74l-1.07 3.99 4.1-1.07C10.74 21.98 12.01 22 12.01 22c5.51 0 10.01-4.5 10.01-10.01S17.52 2.01 12.01 2.01zm3.76 13.91c-.2.53-1.08.97-1.58 1.05-.5.08-.94.13-2.58-.55-1.74-.74-2.88-2.6-2.97-2.73-.09-.13-.71-.97-.71-1.84s.44-1.35.59-1.52c.15-.17.33-.2.56-.2c.23 0 .49 0 .69.01.21.01.45 0 .68.53.2.53.69 1.68.75 1.79.06.12.1.25.03.49-.07.24-.22.42-.42.66-.2.24-.4.48-.6.71-.2.23-.23.44.02.87.24.44.86 1.48 1.83 2.37.97.89 1.83 1.18 2.06 1.31.23.13.36.11.5.08.15-.03.49-.18.84-.44.35-.25.59-.44.68-.6.09-.15.09-.27.06-.47-.03-.2-.11-.49-.24-.77-.13-.28-.29-.68-.35-.83-.06-.15-.13-.12-.21-.16s-.19-.08-.3-.08c-.11 0-.25.04-.37.06-.12.02-.24.03-.38.07z"/>
+    </svg>
+</div>
+
+<div id="whatsapp-chat-panel" class="p-4 text-gray-800">
+    <div class="flex justify-between items-center pb-3 border-b border-gray-200">
+        <h3 class="text-lg font-bold">Need Help, Cuy?</h3>
+        <button id="close-panel" class="text-gray-400 hover:text-gray-800 transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+    </div>
+    
+    <div class="py-4">
+        <p class="text-sm">
+            Halo! Ada yang bisa Sai bantu? Langsung chat aja biar *sat-set*! 😉
+        </p>
+    </div>
+    
+    <a id="start-chat-link" href="#" target="_blank" rel="noopener noreferrer" class="block">
+        <button class="w-full py-2 bg-green-500 hover:bg-green-600 text-white font-bold rounded-lg flex items-center justify-center shadow-md transition-colors duration-300">
+            <svg class="w-5 h-5 mr-2" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12.01 2.01C6.49 2.01 2 6.5 2 12.01c0 3.01 1.25 5.74 3.28 7.74l-1.07 3.99 4.1-1.07C10.74 21.98 12.01 22 12.01 22c5.51 0 10.01-4.5 10.01-10.01S17.52 2.01 12.01 2.01zm3.76 13.91c-.2.53-1.08.97-1.58 1.05-.5.08-.94.13-2.58-.55-1.74-.74-2.88-2.6-2.97-2.73-.09-.13-.71-.97-.71-1.84s.44-1.35.59-1.52c.15-.17.33-.2.56-.2c.23 0 .49 0 .69.01.21.01.45 0 .68.53.2.53.69 1.68.75 1.79.06.12.1.25.03.49-.07.24-.22.42-.42.66-.2.24-.4.48-.6.71-.2.23-.23.44.02.87.24.44.86 1.48 1.83 2.37.97.89 1.83 1.18 2.06 1.31.23.13.36.11.5.08.15-.03.49-.18.84-.44.35-.25.59-.44.68-.6.09-.15.09-.27.06-.47-.03-.2-.11-.49-.24-.77-.13-.28-.29-.68-.35-.83-.06-.15-.13-.12-.21-.16s-.19-.08-.3-.08c-.11 0-.25.04-.37.06-.12.02-.24.03-.38.07z"/>
+            </svg>
+            Start Chatting
+        </button>
+    </a>
+</div>
+
+<script>
+    // Konfigurasi WhatsApp
+    const whatsappNumber = '6281315255532'; // ⚠️ GANTI DENGAN NOMOR WA LO, CUY!
+    const defaultMessage = "Cuyy Sai, gw liat portofolio lu. Keren! Mau nanya-nanya soal project nih... "; // Pesan pembuka
+    
+    // Ambil elemen
+    const chatButton = document.getElementById('whatsapp-chat-button');
+    const chatPanel = document.getElementById('whatsapp-chat-panel');
+    const closePanel = document.getElementById('close-panel');
+    const startChatLink = document.getElementById('start-chat-link');
+
+    // Fungsi Toggle Panel
+    function toggleChatPanel() {
+        chatPanel.classList.toggle('active');
+    }
+
+    // Fungsi untuk membuat Link WA
+    function generateWhatsAppLink() {
+        // Encode pesan biar aman di URL
+        const encodedMessage = encodeURIComponent(defaultMessage);
+        // Format link WA
+        const waLink = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+        
+        // Update href pada tombol 'Start Chatting'
+        startChatLink.href = waLink;
+    }
+
+    // Event Listeners
+    chatButton.addEventListener('click', toggleChatPanel);
+    closePanel.addEventListener('click', toggleChatPanel);
+
+    // Initial load: Generate link WA saat halaman dimuat
+    generateWhatsAppLink();
+
+    // Opsional: Sembunyikan panel saat mengklik di luar panel
+    document.addEventListener('click', function(event) {
+        if (!chatPanel.contains(event.target) && !chatButton.contains(event.target) && chatPanel.classList.contains('active')) {
+            toggleChatPanel();
+        }
+    });
+
+</script>
 </head>
 <body id="Home" class="leading-normal tracking-normal text-white gradient dark:bg-gray-800 dark:text-gray-300" style="font-family: 'Source Sans Pro', sans-serif;">
   
