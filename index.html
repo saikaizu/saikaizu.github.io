@@ -5,35 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>
-      Sai Pratama - Portofolio Gen Z Ultimate
+      Sai Pratama - Portofolio
     </title>
-    <meta name="description" content="Portfolio Website Sai Pratama - Student | IT Enthusiast" />
-    <meta name="keywords" content="portfolio, IT, Gen Z, Sai Pratama, Laravel, Linux, Tailwind" />
-    <meta name="author" content="Sai Pratama" />
+    <meta name="description" content="Simple landing page" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <!-- Tailwind CSS CDN - VERSI TERBARU UNTUK KOMPATIBILITAS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Animate.css CDN untuk animasi -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Define your gradient here - use online tools to find a gradient matching your branding-->
     <style>
     .gradient {
       background: linear-gradient(90deg, #000428 0%, #004e92 100%);
     }
-    
-    /* Dark Mode Global Styles */
-    .dark-mode .dark\:bg-gray-800 {
-      background-color: #1F2937 !important; /* Ganti dari 800 ke 700 atau 900 biar kontras */
+    .dark-mode .dark\:bg-gray-900 {
+      background-color: #111827 !important;
     }
     .dark-mode .dark\:text-gray-300 {
       color: #D1D5DB !important;
-    }
-    /* Ganti background putih di light mode jadi dark di dark mode */
-    .dark-mode .bg-white {
-        background-color: #111827 !important;
-        color: #D1D5DB !important;
-    }
-    .dark-mode .text-gray-800 {
-        color: #F3F4F6 !important;
-    }
-    .dark-mode .dark\:gradient { /* Gradient untuk dark mode */
-        background: linear-gradient(90deg, #1A1F30 0%, #374151 100%) !important;
     }
     
     /* CSS untuk animasi background shapes */
@@ -110,57 +100,8 @@
         opacity: 0;
       }
     }
-    
-    /* CUSTOM CSS KOGU RAY - NAVIGASI MOBILE SMOOTH */
-    #nav-content {
-        transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
-        max-height: 0; /* Awalnya tersembunyi */
-        opacity: 0;
-        overflow: hidden; /* Penting biar transisi max-height keliatan smooth */
-    }
-
-    /* Class saat menu aktif (dikelola oleh JavaScript) */
-    #nav-content.active {
-        max-height: 300px; /* Nilai estimasi, sesuaikan kalau menu lo lebih banyak */
-        opacity: 1;
-    }
-    
-    /* CUSTOM CSS KOGU RAY - RESPONSIVE TIMELINE */
-    @media (max-width: 768px) {
-        /* Aturan untuk layar <= md */
-        .wrap {
-            padding: 0 1rem !important; /* Kurangi padding di mobile */
-        }
-
-        .border-2-2.absolute.border {
-            left: 30px !important; /* Pindah garis timeline ke kiri */
-        }
-
-        .right-timeline, .left-timeline {
-            justify-content: flex-start !important; /* Pindah semua konten ke kanan garis */
-            margin-left: 20px; /* Kasih jarak dari garis */
-        }
-
-        .right-timeline > .order-1.w-5\/12, .left-timeline > .order-1.w-5\/12 {
-            width: 100% !important; /* Lebarin kontennya */
-            order: 2 !important;
-        }
-
-        .right-timeline .z-20, .left-timeline .z-20 {
-            left: 0px !important; /* Pindah buletan ke kiri */
-            transform: translateX(-15px); /* Geser biar pas di garis */
-            order: 1 !important;
-            position: absolute;
-        }
-
-        /* Hilangin div kosong yang buat nge-align di desktop */
-        .right-timeline > .order-1.w-5\/12:nth-child(1),
-        .left-timeline > .order-1.w-5\/12:nth-child(1) {
-            display: none;
-        }
-    }
-    
     </style>
+    <!--Start of Tawk.to Script-->
     <script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
     (function(){
@@ -172,9 +113,11 @@
     s0.parentNode.insertBefore(s1,s0);
     })();
     </script>
-    </head>
+    <!--End of Tawk.to Script-->
+</head>
 <body id="Home" class="leading-normal tracking-normal text-white gradient dark:bg-gray-800 dark:text-gray-300" style="font-family: 'Source Sans Pro', sans-serif;">
   
+  <!-- Animated Background Shapes -->
   <div class="animated-background">
     <div class="shape"></div>
     <div class="shape"></div>
@@ -183,10 +126,12 @@
     <div class="shape"></div>
   </div>
 
+  <!--Nav-->
   <nav id="header" class="fixed w-full z-30 top-0 text-white transition-colors duration-300 ease-in-out">
     <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
       <div class="pl-4 flex items-center transition-transform duration-300 transform hover:scale-110">
         <a class="toggleColour text-yellow-400 no-underline hover:text-white font-bold text-2xl lg:text-4xl" href="#">
+          <!-- Menggunakan nama aset 'kaizubuild.png' sebagai teks placeholder -->
           <img class="h-8 fill-current inline" src="./kaizubuild.png" alt="kaizubuild.png Logo" />
           SAI PRATAMA
         </a>
@@ -210,16 +155,10 @@
           <li class="mr-3">
             <a class="font-semibold inline-block no-underline hover:text-yellow-400 hover:text-underline py-2 px-4 transition-transform duration-300 transform hover:scale-110" href="#Skills">Skills</a>
           </li>
-          <li class="mr-3">
-            <button id="darkModeToggle" class="font-semibold inline-block no-underline hover:text-yellow-400 hover:text-underline py-2 px-4 transition-transform duration-300 transform hover:scale-110 toggleColour">
-                ☀️ / 🌙
-            </button>
-          </li>
         </ul>
       </div>
     </div>
   </nav>
-
 <div class="pt-24">
   <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
     <div class="group flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left
@@ -342,7 +281,7 @@
             </div>
             <div class="text-center pt-12">
                 <a href="https://www.linkedin.com/in/sai-pratama-b0449b205/">
-                    <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out group-hover:animate-pulse">
+                    <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
                     Linkedin
                     </button>
                 </a>
@@ -352,7 +291,7 @@
     </div>
 </section>
     
-<section id="Skills" class="bg-white border-b py-8">
+  <section id="Skills" class="bg-white border-b py-8">
     <div class="container mx-auto flex flex-wrap pt-4 pb-12">
       <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800 transition-transform duration-300 transform hover:scale-110">
         Skills
@@ -360,50 +299,56 @@
       <div class="w-full mb-4 ">
         <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
       </div>
-      <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink transition-transform duration-300 transform hover:scale-110 group">
+      <!-- Card 1 -->
+      <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink transition-transform duration-300 transform hover:scale-110">
         <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
           <a href="#" class="flex flex-wrap no-underline hover:no-underline">
+            <!-- Menggunakan nama aset 'Laravel.png' sebagai teks placeholder -->
             <img src="laravellogo.png" alt="Laravel" class="mx-auto my-4 transition-transform duration-500 transform hover:scale-110" style="max-width: 120px;">
           </a>
         </div>
         <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
           <div class="flex items-center justify-center">
-            <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out group-hover:animate-pulse">
+            <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
             Laravel
             </button>
           </div>
         </div>
       </div>
-      <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink transition-transform duration-500 transform hover:scale-110 group">
+      <!-- Card 2 -->
+      <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink transition-transform duration-500 transform hover:scale-110">
         <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
           <a href="#" class="flex flex-wrap no-underline hover:no-underline">
+            <!-- Menggunakan nama aset 'Hardware_Troubleshoot.png' sebagai teks placeholder -->
             <img src="hardwarelogobaru.png" alt="Hardware Troubleshoot" class="mx-auto my-4 transition-transform duration-500 transform hover:scale-110" style="max-width: 120px;">
           </a>
         </div>
         <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
           <div class="flex items-center justify-center">
-            <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out group-hover:animate-pulse">
+            <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
             Hardware Troubleshoot
             </button>
           </div>
         </div>
       </div>
-      <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink transition-transform duration-500 transform hover:scale-110 group">
+      <!-- Card 3 -->
+      <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink transition-transform duration-500 transform hover:scale-110">
         <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
           <a href="#" class="flex flex-wrap no-underline hover:no-underline">
+            <!-- Menggunakan nama aset 'Linux.png' sebagai teks placeholder -->
             <img src="./linuxlogo.svg" alt="Logo 3" class="mx-auto my-4 transition-transform duration-500 transform hover:scale-110" style="max-width: 120px;">
           </a>
         </div>
         <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
           <div class="flex items-center justify-center">
-            <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out group-hover:animate-pulse">
+            <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
             Linux
             </button>
           </div>
         </div>
       </div>
     </div>
-    <div id="disqus_thread" class="container mx-auto p-4 dark:bg-gray-800"></div>
+    <div id="disqus_thread"></div>
     <script>
     /**
     * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
@@ -424,7 +369,9 @@
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </section>
-  
+  <!--Footer-->
+  <!-- component -->
+  <!-- Foooter -->
   <section class="bg-white">
     <div class="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
       <nav class="flex flex-wrap justify-center -mx-5 -my-2">
@@ -479,106 +426,72 @@ var navcontent = document.getElementById("nav-content");
 var navaction = document.getElementById("navAction");
 var brandname = document.getElementById("brandname");
 var toToggle = document.querySelectorAll(".toggleColour");
-const body = document.body; // Ambil body element
-
 document.addEventListener("scroll", function () {
-    /*Apply classes for slide in bar*/
-    scrollpos = window.scrollY;
-    
-    if (scrollpos > 10) {
-        
-        navaction.classList.remove("bg-white");
-        navaction.classList.add("gradient");
-        navaction.classList.remove("text-gray-800");
-        navaction.classList.add("text-white");
-        
-        // Perbaikan untuk Dark Mode Header
-        if (body.classList.contains('dark-mode')) {
-            header.classList.add("dark:bg-gray-900", "bg-gray-900"); // Tambah bg gelap
-            header.classList.remove("bg-white");
-            for (var i = 0; i < toToggle.length; i++) {
-                toToggle[i].classList.add("text-yellow-400"); // Bikin teksnya tetep keliatan
-                toToggle[i].classList.remove("text-gray-800", "text-white");
-            }
-        } else {
-            header.classList.add("bg-white");
-            header.classList.remove("dark:bg-gray-900", "bg-gray-900");
-            for (var i = 0; i < toToggle.length; i++) {
-                toToggle[i].classList.add("text-gray-800");
-                toToggle[i].classList.remove("text-white");
-            }
-        }
-
-        header.classList.add("shadow");
-        navcontent.classList.remove("bg-gray-100");
-        navcontent.classList.add("bg-white");
-    } else {
-        header.classList.remove("bg-white");
-        header.classList.remove("dark:bg-gray-900", "bg-gray-900");
-        
-        navaction.classList.remove("gradient");
-        navaction.classList.add("bg-white");
-        navaction.classList.remove("text-white");
-        navaction.classList.add("text-gray-800");
-        
-        // Perbaikan untuk Dark Mode Header
-        for (var i = 0; i < toToggle.length; i++) {
-            toToggle[i].classList.add("text-white");
-            toToggle[i].classList.remove("text-gray-800", "text-yellow-400");
-        }
-        
-        header.classList.remove("shadow");
-        navcontent.classList.remove("bg-white");
-        navcontent.classList.add("bg-gray-100");
-    }
+/*Apply classes for slide in bar*/
+scrollpos = window.scrollY;
+if (scrollpos > 10) {
+header.classList.add("bg-white");
+navaction.classList.remove("bg-white");
+navaction.classList.add("gradient");
+navaction.classList.remove("text-gray-800");
+navaction.classList.add("text-white");
+//Use to switch toggleColour colours
+for (var i = 0; i < toToggle.length; i++) {
+toToggle[i].classList.add("text-gray-800");
+toToggle[i].classList.remove("text-white");
+}
+header.classList.add("shadow");
+navcontent.classList.remove("bg-gray-100");
+navcontent.classList.add("bg-white");
+} else {
+header.classList.remove("bg-white");
+navaction.classList.remove("gradient");
+navaction.classList.add("bg-white");
+navaction.classList.remove("text-white");
+navaction.classList.add("text-gray-800");
+//Use to switch toggleColour colours
+for (var i = 0; i < toToggle.length; i++) {
+toToggle[i].classList.add("text-white");
+toToggle[i].classList.remove("text-gray-800");
+}
+header.classList.remove("shadow");
+navcontent.classList.remove("bg-white");
+navcontent.classList.add("bg-gray-100");
+}
 });
 </script>
-
 <script>
-/*Toggle dropdown list - KOGU RAY SMOOTH VERSION*/
+/*Toggle dropdown list*/
+/*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
 var navMenuDiv = document.getElementById("nav-content");
 var navMenu = document.getElementById("nav-toggle");
 document.onclick = check;
 function check(e) {
-    var target = (e && e.target) || (event && event.srcElement);
-    //Nav Menu
-    if (!checkParent(target, navMenuDiv)) {
-        // click NOT on the menu
-        if (checkParent(target, navMenu)) {
-            // click on the link
-            if (navMenuDiv.classList.contains("hidden") || navMenuDiv.style.display === 'none') {
-                navMenuDiv.classList.remove("hidden");
-                navMenuDiv.style.display = 'block'; // Tambah ini buat ngeluarin dari display:none
-                setTimeout(() => { // Tambah delay buat transisi max-height
-                    navMenuDiv.classList.add("active");
-                }, 10);
-            } else {
-                navMenuDiv.classList.remove("active");
-                setTimeout(() => { // Tambah delay buat transisi max-height selesai
-                    navMenuDiv.classList.add("hidden");
-                    navMenuDiv.style.display = 'none';
-                }, 300); // Sesuaikan dengan durasi transisi di CSS (0.3s)
-            }
-        } else {
-            // click both outside link and outside menu, hide menu
-            if (navMenuDiv.classList.contains("active")) {
-                navMenuDiv.classList.remove("active");
-                setTimeout(() => {
-                    navMenuDiv.classList.add("hidden");
-                    navMenuDiv.style.display = 'none';
-                }, 300);
-            }
-        }
-    }
+var target = (e && e.target) || (event && event.srcElement);
+//Nav Menu
+if (!checkParent(target, navMenuDiv)) {
+// click NOT on the menu
+if (checkParent(target, navMenu)) {
+// click on the link
+if (navMenuDiv.classList.contains("hidden")) {
+navMenuDiv.classList.remove("hidden");
+} else {
+navMenuDiv.classList.add("hidden");
+}
+} else {
+// click both outside link and outside menu, hide menu
+navMenuDiv.classList.add("hidden");
+}
+}
 }
 function checkParent(t, elm) {
-    while (t.parentNode) {
-        if (t == elm) {
-            return true;
-        }
-        t = t.parentNode;
-    }
-    return false;
+while (t.parentNode) {
+if (t == elm) {
+return true;
+}
+t = t.parentNode;
+}
+return false;
 }
 </script>
 <script>
@@ -597,57 +510,25 @@ if (targetElement) {
 targetElement.scrollIntoView({
 behavior: 'smooth'
 });
-// Tutup menu mobile setelah di klik (penting buat UX mobile)
-var navMenuDiv = document.getElementById("nav-content");
-if (navMenuDiv.classList.contains("active")) {
-    navMenuDiv.classList.remove("active");
-    setTimeout(() => {
-        navMenuDiv.classList.add("hidden");
-        navMenuDiv.style.display = 'none';
-    }, 300);
-}
 }
 });
 });
 });
 </script>
-
 <script>
-/* Dark Mode Toggle Script - DISIMPAN DI LOCALSTORAGE by Kogu Ray */
 const darkModeToggle = document.getElementById('darkModeToggle');
-
-// 1. Cek dari LocalStorage atau System Preference saat load
-const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-const currentTheme = localStorage.getItem('theme');
-
-if (currentTheme === 'dark') {
-    body.classList.add('dark-mode');
-} else if (currentTheme === 'light') {
-    body.classList.remove('dark-mode');
-} else if (prefersDarkScheme.matches) {
-    body.classList.add('dark-mode');
-    localStorage.setItem('theme', 'dark');
-} else {
-    localStorage.setItem('theme', 'light');
-}
-
-// 2. Event Listener untuk Toggle
-if (darkModeToggle) {
-    darkModeToggle.addEventListener('click', () => {
-        const isDarkMode = body.classList.toggle('dark-mode');
-        // Simpan preferensi
-        if (isDarkMode) {
-            localStorage.setItem('theme', 'dark');
-        } else {
-            localStorage.setItem('theme', 'light');
-        }
-    });
-}
+darkModeToggle.addEventListener('click', () => {
+console.log('Tombol dark mode ditekan!'); // Pesan log sederhana
+const body = document.body;
+body.classList.toggle('dark');
+});
 </script>
-
 <script>
 document.getElementById('current-year').textContent = new Date().getFullYear();
 </script>
+
+<!-- Flowbite JavaScript untuk fungsionalitas carousel -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 
 </body>
 </html>
