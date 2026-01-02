@@ -299,21 +299,18 @@
             updateTheme(true);
         }
 
-/** DISQUS CONFIG **/
-var disqus_config = function () {
-    // Pake URL absolut kalau udah ada domainnya, 
-    // kalau masih lokal, biarin Disqus deteksi sendiri atau kosongin dulu buat ngetes.
-    this.page.url = window.location.href;  
-    this.page.identifier = 'sai-pratama-portfolio'; 
-};
+        /** DISQUS CONFIG **/
+        var disqus_config = function () {
+            this.page.url = window.location.href;  
+            this.page.identifier = 'sai-pratama-portfolio'; 
+        };
+        (function() { 
+            var d = document, s = d.createElement('script');
+            s.src = 'https://sai-pratama-1.disqus.com/embed.js'; 
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
 
-(function() { 
-    var d = document, s = d.createElement('script');
-    // PASTIKAN SHORTNAME INI BENER (Samain sama yang di index.txt kalau itu yang work)
-    s.src = 'https://sai-pratama-1.disqus.com/embed.js'; 
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-})();
     </script>
 </body>
 </html>
