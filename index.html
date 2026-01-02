@@ -4,9 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sai Pratama - Professional Portfolio</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     
     <script>
         tailwind.config = {
@@ -16,6 +18,9 @@
                     colors: {
                         primary: '#004e92',
                         secondary: '#000428',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                     }
                 }
             }
@@ -23,222 +28,262 @@
     </script>
 
     <style>
-        .gradient-bg {
-            background: linear-gradient(90deg, #000428 0%, #004e92 100%);
-        }
-        .dark .dark-gradient {
-            background: linear-gradient(90deg, #111827 0%, #1f2937 100%);
-        }
+        .gradient-bg { background: linear-gradient(90deg, #000428 0%, #004e92 100%); }
+        .dark .dark-gradient { background: linear-gradient(90deg, #090e1a 0%, #111827 100%); }
         html { scroll-behavior: smooth; }
         
-        /* Floating Animation */
+        /* Custom Floating */
         .float { animation: floating 3s ease-in-out infinite; }
         @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
 
-        /* Glassmorphism */
         .glass {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .dark .glass {
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
+        
+        /* Reveal animation on scroll support */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-500">
 
-    <nav class="fixed w-full z-50 top-0 glass transition-all duration-300 py-4">
+    <nav id="navbar" class="fixed w-full z-50 top-0 transition-all duration-300 py-4">
         <div class="container mx-auto px-6 flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <img src="./kaizubuild.png" alt="Logo" class="h-10">
-                <span class="text-xl font-extrabold tracking-tighter uppercase">Sai Pratama</span>
+            <div class="flex items-center gap-3 animate__animated animate__fadeInDown">
+                <img src="./kaizubuild.png" alt="Logo" class="h-10 hover:rotate-12 transition">
+                <span class="text-xl font-extrabold tracking-tighter uppercase bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-cyan-400">Sai Pratama</span>
             </div>
             
-            <div class="hidden md:flex space-x-8 font-medium">
-                <a href="#home" class="hover:text-blue-500 transition">Home</a>
-                <a href="#about" class="hover:text-blue-500 transition">About</a>
-                <a href="#experience" class="hover:text-blue-500 transition">Experience</a>
-                <a href="#skills" class="hover:text-blue-500 transition">Skills</a>
+            <div class="hidden md:flex space-x-8 font-medium animate__animated animate__fadeInDown">
+                <a href="#home" class="hover:text-blue-500 transition relative group">Home<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 transition-all group-hover:w-full"></span></a>
+                <a href="#about" class="hover:text-blue-500 transition relative group">About<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 transition-all group-hover:w-full"></span></a>
+                <a href="#experience" class="hover:text-blue-500 transition relative group">Experience<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 transition-all group-hover:w-full"></span></a>
+                <a href="#disqus_section" class="hover:text-blue-500 transition relative group">Discussion<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 transition-all group-hover:w-full"></span></a>
             </div>
 
-            <div class="flex items-center gap-4">
-                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+            <div class="flex items-center gap-4 animate__animated animate__fadeInDown">
+                <button id="theme-toggle" class="p-2 rounded-xl bg-white/10 glass hover:bg-blue-500/20 transition">
                     <i id="theme-icon" class="fas fa-moon"></i>
                 </button>
-                <a href="mailto:saipratama1924@gmail.com" class="hidden md:block bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full text-sm font-bold transition">Hire Me!</a>
+                <a href="mailto:saipratama1924@gmail.com" class="hidden md:block bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg shadow-blue-500/30 transition-all hover:-translate-y-1">Hire Me!</a>
             </div>
         </div>
     </nav>
 
-    <section id="home" class="min-h-screen flex items-center pt-20 gradient-bg dark:dark-gradient text-white">
-        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
-            <div class="md:w-1/2 animate__animated animate__fadeInLeft">
-                <h2 class="text-blue-400 font-bold uppercase tracking-widest mb-2">Hello World!</h2>
-                <h1 class="text-5xl md:text-7xl font-black mb-4 uppercase">SAI PRATAMA</h1>
-                <p class="text-xl md:text-2xl opacity-90 mb-8 leading-relaxed">
-                    Student | IT Support | Full Stack Developer
+    <section id="home" class="min-h-screen flex items-center pt-20 gradient-bg dark:dark-gradient text-white overflow-hidden">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between relative">
+            <div class="md:w-1/2 z-10 animate__animated animate__fadeInLeft">
+                <div class="inline-block px-4 py-1 rounded-full border border-blue-400/30 bg-blue-400/10 mb-4 animate__animated animate__pulse animate__infinite">
+                    <span class="text-blue-300 font-bold text-sm tracking-widest">AVAILABLE FOR WORK</span>
+                </div>
+                <h1 class="text-6xl md:text-8xl font-black mb-4 tracking-tighter">SAI <span class="text-blue-400">PRATAMA</span></h1>
+                <p class="text-xl md:text-2xl opacity-80 mb-8 leading-relaxed font-light">
+                    Transforming ideas into <span class="font-bold border-b-2 border-blue-500">Digital Reality</span>. Full Stack Developer & IT Support.
                 </p>
-                <div class="flex gap-4">
-                    <a href="https://wa.me/6281315255532" class="bg-white text-primary px-8 py-3 rounded-xl font-bold hover:scale-105 transition transform shadow-xl">
-                        <i class="fab fa-whatsapp mr-2"></i> WhatsApp
+                <div class="flex flex-wrap gap-4">
+                    <a href="https://wa.me/6281315255532" class="bg-white text-primary px-8 py-4 rounded-2xl font-bold hover:shadow-[0_0_20px_rgba(255,255,255,0.4)] transition transform hover:-translate-y-1 flex items-center">
+                        <i class="fab fa-whatsapp mr-3 text-xl"></i> WhatsApp Me
                     </a>
-                    <a href="#experience" class="border-2 border-white px-8 py-3 rounded-xl font-bold hover:bg-white hover:text-primary transition shadow-xl">
-                        Portfolio
+                    <a href="#experience" class="glass px-8 py-4 rounded-2xl font-bold hover:bg-white/10 transition flex items-center border border-white/20">
+                        View Projects <i class="fas fa-arrow-right ml-3"></i>
                     </a>
                 </div>
             </div>
-            <div class="md:w-1/2 mt-12 md:mt-0 flex justify-center animate__animated animate__zoomIn">
-                <div class="relative">
-                    <div class="absolute -inset-4 bg-blue-500 rounded-full blur-3xl opacity-30 float"></div>
-                    <img src="./Sai_Hero.png" alt="Sai" class="relative z-10 w-80 md:w-[450px] float">
+            
+            <div class="md:w-1/2 mt-12 md:mt-0 flex justify-center relative animate__animated animate__zoomIn">
+                <div class="absolute -inset-10 bg-blue-500 rounded-full blur-[100px] opacity-20 animate-pulse-slow"></div>
+                <img src="./Sai_Hero.png" alt="Sai Hero" class="relative z-10 w-80 md:w-[500px] float drop-shadow-2xl">
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-32 bg-white dark:bg-gray-800 transition-colors duration-500">
+        <div class="container mx-auto px-6">
+            <div class="reveal max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl font-black mb-8 italic uppercase tracking-tighter underline decoration-blue-500 decoration-4 underline-offset-8">About The Dev</h2>
+                <div class="grid md:grid-cols-2 gap-10 text-left items-center mt-12">
+                    <p class="text-lg leading-relaxed text-gray-600 dark:text-gray-400">
+                        Expert dalam riset sistem operasional (Windows, Linux, Mac OS) dengan berbagai skenario instalasi. Gak cuma software, gw juga handle hardware maintenance dari tingkat PC kuli sampe server enterprise.
+                    </p>
+                    <p class="text-lg leading-relaxed text-gray-600 dark:text-gray-400 border-l-4 border-blue-500 pl-6">
+                        Lini coding gw fokus di <span class="text-blue-600 font-bold">Laravel & Flutter</span>. Gw suka bikin sistem yang gak cuma jalan, tapi juga enak diliat dan gampang di-scale.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="about" class="py-24 bg-white dark:bg-gray-800">
+    <section id="experience" class="py-24 bg-gray-50 dark:bg-gray-900 transition-colors duration-500">
         <div class="container mx-auto px-6">
-            <div class="max-w-4xl mx-auto text-center animate__animated animate__fadeInUp">
-                <h2 class="text-3xl font-bold mb-8">Tentang Saya</h2>
-                <p class="text-lg leading-relaxed text-gray-600 dark:text-gray-300">
-                    Saya memiliki pengalaman di dunia IT dalam bidang riset sistem seperti install dan uninstall OS baik itu Windows based, Distro Linux, dan Mac OS dengan berbagai metode instalasi yang ada. Saya juga dapat melakukan perbaikan dan perawatan inventaris IT seperti desktop, laptop, dan server.
-                </p>
-                <p class="text-lg mt-4 leading-relaxed text-gray-600 dark:text-gray-300">
-                    Selain itu saya juga memiliki pengalaman Developer dimana tools yang sering saya gunakan adalah Apache Cordova, Flutter, Laravel, Git, dan MySQL.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section id="experience" class="py-24 bg-gray-50 dark:bg-gray-900">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-black text-center mb-16 uppercase italic tracking-tighter">Work Experience</h2>
+            <h2 class="text-4xl font-black text-center mb-20 uppercase italic tracking-tighter">Career Path</h2>
             
             <div class="grid md:grid-cols-2 gap-8">
-                <div class="glass p-8 rounded-3xl hover:shadow-2xl transition-all duration-300 group border-l-4 border-blue-600">
-                    <div class="flex justify-between items-start mb-4">
-                        <span class="text-sm font-bold text-blue-600">Aug 2025 - Sekarang</span>
+                <div class="reveal glass p-8 rounded-[2rem] hover:bg-white/5 transition-all duration-500 group border-t border-white/10 shadow-xl">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="p-3 bg-blue-600 rounded-2xl rotate-3 group-hover:rotate-0 transition-transform">
+                            <i class="fas fa-network-wired text-white text-2xl"></i>
+                        </div>
+                        <span class="text-xs font-black bg-blue-600/20 text-blue-500 px-3 py-1 rounded-full uppercase">Aug 2025 - Active</span>
                     </div>
-                    <h3 class="text-2xl font-bold mb-1 text-gray-900 dark:text-white">IT Support</h3>
-                    <h4 class="text-gray-500 font-medium mb-4 uppercase text-sm">PT. Golden Flexible Packaging</h4>
-                    <ul class="space-y-2 text-gray-600 dark:text-gray-400 text-sm">
-                        <li><i class="fas fa-check-circle text-blue-500 mr-2"></i> Mengurusi helpdesk dan request user by ticket.</li>
-                        <li><i class="fas fa-check-circle text-blue-500 mr-2"></i> Perbaikan & perawatan inventaris laptop, desktop, dan server.</li>
-                        <li><i class="fas fa-check-circle text-blue-500 mr-2"></i> Terlibat dalam pengembangan aplikasi internal perusahaan.</li>
+                    <h3 class="text-2xl font-black mb-1 group-hover:text-blue-500 transition">IT Support</h3>
+                    <h4 class="text-gray-500 font-bold mb-6 text-sm">PT. Golden Flexible Packaging</h4>
+                    <ul class="space-y-3 text-gray-600 dark:text-gray-400">
+                        <li class="flex items-start"><i class="fas fa-bolt text-yellow-500 mt-1 mr-3 text-xs"></i><span>Helpdesk & Ticket System Management</span></li>
+                        <li class="flex items-start"><i class="fas fa-bolt text-yellow-500 mt-1 mr-3 text-xs"></i><span>Server & Desktop Infrastructure Maintenance</span></li>
+                        <li class="flex items-start"><i class="fas fa-bolt text-yellow-500 mt-1 mr-3 text-xs"></i><span>In-house ERP Development Contributor</span></li>
                     </ul>
                 </div>
 
-                <div class="glass p-8 rounded-3xl hover:shadow-2xl transition-all duration-300 border-l-4 border-yellow-500">
-                    <div class="flex justify-between items-start mb-4">
-                        <span class="text-3xl">🚀</span>
-                        <span class="text-sm font-bold text-yellow-500">Aug 2015 - Sekarang</span>
+                <div class="reveal glass p-8 rounded-[2rem] hover:bg-white/5 transition-all duration-500 group border-t border-white/10 shadow-xl" style="transition-delay: 0.1s">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="p-3 bg-indigo-600 rounded-2xl -rotate-3 group-hover:rotate-0 transition-transform">
+                            <i class="fas fa-code text-white text-2xl"></i>
+                        </div>
+                        <span class="text-xs font-black bg-indigo-600/20 text-indigo-500 px-3 py-1 rounded-full uppercase">Est. 2015</span>
                     </div>
-                    <h3 class="text-2xl font-bold mb-1 text-gray-900 dark:text-white">Full Stack Developer</h3>
-                    <h4 class="text-gray-500 font-medium mb-4 uppercase text-sm">Kaizu Build (Self-Employed)</h4>
-                    <p class="text-gray-600 dark:text-gray-400 text-sm">
-                        UMKM milik saya sendiri yang mengerjakan servis PC/Laptop serta jasa pembuatan aplikasi web dan mobile dengan tools utama Laravel, Apache Cordova, dan Flutter.
-                    </p>
-                </div>
-
-                <div class="glass p-8 rounded-3xl hover:shadow-2xl transition-all duration-300 border-l-4 border-green-500">
-                    <div class="flex justify-between items-start mb-4">
-                        <span class="text-sm font-bold text-green-500">Aug 2023 - Feb 2025</span>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-1 text-gray-900 dark:text-white">Backend Developer (Intern)</h3>
-                    <h4 class="text-gray-500 font-medium mb-4 uppercase text-sm">PT. Agrobisnis Banten Mandiri</h4>
-                    <p class="text-gray-600 dark:text-gray-400 text-sm">
-                        Mengerjakan sistem Trello internal, pemeriksaan relasi database, pembuatan UML, dan pengembangan aplikasi koperasi perusahaan.
-                    </p>
-                </div>
-
-                <div class="glass p-8 rounded-3xl hover:shadow-2xl transition-all duration-300 border-l-4 border-red-500">
-                    <div class="flex justify-between items-start mb-4">
-                        <span class="text-sm font-bold text-red-500">Internship</span>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-1 text-gray-900 dark:text-white">IT Support PKL</h3>
-                    <h4 class="text-gray-500 font-medium mb-4 uppercase text-sm">PT. POS Indonesia</h4>
-                    <p class="text-gray-600 dark:text-gray-400 text-sm">
-                        Mendapatkan nilai A dan menyerap banyak ilmu industri terkait infrastruktur IT.
+                    <h3 class="text-2xl font-black mb-1 group-hover:text-indigo-500 transition">Full Stack Developer</h3>
+                    <h4 class="text-gray-500 font-bold mb-6 text-sm">Kaizu Build (Self-Employed)</h4>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                        Bengkel IT & Software House pribadi. Ngerjain servis hardware sampe bikin custom Mobile Apps pake <span class="font-bold">Flutter & Apache Cordova</span>.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="skills" class="py-24 bg-white dark:bg-gray-800">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold mb-12">Kemampuan & Sertifikasi</h2>
-            <div class="flex flex-wrap justify-center gap-4 mb-16">
-                <span class="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100 px-6 py-2 rounded-full font-bold">Mobile App Development</span>
-                <span class="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100 px-6 py-2 rounded-full font-bold">IT Project Management</span>
-                <span class="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100 px-6 py-2 rounded-full font-bold">Ethical Hacking</span>
-                <span class="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100 px-6 py-2 rounded-full font-bold">Laravel</span>
-                <span class="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100 px-6 py-2 rounded-full font-bold">Linux</span>
-                <span class="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100 px-6 py-2 rounded-full font-bold">Flutter</span>
+    <section id="skills" class="py-24 bg-white dark:bg-gray-800 overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="reveal text-center mb-16">
+                <h2 class="text-3xl font-black uppercase italic">Tech Stack</h2>
+                <div class="h-1 w-20 bg-blue-500 mx-auto mt-2"></div>
             </div>
             
-            <div class="max-w-2xl mx-auto glass p-6 rounded-2xl flex items-center gap-6 text-left">
-                <div class="bg-yellow-500 p-4 rounded-xl text-white">
-                    <i class="fas fa-certificate text-3xl"></i>
+            <div class="flex flex-wrap justify-center gap-10 opacity-70 hover:opacity-100 transition-opacity">
+                <div class="flex flex-col items-center group">
+                    <i class="devicon-laravel-plain colored text-6xl group-hover:scale-125 transition"></i>
+                    <span class="mt-2 font-bold text-xs uppercase">Laravel</span>
                 </div>
-                <div>
-                    <h3 class="font-bold text-xl">TOEFL Certificate</h3>
-                    <p class="text-gray-500 italic">Oct 2024 - Oct 2026</p>
-                    <a href="https://mylb.unpam.ac.id/verifikasi/4905F074-DEAF-497D-8EBE-128DD5C77C30" target="_blank" class="text-blue-500 text-sm font-bold hover:underline">Verify Certificate →</a>
+                <div class="flex flex-col items-center group">
+                    <i class="devicon-flutter-plain colored text-6xl group-hover:scale-125 transition"></i>
+                    <span class="mt-2 font-bold text-xs uppercase">Flutter</span>
+                </div>
+                <div class="flex flex-col items-center group">
+                    <i class="devicon-mysql-plain-wordmark colored text-6xl group-hover:scale-125 transition"></i>
+                    <span class="mt-2 font-bold text-xs uppercase">MySQL</span>
+                </div>
+                <div class="flex flex-col items-center group">
+                    <i class="devicon-linux-plain text-6xl group-hover:scale-125 transition dark:text-white"></i>
+                    <span class="mt-2 font-bold text-xs uppercase">Linux</span>
+                </div>
+                <div class="flex flex-col items-center group">
+                    <i class="devicon-git-plain colored text-6xl group-hover:scale-125 transition"></i>
+                    <span class="mt-2 font-bold text-xs uppercase">Git</span>
+                </div>
+                <div class="flex flex-col items-center group">
+                    <i class="devicon-ubuntu-plain colored text-6xl group-hover:scale-125 transition"></i>
+                    <span class="mt-2 font-bold text-xs uppercase">Ubuntu</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-12 bg-gray-900 text-white text-center">
+    <section id="disqus_section" class="py-24 bg-gray-50 dark:bg-gray-900 transition-colors duration-500">
         <div class="container mx-auto px-6">
-            <div class="flex justify-center space-x-6 mb-8">
-                <a href="https://github.com/saikaizu" class="text-2xl hover:text-blue-400"><i class="fab fa-github"></i></a>
-                <a href="https://linkedin.com/in/sai-pratama-b0449b205/" class="text-2xl hover:text-blue-400"><i class="fab fa-linkedin"></i></a>
-                <a href="https://instagram.com/sai_pratama/" class="text-2xl hover:text-blue-400"><i class="fab fa-instagram"></i></a>
+            <div class="reveal max-w-4xl mx-auto glass p-8 rounded-3xl shadow-2xl">
+                <h2 class="text-2xl font-black mb-8 italic"><i class="fas fa-comments mr-3 text-blue-500"></i>Let's Discuss!</h2>
+                <div id="disqus_thread"></div>
             </div>
-            <p class="opacity-50">© 2026 Sai Pratama. Built with ⚡ in Tangerang.</p>
+        </div>
+    </section>
+
+    <footer class="py-16 bg-gray-950 text-white text-center relative overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex justify-center space-x-8 mb-10">
+                <a href="https://github.com/saikaizu" class="text-3xl hover:text-blue-400 hover:-translate-y-2 transition-all"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/sai-pratama-b0449b205/" class="text-3xl hover:text-blue-400 hover:-translate-y-2 transition-all"><i class="fab fa-linkedin"></i></a>
+                <a href="https://instagram.com/sai_pratama/" class="text-3xl hover:text-pink-500 hover:-translate-y-2 transition-all"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="font-bold tracking-widest uppercase text-sm opacity-40">© 2026 Sai Pratama • Tangerang Pride</p>
+        </div>
+        <div class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
+            <svg width="100%" height="100%"><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="1"/></pattern><rect width="100%" height="100%" fill="url(#grid)" /></svg>
         </div>
     </footer>
 
-    <div id="whatsapp-chat-button" class="fixed bottom-6 right-6 bg-green-500 w-16 h-16 rounded-full flex items-center justify-center shadow-lg cursor-pointer z-[100] hover:scale-110 transition-transform animate-bounce">
-        <i class="fab fa-whatsapp text-white text-3xl"></i>
-    </div>
+    <a href="https://wa.me/6281315255532" class="fixed bottom-8 right-8 z-50 group">
+        <div class="absolute -inset-2 bg-green-500 rounded-full blur opacity-40 group-hover:opacity-100 transition animate-pulse"></div>
+        <div class="relative bg-green-500 p-5 rounded-full shadow-2xl text-white transform group-hover:rotate-12 transition">
+            <i class="fab fa-whatsapp text-3xl"></i>
+        </div>
+    </a>
 
     <script>
+        // Reveal on scroll logic
+        const reveals = document.querySelectorAll(".reveal");
+        window.addEventListener("scroll", () => {
+            reveals.forEach(reveal => {
+                const windowHeight = window.innerHeight;
+                const revealTop = reveal.getBoundingClientRect().top;
+                const revealPoint = 150;
+                if (revealTop < windowHeight - revealPoint) {
+                    reveal.classList.add("active");
+                }
+            });
+            
+            // Navbar Scroll Effect
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('glass', 'py-2', 'shadow-2xl');
+                nav.classList.remove('py-4');
+            } else {
+                nav.classList.remove('glass', 'py-2', 'shadow-2xl');
+                nav.classList.add('py-4');
+            }
+        });
+
+        // Dark Mode Logic
         const themeToggle = document.getElementById('theme-toggle');
         const themeIcon = document.getElementById('theme-icon');
         const html = document.documentElement;
 
-        themeToggle.addEventListener('click', () => {
-            html.classList.toggle('dark');
-            if (html.classList.contains('dark')) {
+        const updateTheme = (isDark) => {
+            if (isDark) {
+                html.classList.add('dark');
                 themeIcon.classList.replace('fa-moon', 'fa-sun');
                 localStorage.setItem('theme', 'dark');
             } else {
+                html.classList.remove('dark');
                 themeIcon.classList.replace('fa-sun', 'fa-moon');
                 localStorage.setItem('theme', 'light');
             }
-        });
-
-        if (localStorage.getItem('theme') === 'dark') {
-            html.classList.add('dark');
-            themeIcon.classList.replace('fa-moon', 'fa-sun');
         }
 
-        // WhatsApp Logic from original index.txt
-        const whatsappBtn = document.getElementById('whatsapp-chat-button');
-        whatsappBtn.addEventListener('click', () => {
-            const whatsappNumber = '6281315255532'; [cite: 113]
-            const defaultMessage = "Cuyy Sai, gw liat portofolio lu. Keren! Mau nanya-nanya soal project nih... "; [cite: 114]
-            window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(defaultMessage)}`, '_blank'); [cite: 118, 119]
+        themeToggle.addEventListener('click', () => {
+            updateTheme(!html.classList.contains('dark'));
         });
+
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            updateTheme(true);
+        }
+
+        /**
+        * DISQUS CONFIGURATION
+        */
+        var disqus_config = function () {
+            this.page.url = window.location.href;  
+            this.page.identifier = 'sai-pratama-portfolio'; 
+        };
+        (function() { 
+            var d = document, s = d.createElement('script');
+            s.src = 'https://saipratama.disqus.com/embed.js'; // Pastikan shortname disqus lu bener
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
     </script>
 </body>
 </html>
