@@ -49,45 +49,6 @@
             background: rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
-
-        /* [cite: 94-108] - WhatsApp Chat Style Tetap Dipertahankan */
-        #whatsapp-chat-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            cursor: pointer;
-            animation: pulse-ring 1.5s infinite;
-            transition: transform 0.3s ease-in-out;
-        }
-        @keyframes pulse-ring {
-            0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7); }
-            70% { box-shadow: 0 0 0 20px rgba(76, 175, 80, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
-        }
-        #whatsapp-chat-panel {
-            position: fixed;
-            bottom: 100px;
-            right: 20px;
-            z-index: 999;
-            width: 300px;
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-            transition: all 0.3s ease-in-out;
-        }
-        #whatsapp-chat-panel.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-        .dark #whatsapp-chat-panel {
-            background-color: #1F2937;
-            color: #D1D5DB;
-        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
@@ -100,10 +61,10 @@
             </div>
             
             <div class="hidden md:flex space-x-8 font-medium">
-                <a href="#Home" class="hover:text-blue-500 transition">Home</a>
-                <a href="#About" class="hover:text-blue-500 transition">About</a>
-                <a href="#Experiences" class="hover:text-blue-500 transition">Experience</a>
-                <a href="#Skills" class="hover:text-blue-500 transition">Skills</a>
+                <a href="#home" class="hover:text-blue-500 transition">Home</a>
+                <a href="#about" class="hover:text-blue-500 transition">About</a>
+                <a href="#experience" class="hover:text-blue-500 transition">Experience</a>
+                <a href="#skills" class="hover:text-blue-500 transition">Skills</a>
             </div>
 
             <div class="flex items-center gap-4">
@@ -115,114 +76,169 @@
         </div>
     </nav>
 
-    <section id="Home" class="min-h-screen flex items-center pt-20 gradient-bg dark:dark-gradient text-white">
+    <section id="home" class="min-h-screen flex items-center pt-20 gradient-bg dark:dark-gradient text-white">
         <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
             <div class="md:w-1/2 animate__animated animate__fadeInLeft">
-                <h2 class="text-yellow-400 font-bold uppercase tracking-widest mb-2">Hello everyone! [cite: 128]</h2>
-                <h1 class="text-5xl md:text-7xl font-black mb-4">SAI PRATAMA [cite: 129]</h1>
+                <h2 class="text-blue-400 font-bold uppercase tracking-widest mb-2">Hello World!</h2>
+                <h1 class="text-5xl md:text-7xl font-black mb-4 uppercase">SAI PRATAMA</h1>
                 <p class="text-xl md:text-2xl opacity-90 mb-8 leading-relaxed">
-                    Student | IT Enthusiast [cite: 130]
+                    Student | IT Support | Full Stack Developer
                 </p>
-                <div class="space-y-2 mb-8 text-sm opacity-80">
-                    <p><i class="fas fa-graduation-cap mr-2"></i> SMK Negeri 1 Tangerang - Teknik Komputer dan Jaringan [cite: 130]</p>
-                    <p><i class="fas fa-university mr-2"></i> Universitas Pamulang - Teknik Informatika [cite: 131]</p>
-                </div>
                 <div class="flex gap-4">
                     <a href="https://wa.me/6281315255532" class="bg-white text-primary px-8 py-3 rounded-xl font-bold hover:scale-105 transition transform shadow-xl">
-                        <i class="fab fa-whatsapp mr-2"></i> Whatsapp [cite: 132]
+                        <i class="fab fa-whatsapp mr-2"></i> WhatsApp
+                    </a>
+                    <a href="#experience" class="border-2 border-white px-8 py-3 rounded-xl font-bold hover:bg-white hover:text-primary transition shadow-xl">
+                        Portfolio
                     </a>
                 </div>
             </div>
             <div class="md:w-1/2 mt-12 md:mt-0 flex justify-center animate__animated animate__zoomIn">
                 <div class="relative">
                     <div class="absolute -inset-4 bg-blue-500 rounded-full blur-3xl opacity-30 float"></div>
-                    <img src="./Sai_Hero.png" alt="Sai Pratama" class="relative z-10 w-80 md:w-[450px] float"> [cite: 133]
+                    <img src="./Sai_Hero.png" alt="Sai" class="relative z-10 w-80 md:w-[450px] float">
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="About" class="py-24 bg-white dark:bg-gray-800">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl font-bold mb-8">About Me</h2>
-            <div class="max-w-3xl mx-auto">
-                <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-                    Welcome to My Profile! [cite: 128] Immersed in the world of technology, 
-                    I focus on Informatics Engineering at Universitas Pamulang. [cite: 131]
+    <section id="about" class="py-24 bg-white dark:bg-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center animate__animated animate__fadeInUp">
+                <h2 class="text-3xl font-bold mb-8">Tentang Saya</h2>
+                <p class="text-lg leading-relaxed text-gray-600 dark:text-gray-300">
+                    Saya memiliki pengalaman di dunia IT dalam bidang riset sistem seperti install dan uninstall OS baik itu Windows based, Distro Linux, dan Mac OS dengan berbagai metode instalasi yang ada. Saya juga dapat melakukan perbaikan dan perawatan inventaris IT seperti desktop, laptop, dan server.
+                </p>
+                <p class="text-lg mt-4 leading-relaxed text-gray-600 dark:text-gray-300">
+                    Selain itu saya juga memiliki pengalaman Developer dimana tools yang sering saya gunakan adalah Apache Cordova, Flutter, Laravel, Git, dan MySQL.
                 </p>
             </div>
         </div>
     </section>
 
-    <section id="Experiences" class="py-24 bg-gray-50 dark:bg-gray-900">
+    <section id="experience" class="py-24 bg-gray-50 dark:bg-gray-900">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-black text-center mb-16 uppercase italic tracking-tighter">Experiences [cite: 40]</h2>
+            <h2 class="text-4xl font-black text-center mb-16 uppercase italic tracking-tighter">Work Experience</h2>
             
-            <div class="grid md:grid-cols-1 gap-8 max-w-4xl mx-auto">
-                <div class="glass p-8 rounded-3xl border-l-4 border-blue-600">
-                    <h3 class="text-2xl font-bold">Check out my journey in the original file!</h3>
-                    <p class="mt-4 opacity-70">Experience data is preserved from index.txt [cite: 40-42].</p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="glass p-8 rounded-3xl hover:shadow-2xl transition-all duration-300 group border-l-4 border-blue-600">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-sm font-bold text-blue-600">Aug 2025 - Sekarang</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-1 text-gray-900 dark:text-white">IT Support</h3>
+                    <h4 class="text-gray-500 font-medium mb-4 uppercase text-sm">PT. Golden Flexible Packaging</h4>
+                    <ul class="space-y-2 text-gray-600 dark:text-gray-400 text-sm">
+                        <li><i class="fas fa-check-circle text-blue-500 mr-2"></i> Mengurusi helpdesk dan request user by ticket.</li>
+                        <li><i class="fas fa-check-circle text-blue-500 mr-2"></i> Perbaikan & perawatan inventaris laptop, desktop, dan server.</li>
+                        <li><i class="fas fa-check-circle text-blue-500 mr-2"></i> Terlibat dalam pengembangan aplikasi internal perusahaan.</li>
+                    </ul>
+                </div>
+
+                <div class="glass p-8 rounded-3xl hover:shadow-2xl transition-all duration-300 border-l-4 border-yellow-500">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-3xl">🚀</span>
+                        <span class="text-sm font-bold text-yellow-500">Aug 2015 - Sekarang</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-1 text-gray-900 dark:text-white">Full Stack Developer</h3>
+                    <h4 class="text-gray-500 font-medium mb-4 uppercase text-sm">Kaizu Build (Self-Employed)</h4>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                        UMKM milik saya sendiri yang mengerjakan servis PC/Laptop serta jasa pembuatan aplikasi web dan mobile dengan tools utama Laravel, Apache Cordova, dan Flutter.
+                    </p>
+                </div>
+
+                <div class="glass p-8 rounded-3xl hover:shadow-2xl transition-all duration-300 border-l-4 border-green-500">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-sm font-bold text-green-500">Aug 2023 - Feb 2025</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-1 text-gray-900 dark:text-white">Backend Developer (Intern)</h3>
+                    <h4 class="text-gray-500 font-medium mb-4 uppercase text-sm">PT. Agrobisnis Banten Mandiri</h4>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                        Mengerjakan sistem Trello internal, pemeriksaan relasi database, pembuatan UML, dan pengembangan aplikasi koperasi perusahaan.
+                    </p>
+                </div>
+
+                <div class="glass p-8 rounded-3xl hover:shadow-2xl transition-all duration-300 border-l-4 border-red-500">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-sm font-bold text-red-500">Internship</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-1 text-gray-900 dark:text-white">IT Support PKL</h3>
+                    <h4 class="text-gray-500 font-medium mb-4 uppercase text-sm">PT. POS Indonesia</h4>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                        Mendapatkan nilai A dan menyerap banyak ilmu industri terkait infrastruktur IT.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="Skills" class="py-24 bg-white dark:bg-gray-800">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-12">Skills [cite: 35]</h2>
-            <div class="flex flex-wrap justify-center gap-4">
-                <span class="bg-blue-100 text-blue-800 px-6 py-2 rounded-full font-bold">IT Enthusiast</span>
-                <span class="bg-blue-100 text-blue-800 px-6 py-2 rounded-full font-bold">Networking (TKJ)</span>
-                <span class="bg-blue-100 text-blue-800 px-6 py-2 rounded-full font-bold">Informatics</span>
+    <section id="skills" class="py-24 bg-white dark:bg-gray-800">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-12">Kemampuan & Sertifikasi</h2>
+            <div class="flex flex-wrap justify-center gap-4 mb-16">
+                <span class="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100 px-6 py-2 rounded-full font-bold">Mobile App Development</span>
+                <span class="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100 px-6 py-2 rounded-full font-bold">IT Project Management</span>
+                <span class="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100 px-6 py-2 rounded-full font-bold">Ethical Hacking</span>
+                <span class="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100 px-6 py-2 rounded-full font-bold">Laravel</span>
+                <span class="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100 px-6 py-2 rounded-full font-bold">Linux</span>
+                <span class="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100 px-6 py-2 rounded-full font-bold">Flutter</span>
+            </div>
+            
+            <div class="max-w-2xl mx-auto glass p-6 rounded-2xl flex items-center gap-6 text-left">
+                <div class="bg-yellow-500 p-4 rounded-xl text-white">
+                    <i class="fas fa-certificate text-3xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-xl">TOEFL Certificate</h3>
+                    <p class="text-gray-500 italic">Oct 2024 - Oct 2026</p>
+                    <a href="https://mylb.unpam.ac.id/verifikasi/4905F074-DEAF-497D-8EBE-128DD5C77C30" target="_blank" class="text-blue-500 text-sm font-bold hover:underline">Verify Certificate →</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <div id="whatsapp-chat-button" class="bg-green-500 w-16 h-16 rounded-full flex items-center justify-center shadow-lg">
-        <i class="fab fa-whatsapp text-3xl text-white"></i>
-    </div>
-
-    <div id="whatsapp-chat-panel" class="p-4">
-        <div class="flex justify-between items-center pb-3 border-b">
-            <h3 class="font-bold">Need Help, Cuy? [cite: 109]</h3>
-            <button id="close-panel" class="text-gray-400 hover:text-gray-800">&times;</button>
-        </div>
-        <div class="py-4 text-sm">
-            Halo! Ada yang bisa Sai bantu? [cite: 110]
-        </div>
-        <a id="start-chat-link" href="#" target="_blank" class="block bg-green-500 text-center text-white font-bold py-2 rounded-lg">
-            Start Chatting [cite: 112]
-        </a>
-    </div>
-
     <footer class="py-12 bg-gray-900 text-white text-center">
-        <p class="opacity-50">© 2026 Sai Pratama. Built with ⚡ in Tangerang. [cite: 133]</p>
+        <div class="container mx-auto px-6">
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="https://github.com/saikaizu" class="text-2xl hover:text-blue-400"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/sai-pratama-b0449b205/" class="text-2xl hover:text-blue-400"><i class="fab fa-linkedin"></i></a>
+                <a href="https://instagram.com/sai_pratama/" class="text-2xl hover:text-blue-400"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="opacity-50">© 2026 Sai Pratama. Built with ⚡ in Tangerang.</p>
+        </div>
     </footer>
 
+    <div id="whatsapp-chat-button" class="fixed bottom-6 right-6 bg-green-500 w-16 h-16 rounded-full flex items-center justify-center shadow-lg cursor-pointer z-[100] hover:scale-110 transition-transform animate-bounce">
+        <i class="fab fa-whatsapp text-white text-3xl"></i>
+    </div>
+
     <script>
-        // Theme Toggle Logic
         const themeToggle = document.getElementById('theme-toggle');
         const themeIcon = document.getElementById('theme-icon');
         const html = document.documentElement;
 
         themeToggle.addEventListener('click', () => {
             html.classList.toggle('dark');
-            const isDark = html.classList.contains('dark');
-            themeIcon.classList.replace(isDark ? 'fa-moon' : 'fa-sun', isDark ? 'fa-sun' : 'fa-moon');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            if (html.classList.contains('dark')) {
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
         });
 
-        // [cite: 113-122] - WhatsApp Logic
-        const chatButton = document.getElementById('whatsapp-chat-button');
-        const chatPanel = document.getElementById('whatsapp-chat-panel');
-        const closePanel = document.getElementById('close-panel');
-        
-        chatButton.addEventListener('click', () => chatPanel.classList.toggle('active'));
-        closePanel.addEventListener('click', () => chatPanel.classList.remove('active'));
+        if (localStorage.getItem('theme') === 'dark') {
+            html.classList.add('dark');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        }
 
-        const whatsappNumber = '6281315255532'; [cite: 113]
-        const defaultMessage = "Cuyy Sai, gw liat portofolio lu. Keren!"; [cite: 114]
-        document.getElementById('start-chat-link').href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(defaultMessage)}`; [cite: 119]
+        // WhatsApp Logic from original index.txt
+        const whatsappBtn = document.getElementById('whatsapp-chat-button');
+        whatsappBtn.addEventListener('click', () => {
+            const whatsappNumber = '6281315255532'; [cite: 113]
+            const defaultMessage = "Cuyy Sai, gw liat portofolio lu. Keren! Mau nanya-nanya soal project nih... "; [cite: 114]
+            window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(defaultMessage)}`, '_blank'); [cite: 118, 119]
+        });
     </script>
 </body>
 </html>
