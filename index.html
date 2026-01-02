@@ -3,235 +3,660 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sai Pratama - Professional Portfolio</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>
+      Sai Pratama - Portofolio
+    </title>
+    <meta name="description" content="Simple landing page" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <!-- Tailwind CSS CDN - VERSI TERBARU UNTUK KOMPATIBILITAS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css CDN untuk animasi -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Define your gradient here - use online tools to find a gradient matching your branding-->
+    <style>
+    .gradient {
+      background: linear-gradient(90deg, #000428 0%, #004e92 100%);
+    }
+    .dark-mode .dark\:bg-gray-900 {
+      background-color: #111827 !important;
+    }
+    .dark-mode .dark\:text-gray-300 {
+      color: #D1D5DB !important;
+    }
     
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#004e92',
-                        secondary: '#000428',
-                    }
-                }
-            }
-        }
-    </script>
+    /* CSS untuk animasi background shapes */
+    .animated-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1; /* Pastikan di belakang konten */
+      pointer-events: none; /* Biar gak ganggu klik */
+    }
+
+    .shape {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      animation: move-shapes 15s linear infinite;
+    }
+
+    .shape:nth-child(1) {
+      width: 80px;
+      height: 80px;
+      left: 10%;
+      top: 20%;
+      animation-duration: 10s;
+    }
+
+    .shape:nth-child(2) {
+      width: 120px;
+      height: 120px;
+      left: 30%;
+      top: 70%;
+      animation-duration: 18s;
+      animation-delay: 2s;
+    }
+
+    .shape:nth-child(3) {
+      width: 60px;
+      height: 60px;
+      left: 50%;
+      top: 40%;
+      animation-duration: 12s;
+    }
+
+    .shape:nth-child(4) {
+      width: 150px;
+      height: 150px;
+      left: 70%;
+      top: 80%;
+      animation-duration: 20s;
+      animation-delay: 3s;
+    }
+
+    .shape:nth-child(5) {
+      width: 90px;
+      height: 90px;
+      left: 90%;
+      top: 10%;
+      animation-duration: 15s;
+    }
+
+    @keyframes move-shapes {
+      0% {
+        transform: translateY(0) scale(1) rotate(0deg);
+        opacity: 0.5;
+      }
+      50% {
+        opacity: 0.2;
+      }
+      100% {
+        transform: translateY(-100vh) scale(1.5) rotate(360deg);
+        opacity: 0;
+      }
+    }
+    </style>
+    <!--Start of Tawk.to Script-->
+
+    <!--End of Tawk.to Script-->
 
     <style>
-        .gradient-bg {
-            background: linear-gradient(90deg, #000428 0%, #004e92 100%);
+    /* Styling khusus untuk tombol chat */
+    #whatsapp-chat-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+        cursor: pointer;
+        /* Animasi Pop */
+        animation: pulse-ring 1.5s infinite;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    #whatsapp-chat-button:hover {
+        transform: scale(1.1);
+    }
+    
+    /* Animasi pulse ala Gen Z biar keliatan 'Ready to Chat' */ 
+    @keyframes pulse-ring {
+        0% {
+            box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
         }
-        .dark .dark-gradient {
-            background: linear-gradient(90deg, #111827 0%, #1f2937 100%);
+        70% {
+            box-shadow: 0 0 0 20px rgba(76, 175, 80, 0);
         }
-        html { scroll-behavior: smooth; }
+        100% {
+            box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+        }
+    }
+
+    /* Style untuk Pop-up Panel (ala Tawk.to) */
+    #whatsapp-chat-panel {
+        position: fixed;
+        bottom: 100px; /* Di atas tombol */
+        right: 20px;
+        z-index: 999;
+        width: 300px;
+        background-color: #ffffff; /* Putih di light mode */
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.3s ease-in-out;
+        /* Tambah dark mode support */
+        transition-property: background-color, opacity, visibility, transform;
+    }
+
+    #whatsapp-chat-panel.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    /* Dark Mode overrides for panel */
+    .dark-mode #whatsapp-chat-panel {
+        background-color: #1F2937; /* Background gelap */
+    }
+
+    .dark-mode #whatsapp-chat-panel .text-gray-800 {
+        color: #D1D5DB !important;
+    }
+    
+</style>
+
+<div id="whatsapp-chat-button" class="bg-green-500 w-16 h-16 rounded-full flex items-center justify-center shadow-lg transition-all duration-300">
+    <svg class="w-8 h-8 text-white" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12.01 2.01C6.49 2.01 2 6.5 2 12.01c0 3.01 1.25 5.74 3.28 7.74l-1.07 3.99 4.1-1.07C10.74 21.98 12.01 22 12.01 22c5.51 0 10.01-4.5 10.01-10.01S17.52 2.01 12.01 2.01zm3.76 13.91c-.2.53-1.08.97-1.58 1.05-.5.08-.94.13-2.58-.55-1.74-.74-2.88-2.6-2.97-2.73-.09-.13-.71-.97-.71-1.84s.44-1.35.59-1.52c.15-.17.33-.2.56-.2c.23 0 .49 0 .69.01.21.01.45 0 .68.53.2.53.69 1.68.75 1.79.06.12.1.25.03.49-.07.24-.22.42-.42.66-.2.24-.4.48-.6.71-.2.23-.23.44.02.87.24.44.86 1.48 1.83 2.37.97.89 1.83 1.18 2.06 1.31.23.13.36.11.5.08.15-.03.49-.18.84-.44.35-.25.59-.44.68-.6.09-.15.09-.27.06-.47-.03-.2-.11-.49-.24-.77-.13-.28-.29-.68-.35-.83-.06-.15-.13-.12-.21-.16s-.19-.08-.3-.08c-.11 0-.25.04-.37.06-.12.02-.24.03-.38.07z"/>
+    </svg>
+</div>
+
+<div id="whatsapp-chat-panel" class="p-4 text-gray-800">
+    <div class="flex justify-between items-center pb-3 border-b border-gray-200">
+        <h3 class="text-lg font-bold">Need Help, Cuy?</h3>
+        <button id="close-panel" class="text-gray-400 hover:text-gray-800 transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+    </div>
+    
+    <div class="py-4">
+        <p class="text-sm">
+            Halo! Ada yang bisa Sai bantu? Langsung chat aja biar *sat-set*! 😉
+        </p>
+    </div>
+    
+    <a id="start-chat-link" href="#" target="_blank" rel="noopener noreferrer" class="block">
+        <button class="w-full py-2 bg-green-500 hover:bg-green-600 text-white font-bold rounded-lg flex items-center justify-center shadow-md transition-colors duration-300">
+            <svg class="w-5 h-5 mr-2" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12.01 2.01C6.49 2.01 2 6.5 2 12.01c0 3.01 1.25 5.74 3.28 7.74l-1.07 3.99 4.1-1.07C10.74 21.98 12.01 22 12.01 22c5.51 0 10.01-4.5 10.01-10.01S17.52 2.01 12.01 2.01zm3.76 13.91c-.2.53-1.08.97-1.58 1.05-.5.08-.94.13-2.58-.55-1.74-.74-2.88-2.6-2.97-2.73-.09-.13-.71-.97-.71-1.84s.44-1.35.59-1.52c.15-.17.33-.2.56-.2c.23 0 .49 0 .69.01.21.01.45 0 .68.53.2.53.69 1.68.75 1.79.06.12.1.25.03.49-.07.24-.22.42-.42.66-.2.24-.4.48-.6.71-.2.23-.23.44.02.87.24.44.86 1.48 1.83 2.37.97.89 1.83 1.18 2.06 1.31.23.13.36.11.5.08.15-.03.49-.18.84-.44.35-.25.59-.44.68-.6.09-.15.09-.27.06-.47-.03-.2-.11-.49-.24-.77-.13-.28-.29-.68-.35-.83-.06-.15-.13-.12-.21-.16s-.19-.08-.3-.08c-.11 0-.25.04-.37.06-.12.02-.24.03-.38.07z"/>
+            </svg>
+            Start Chatting
+        </button>
+    </a>
+</div>
+
+<script>
+    // Konfigurasi WhatsApp
+    const whatsappNumber = '6281315255532'; // ⚠️ GANTI DENGAN NOMOR WA LO, CUY!
+    const defaultMessage = "Cuyy Sai, gw liat portofolio lu. Keren! Mau nanya-nanya soal project nih... "; // Pesan pembuka
+    
+    // Ambil elemen
+    const chatButton = document.getElementById('whatsapp-chat-button');
+    const chatPanel = document.getElementById('whatsapp-chat-panel');
+    const closePanel = document.getElementById('close-panel');
+    const startChatLink = document.getElementById('start-chat-link');
+
+    // Fungsi Toggle Panel
+    function toggleChatPanel() {
+        chatPanel.classList.toggle('active');
+    }
+
+    // Fungsi untuk membuat Link WA
+    function generateWhatsAppLink() {
+        // Encode pesan biar aman di URL
+        const encodedMessage = encodeURIComponent(defaultMessage);
+        // Format link WA
+        const waLink = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
         
-        /* Floating Animation */
-        .float { animation: floating 3s ease-in-out infinite; }
-        @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
+        // Update href pada tombol 'Start Chatting'
+        startChatLink.href = waLink;
+    }
 
-        /* Glassmorphism */
-        .glass {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+    // Event Listeners
+    chatButton.addEventListener('click', toggleChatPanel);
+    closePanel.addEventListener('click', toggleChatPanel);
+
+    // Initial load: Generate link WA saat halaman dimuat
+    generateWhatsAppLink();
+
+    // Opsional: Sembunyikan panel saat mengklik di luar panel
+    document.addEventListener('click', function(event) {
+        if (!chatPanel.contains(event.target) && !chatButton.contains(event.target) && chatPanel.classList.contains('active')) {
+            toggleChatPanel();
         }
-        .dark .glass {
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-    </style>
+    });
+
+</script>
 </head>
-<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+<body id="Home" class="leading-normal tracking-normal text-white gradient dark:bg-gray-800 dark:text-gray-300" style="font-family: 'Source Sans Pro', sans-serif;">
+  
+  <!-- Animated Background Shapes -->
+  <div class="animated-background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
 
-    <nav class="fixed w-full z-50 top-0 glass transition-all duration-300 py-4">
-        <div class="container mx-auto px-6 flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <img src="./kaizubuild.png" alt="Logo" class="h-10">
-                <span class="text-xl font-extrabold tracking-tighter uppercase">Sai Pratama</span>
-            </div>
-            
-            <div class="hidden md:flex space-x-8 font-medium">
-                <a href="#home" class="hover:text-blue-500 transition">Home</a>
-                <a href="#about" class="hover:text-blue-500 transition">About</a>
-                <a href="#experience" class="hover:text-blue-500 transition">Experience</a>
-                <a href="#skills" class="hover:text-blue-500 transition">Skills</a>
-            </div>
+  <!--Nav-->
+  <nav id="header" class="fixed w-full z-30 top-0 text-white transition-colors duration-300 ease-in-out">
+    <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
+      <div class="pl-4 flex items-center transition-transform duration-300 transform hover:scale-110">
+        <a class="toggleColour text-yellow-400 no-underline hover:text-white font-bold text-2xl lg:text-4xl" href="#">
+          <!-- Menggunakan nama aset 'kaizubuild.png' sebagai teks placeholder -->
+          <img class="h-8 fill-current inline" src="./kaizubuild.png" alt="kaizubuild.png Logo" />
+          SAI PRATAMA
+        </a>
+      </div>
+      <div class="block lg:hidden pr-4">
+        <button id="nav-toggle" class="flex items-center p-1 text-yellow-400 hover:text-blue-600 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+        <svg class="fill-current h-6 w-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <title>Menu</title>
+          <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+        </svg>
+        </button>
+      </div>
+      <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20" id="nav-content">
+        <ul class="list-reset lg:flex justify-end flex-1 items-center">
+          <li class="mr-3">
+            <a class="inline-block py-2 px-4 font-bold no-underline hover:text-yellow-400 transition-transform duration-300 transform hover:scale-110" href="#Home">Home</a>
+          </li>
+          <li class="mr-3">
+            <a class="font-semibold inline-block no-underline hover:text-yellow-400 hover:text-underline py-2 px-4 transition-transform duration-300 transform hover:scale-110" href="#Experiences">Experiences</a>
+          </li>
+          <li class="mr-3">
+            <a class="font-semibold inline-block no-underline hover:text-yellow-400 hover:text-underline py-2 px-4 transition-transform duration-300 transform hover:scale-110" href="#Skills">Skills</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<div class="pt-24">
+  <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+    <div class="group flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left
+                transition-all duration-500 ease-in-out hover:translate-y-[-4px] hover:shadow-xl rounded-lg p-4">
+      
+      <p class="font-semibold uppercase tracking-loose w-full
+                transition-colors duration-300 group-hover:text-yellow-400">
+        Hello everyone! Welcome to My Profile!
+      </p>
+      
+      <h1 class="font-semibold my-4 text-5xl font-bold leading-tight uppercase tracking-loose w-full
+                  transition-all duration-300 group-hover:text-yellow-400 group-hover:scale-[1.02]">
+        SAI PRATAMA
+      </h1>
+      
+      <p class="font-semibold leading-normal text-2xl mb-8 uppercase tracking-loose w-full
+                transition-opacity duration-300 group-hover:opacity-80 group-hover:text-yellow-400">
+        Student | IT Enthusiast
+      </p>
+      
+      <a class="font-semibold group-hover:text-yellow-400
+                transition-transform duration-300 hover:scale-[1.05]" href="https://www.smkn1-tng.sch.id/">SMK Negeri 1 Tangerang (2017-2020)</a>
+      <p class="text-gray-600 italic group-hover:text-yellow-400
+                transition-transform duration-300 hover:scale-[1.05]">Teknik Komputer dan Jaringan</p>
+      
+      <a class="font-semibold group-hover:text-yellow-400
+                transition-transform duration-300 hover:scale-[1.05]" href="https://pddikti.kemdikbud.go.id/data_pt/MkU2MjlCMTUtOTBCMC00MDAxLTk1RDAtMDI2QTMwQzhEODE0">Universitas Pamulang</a>
+      <p class="text-gray-600 italic group-hover:text-yellow-400
+                transition-transform duration-300 hover:scale-[1.05]">Teknik Informatika</p>
+      
+      <a href="https://api.whatsapp.com/send/?phone=6281315255532&text=Assalamu%27alaikum+Sai" target="_blank" rel="noopener noreferrer">
+        <button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline
+                       transform transition-all duration-300 ease-in-out
+                       hover:scale-105 hover:bg-green-600 hover:text-white hover:shadow-2xl active:scale-95
+                       /* Efek Pulse Simpel Gen Z */
+                       group-hover:animate-pulse">
+          Whatsapp
+        </button>
+      </a>
+    </div>
+    
+    <div class="w-full md:w-3/5 py-6 text-center
+                transition-all duration-500 ease-in-out group-hover:translate-y-[-8px]">
+      <img class="w-full md:w-4/5 z-50 mx-auto
+                  transition-all duration-500 ease-in-out hover:scale-[1.05] hover:rotate-[-1deg] hover:shadow-2xl" src="./Sai_Hero.png" alt="Sai Pratama" />
+    </div>
+  </div>
+</div>
 
-            <div class="flex items-center gap-4">
-                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
-                    <i id="theme-icon" class="fas fa-moon"></i>
-                </button>
-                <a href="mailto:saipratama1924@gmail.com" class="hidden md:block bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full text-sm font-bold transition">Hire Me!</a>
-            </div>
+<div class="relative -mt-12 lg:-mt-24">
+  <svg viewBox="0 0 1428 174" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <g transform="translate(-2.000000, 44.000000)" fill="#FFFFFF" fill-rule="nonzero">
+        <path d="M0,0 C90.7283404,0.927527913 147.912752,27.187927 291.910178,59.9119003 C387.908462,81.7278826 543.605069,89.334785 759,82.7326078 C469.336065,156.254352 216.336065,153.6679 0,74.9732496" opacity="0.100000001"></path>
+        <path d="M100,104.708498 C277.413333,72.2345949 426.147877,52.5246657 546.203633,45.5787101 C666.259389,38.6327546 810.524845,41.7979068 979,55.0741668 C931.069965,56.122511 810.303266,74.8455141 616.699903,111.243176 C423.096539,147.640838 250.863238,145.462612 100,104.708498 Z" opacity="0.100000001"></path>
+        <path d="M1046,51.6521276 C1130.83045,29.328812 1279.08318,17.607883 1439,40.1656806 L1439,120 C1271.17211,77.9435312 1140.17211,55.1609071 1046,51.6521276 Z" id="Path-4" opacity="0.200000003"></path>
+      </g>
+      <g transform="translate(-4.000000, 76.000000)" fill="#FFFFFF" fill-rule="nonzero">
+        <path d="M0.457,34.035 C57.086,53.198 98.208,65.809 123.822,71.865 C181.454,85.495 234.295,90.29 272.033,93.459 C311.355,96.759 396.635,95.801 461.025,91.663 C486.76,90.01 518.727,86.372 556.926,80.752 C595.747,74.596 622.372,70.008 636.799,66.991 C663.913,61.324 712.501,49.503 727.605,46.128 C780.47,34.317 818.839,22.532 856.324,15.904 C922.689,4.169 955.676,2.522 1011.185,0.432 C1060.705,1.477 1097.39,3.129 1121.236,5.387 C1161.703,9.219 1208.621,17.821 1235.4,22.304 C1285.855,30.748 1354.351,47.432 1440.886,72.354 L1441.191,104.352 L1.121,104.031 L0.457,34.035 Z"></path>
+      </g>
+    </g>
+  </svg>
+</div>
+
+<section id="Experiences" class="bg-white border-b:bg-[#1F2937] border-b py-16">
+    <div class="container max-w-6xl mx-auto px-4 animate__animated animate__fadeInUp">
+        <div class="container max-w-5xl mx-auto m-8 animate__animated animate__fadeIn">
+            <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800 transition-transform duration-300 transform hover:scale-110">
+                Experiences
+            </h2>
+            <div class="w-full mb-12">
+                <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t dark:gradient"></div>
+            </div>
+            
+            <div class="relative wrap overflow-hidden p-10 h-full">
+                <div class="border-2-2 absolute border-opacity-20 border-gray-700 dark:border-gray-500 h-full border" style="left: 50%;"></div>
+
+                <div class="mb-8 flex justify-between items-center w-full right-timeline">
+                    <div class="order-1 w-5/12"></div>
+                    <div class="z-20 flex items-center order-1 bg-yellow-400 dark:bg-blue-600 shadow-xl w-10 h-10 rounded-full">
+                        <h1 class="mx-auto font-semibold text-lg text-white">1</h1>
+                    </div>
+                    <div class="order-1 gradient rounded-lg shadow-xl w-5/12 px-6 py-4 transition-transform duration-500 transform hover:scale-[1.05]">
+                        <h3 class="mb-3 font-bold text-white text-xl">PT. Golden Flexible Packaging</h3>
+                        <p class="text-sm leading-snug tracking-wide text-white opacity-90">
+                        2025 - Now
+                        </p>
+                        <img src="./gfplogo.jpg" alt="GFP Logo" class="mt-4 rounded-lg shadow-md h-16 transition-transform duration-300 transform hover:scale-110">
+                    </div>
+                </div>
+
+                <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
+                    <div class="order-1 w-5/12"></div>
+                    <div class="z-20 flex items-center order-1 bg-yellow-400 dark:bg-blue-600 shadow-xl w-10 h-10 rounded-full">
+                        <h1 class="mx-auto font-semibold text-lg text-white">2</h1>
+                    </div>
+                    <div class="order-1 gradient rounded-lg shadow-xl w-5/12 px-6 py-4 transition-transform duration-500 transform hover:scale-[1.05]">
+                        <h3 class="mb-3 font-bold text-white text-xl">PT. POS Indonesia</h3>
+                        <p class="text-sm leading-snug tracking-wide text-white opacity-90">
+                          Praktik Kerja dan Lapangan (2019)    
+                        </p>
+                        <img src="./poslogo.jpg" alt="Pos Indonesia Logo" class="mt-4 rounded-lg shadow-md h-16 transition-transform duration-300 transform hover:scale-110">
+                    </div>
+                </div>
+
+                <div class="mb-8 flex justify-between items-center w-full right-timeline">
+                    <div class="order-1 w-5/12"></div>
+                    <div class="z-20 flex items-center order-1 bg-yellow-400 dark:bg-blue-600 shadow-xl w-10 h-10 rounded-full">
+                        <h1 class="mx-auto font-semibold text-lg text-white">3</h1>
+                    </div>
+                    <div class="order-1 gradient rounded-lg shadow-xl w-5/12 px-6 py-4 transition-transform duration-500 transform hover:scale-[1.05]">
+                        <h3 class="mb-3 font-bold text-white text-xl">PT. Agrobisnis Banten Mandiri</h3>
+                        <p class="text-sm leading-snug tracking-wide text-white opacity-90">
+                        2023 - 2024
+                        </p>
+                        <img src="./abmlogo.jpg" alt="Agrobanten Logo" class="mt-4 rounded-lg shadow-md h-16 transition-transform duration-300 transform hover:scale-110">
+                    </div>
+                </div>
+                
+            </div>
+            <div class="text-center pt-12">
+                <a href="https://www.linkedin.com/in/sai-pratama-b0449b205/">
+                    <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                    Linkedin
+                    </button>
+                </a>
+            </div>
+            
+        </div>
+    </div>
+</section>
+    
+  <section id="Skills" class="bg-white border-b py-8">
+    <div class="container mx-auto flex flex-wrap pt-4 pb-12">
+      <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800 transition-transform duration-300 transform hover:scale-110">
+        Skills
+      </h2>
+      <div class="w-full mb-4 ">
+        <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+      </div>
+      <!-- Card 1 -->
+      <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink transition-transform duration-300 transform hover:scale-110">
+        <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
+          <a href="#" class="flex flex-wrap no-underline hover:no-underline">
+            <!-- Menggunakan nama aset 'Laravel.png' sebagai teks placeholder -->
+            <img src="laravellogo.png" alt="Laravel" class="mx-auto my-4 transition-transform duration-500 transform hover:scale-110" style="max-width: 120px;">
+          </a>
         </div>
-    </nav>
-
-    <section id="home" class="min-h-screen flex items-center pt-20 gradient-bg dark:dark-gradient text-white">
-        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
-            <div class="md:w-1/2 animate__animated animate__fadeInLeft">
-                <h2 class="text-blue-400 font-bold uppercase tracking-widest mb-2">Hello World!</h2>
-                <h1 class="text-5xl md:text-7xl font-black mb-4">SAI PRATAMA</h1>
-                <p class="text-xl md:text-2xl opacity-90 mb-8 leading-relaxed">
-                    Full Stack Developer | IT Support | IT Enthusiast
-                </p>
-                <div class="flex gap-4">
-                    <a href="https://wa.me/6281315255532" class="bg-white text-primary px-8 py-3 rounded-xl font-bold hover:scale-105 transition transform shadow-xl">
-                        <i class="fab fa-whatsapp mr-2"></i> WhatsApp
-                    </a>
-                    <a href="https://linkedin.com/in/sai-pratama-b0449b205/" class="border-2 border-white px-8 py-3 rounded-xl font-bold hover:bg-white hover:text-primary transition shadow-xl">
-                        Portfolio
-                    </a>
-                </div>
-            </div>
-            <div class="md:w-1/2 mt-12 md:mt-0 flex justify-center animate__animated animate__zoomIn">
-                <div class="relative">
-                    <div class="absolute -inset-4 bg-blue-500 rounded-full blur-3xl opacity-30 float"></div>
-                    <img src="./Sai_Hero.png" alt="Sai" class="relative z-10 w-80 md:w-[450px] float">
-                </div>
-            </div>
+        <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
+          <div class="flex items-center justify-center">
+            <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+            Laravel
+            </button>
+          </div>
         </div>
-    </section>
-
-    <section id="about" class="py-24 bg-white dark:bg-gray-800">
-        <div class="container mx-auto px-6">
-            <div class="max-w-4xl mx-auto text-center animate__animated animate__fadeInUp">
-                <h2 class="text-3xl font-bold mb-8">Tentang Saya</h2>
-                <p class="text-lg leading-relaxed text-gray-600 dark:text-gray-300">
-                    Saya memiliki pengalaman di dunia IT dalam bidang riset sistem seperti install dan uninstall OS baik itu Windows based, Distro Linux, dan Mac OS dengan berbagai metode instalasi yang ada. Saya juga dapat melakukan perbaikan dan perawatan inventaris IT seperti desktop, laptop, dan server. [cite: 191, 192]
-                </p>
-                <p class="text-lg mt-4 leading-relaxed text-gray-600 dark:text-gray-300">
-                    Selain itu saya juga memiliki pengalaman Developer dimana tools yang sering saya gunakan adalah Apache Cordova, Flutter, Laravel, Git, dan MySQL. [cite: 193]
-                </p>
-            </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink transition-transform duration-500 transform hover:scale-110">
+        <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
+          <a href="#" class="flex flex-wrap no-underline hover:no-underline">
+            <!-- Menggunakan nama aset 'Hardware_Troubleshoot.png' sebagai teks placeholder -->
+            <img src="hardwarelogobaru.png" alt="Hardware Troubleshoot" class="mx-auto my-4 transition-transform duration-500 transform hover:scale-110" style="max-width: 120px;">
+          </a>
         </div>
-    </section>
-
-    <section id="experience" class="py-24 bg-gray-50 dark:bg-gray-900">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-black text-center mb-16 uppercase italic tracking-tighter">Work Experience</h2>
-            
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="glass p-8 rounded-3xl hover:shadow-2xl transition-all duration-300 group border-l-4 border-blue-600">
-                    <div class="flex justify-between items-start mb-4">
-                        <img src="./gfplogo.jpg" alt="GFP" class="h-12 rounded">
-                        <span class="text-sm font-bold text-blue-600">Aug 2025 - Sekarang</span>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-1">IT Support</h3>
-                    <h4 class="text-gray-500 font-medium mb-4 uppercase text-sm">PT. Golden Flexible Packaging</h4>
-                    <ul class="space-y-2 text-gray-600 dark:text-gray-400 text-sm">
-                        <li><i class="fas fa-check-circle text-blue-500 mr-2"></i> Mengurusi helpdesk dan request user by ticket. [cite: 203]</li>
-                        <li><i class="fas fa-check-circle text-blue-500 mr-2"></i> Perbaikan & perawatan inventaris laptop, desktop, dan server. [cite: 204]</li>
-                        <li><i class="fas fa-check-circle text-blue-500 mr-2"></i> Pengembangan software ERP berbasis web (Frappe Python). [cite: 206]</li>
-                        <li><i class="fas fa-check-circle text-blue-500 mr-2"></i> DevOps Server Windows & Ubuntu. [cite: 209]</li>
-                    </ul>
-                </div>
-
-                <div class="glass p-8 rounded-3xl hover:shadow-2xl transition-all duration-300 border-l-4 border-yellow-500">
-                    <div class="flex justify-between items-start mb-4">
-                        <span class="text-3xl">🚀</span>
-                        <span class="text-sm font-bold text-yellow-500">Aug 2015 - Sekarang</span>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-1">Full Stack Developer</h3>
-                    <h4 class="text-gray-500 font-medium mb-4 uppercase text-sm">Kaizu Build (Self-Employed)</h4>
-                    <p class="text-gray-600 dark:text-gray-400 text-sm">
-                        UMKM milik saya sendiri yang mengerjakan servis PC/Laptop serta jasa pembuatan aplikasi web dan mobile (Laravel, Cordova, Flutter). [cite: 198]
-                    </p>
-                </div>
-
-                <div class="glass p-8 rounded-3xl hover:shadow-2xl transition-all duration-300 border-l-4 border-green-500">
-                    <div class="flex justify-between items-start mb-4">
-                        <img src="./abmlogo.jpg" alt="ABM" class="h-12 rounded">
-                        <span class="text-sm font-bold text-green-500">Aug 2023 - Feb 2025</span>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-1">Backend Developer (Intern)</h3>
-                    <h4 class="text-gray-500 font-medium mb-4 uppercase text-sm">PT. Agrobisnis Banten Mandiri</h4>
-                    <p class="text-gray-600 dark:text-gray-400 text-sm">
-                        Membuat Trello, memeriksa relasi database, membuat UML, dan mengerjakan aplikasi koperasi di bawah naungan PT. ABM. [cite: 179]
-                    </p>
-                </div>
-
-                <div class="glass p-8 rounded-3xl hover:shadow-2xl transition-all duration-300 border-l-4 border-red-500">
-                    <div class="flex justify-between items-start mb-4">
-                        <img src="./poslogo.jpg" alt="POS" class="h-12 rounded">
-                        <span class="text-sm font-bold text-red-500">Internship 3 Months</span>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-1">IT Support PKL</h3>
-                    <h4 class="text-gray-500 font-medium mb-4 uppercase text-sm">PT. POS Indonesia</h4>
-                    <p class="text-gray-600 dark:text-gray-400 text-sm">
-                        Mendapatkan nilai A dan menjadi titik balik karir di dunia IT. [cite: 407, 408]
-                    </p>
-                </div>
-            </div>
+        <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
+          <div class="flex items-center justify-center">
+            <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+            Hardware Troubleshoot
+            </button>
+          </div>
         </div>
-    </section>
-
-    <section id="skills" class="py-24 bg-white dark:bg-gray-800">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-12">Kemampuan & Sertifikasi</h2>
-            <div class="flex flex-wrap justify-center gap-4">
-                <span class="bg-blue-100 text-blue-800 px-6 py-2 rounded-full font-bold">Mobile App Development</span>
-                <span class="bg-blue-100 text-blue-800 px-6 py-2 rounded-full font-bold">IT Project Management</span>
-                <span class="bg-blue-100 text-blue-800 px-6 py-2 rounded-full font-bold">Ethical Hacking</span>
-                <span class="bg-blue-100 text-blue-800 px-6 py-2 rounded-full font-bold">Laravel</span>
-                <span class="bg-blue-100 text-blue-800 px-6 py-2 rounded-full font-bold">Linux</span>
-                <span class="bg-blue-100 text-blue-800 px-6 py-2 rounded-full font-bold">Flutter</span>
-            </div>
-            
-            <div class="mt-16 max-w-2xl mx-auto glass p-6 rounded-2xl flex items-center gap-6">
-                <div class="bg-yellow-500 p-4 rounded-xl text-white">
-                    <i class="fas fa-certificate text-3xl"></i>
-                </div>
-                <div>
-                    <h3 class="font-bold text-xl">TOEFL Certificate</h3>
-                    <p class="text-gray-500 italic">Oct 2024 - Oct 2026</p>
-                    <a href="https://mylb.unpam.ac.id/verifikasi/4905F074-DEAF-497D-8EBE-128DD5C77C30" target="_blank" class="text-blue-500 text-sm font-bold hover:underline">Verify Certificate →</a>
-                </div>
-            </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink transition-transform duration-500 transform hover:scale-110">
+        <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
+          <a href="#" class="flex flex-wrap no-underline hover:no-underline">
+            <!-- Menggunakan nama aset 'Linux.png' sebagai teks placeholder -->
+            <img src="./linuxlogo.svg" alt="Logo 3" class="mx-auto my-4 transition-transform duration-500 transform hover:scale-110" style="max-width: 120px;">
+          </a>
         </div>
-    </section>
-
-    <footer class="py-12 bg-gray-900 text-white text-center">
-        <div class="container mx-auto px-6">
-            <div class="flex justify-center space-x-6 mb-8">
-                <a href="https://github.com/saikaizu" class="text-2xl hover:text-blue-400"><i class="fab fa-github"></i></a>
-                <a href="https://linkedin.com/in/sai-pratama-b0449b205/" class="text-2xl hover:text-blue-400"><i class="fab fa-linkedin"></i></a>
-                <a href="https://instagram.com/sai_pratama/" class="text-2xl hover:text-blue-400"><i class="fab fa-instagram"></i></a>
-            </div>
-            <p class="opacity-50">© 2026 Sai Pratama. Built with ⚡ in Tangerang.</p>
+        <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
+          <div class="flex items-center justify-center">
+            <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+            Linux
+            </button>
+          </div>
         </div>
-    </footer>
-
+      </div>
+    </div>
+    <div id="disqus_thread"></div>
     <script>
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-        const html = document.documentElement;
-
-        themeToggle.addEventListener('click', () => {
-            html.classList.toggle('dark');
-            if (html.classList.contains('dark')) {
-                themeIcon.classList.replace('fa-moon', 'fa-sun');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                themeIcon.classList.replace('fa-sun', 'fa-moon');
-                localStorage.setItem('theme', 'light');
-            }
-        });
-
-        // Check local storage
-        if (localStorage.getItem('theme') === 'dark') {
-            html.classList.add('dark');
-            themeIcon.classList.replace('fa-moon', 'fa-sun');
-        }
+    /**
+    * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+    */
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function () { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://portofolio-8.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
     </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </section>
+  <!--Footer-->
+  <!-- component -->
+  <!-- Foooter -->
+  <section class="bg-white">
+    <div class="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
+      <nav class="flex flex-wrap justify-center -mx-5 -my-2">
+        <div class="w-full container mx-auto flex flex-wrap items-center justify-center mt-0 py-2">
+          <div class="pl-4 flex items-center">
+            <a class="toggleColour text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
+              SAI PRATAMA
+            </a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </nav>
+  <div class="flex justify-center mt-8 space-x-6">
+    <a href="https://www.facebook.com/sai.pratama.503/" class="text-gray-400 hover:text-blue-600 transition-transform duration-300 transform hover:scale-110">
+      <span class="sr-only">Facebook</span>
+      <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+      <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path>
+    </svg>
+  </a>
+  <a href="https://www.instagram.com/sai__pratama/" class="text-gray-400 hover:text-pink-400 transition-transform duration-300 transform hover:scale-110">
+    <span class="sr-only">Instagram</span>
+    <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+    <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"></path>
+  </svg>
+</a>
+<a href="https://github.com/saikaizu" class="text-gray-400 hover:text-black transition-transform duration-300 transform hover:scale-110">
+  <span class="sr-only">GitHub</span>
+  <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+  <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
+</svg>
+</a>
+<a href="https://www.linkedin.com/in/sai-pratama-b0449b205/" class="text-gray-400 hover:text-blue-600 transition-transform duration-300 transform hover:scale-110">
+<span class="sr-only">LinkedIn</span>
+<svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 448 512">
+<path fill-rule="evenodd" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z" clip-rule="evenodd"></path>
+</svg>
+</a>
+</div>
+<p class="mt-8 text-base leading-6 text-center text-gray-400 hover:text-blue-600">
+© <span id="current-year"></span> Sai Pratama. All rights reserved.
+</p>
+</div>
+</section>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+<script>
+var scrollpos = window.scrollY;
+var header = document.getElementById("header");
+var navcontent = document.getElementById("nav-content");
+var navaction = document.getElementById("navAction");
+var brandname = document.getElementById("brandname");
+var toToggle = document.querySelectorAll(".toggleColour");
+document.addEventListener("scroll", function () {
+/*Apply classes for slide in bar*/
+scrollpos = window.scrollY;
+if (scrollpos > 10) {
+header.classList.add("bg-white");
+navaction.classList.remove("bg-white");
+navaction.classList.add("gradient");
+navaction.classList.remove("text-gray-800");
+navaction.classList.add("text-white");
+//Use to switch toggleColour colours
+for (var i = 0; i < toToggle.length; i++) {
+toToggle[i].classList.add("text-gray-800");
+toToggle[i].classList.remove("text-white");
+}
+header.classList.add("shadow");
+navcontent.classList.remove("bg-gray-100");
+navcontent.classList.add("bg-white");
+} else {
+header.classList.remove("bg-white");
+navaction.classList.remove("gradient");
+navaction.classList.add("bg-white");
+navaction.classList.remove("text-white");
+navaction.classList.add("text-gray-800");
+//Use to switch toggleColour colours
+for (var i = 0; i < toToggle.length; i++) {
+toToggle[i].classList.add("text-white");
+toToggle[i].classList.remove("text-gray-800");
+}
+header.classList.remove("shadow");
+navcontent.classList.remove("bg-white");
+navcontent.classList.add("bg-gray-100");
+}
+});
+</script>
+<script>
+/*Toggle dropdown list*/
+/*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
+var navMenuDiv = document.getElementById("nav-content");
+var navMenu = document.getElementById("nav-toggle");
+document.onclick = check;
+function check(e) {
+var target = (e && e.target) || (event && event.srcElement);
+//Nav Menu
+if (!checkParent(target, navMenuDiv)) {
+// click NOT on the menu
+if (checkParent(target, navMenu)) {
+// click on the link
+if (navMenuDiv.classList.contains("hidden")) {
+navMenuDiv.classList.remove("hidden");
+} else {
+navMenuDiv.classList.add("hidden");
+}
+} else {
+// click both outside link and outside menu, hide menu
+navMenuDiv.classList.add("hidden");
+}
+}
+}
+function checkParent(t, elm) {
+while (t.parentNode) {
+if (t == elm) {
+return true;
+}
+t = t.parentNode;
+}
+return false;
+}
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+// Get the navigation links
+const links = document.querySelectorAll('#nav-content a');
+// Handle smooth scroll on click
+links.forEach(link => {
+link.addEventListener('click', function (e) {
+e.preventDefault();
+// Get the target element ID from the href attribute
+const targetId = this.getAttribute('href').substring(1);
+const targetElement = document.getElementById(targetId);
+// Scroll smoothly to the target element
+if (targetElement) {
+targetElement.scrollIntoView({
+behavior: 'smooth'
+});
+}
+});
+});
+});
+</script>
+<script>
+const darkModeToggle = document.getElementById('darkModeToggle');
+darkModeToggle.addEventListener('click', () => {
+console.log('Tombol dark mode ditekan!'); // Pesan log sederhana
+const body = document.body;
+body.classList.toggle('dark');
+});
+</script>
+<script>
+document.getElementById('current-year').textContent = new Date().getFullYear();
+</script>
+
+<!-- Flowbite JavaScript untuk fungsionalitas carousel -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+
 </body>
 </html>
