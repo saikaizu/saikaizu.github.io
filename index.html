@@ -33,10 +33,16 @@
         .dark .dark-gradient { background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%); }
         html { scroll-behavior: smooth; }
         
-        .float { animation: floating 3s ease-in-out infinite; }
-        @keyframes floating {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+        /* Efek Ngambang yang lebih smooth kayak di air */
+        .float-water { 
+            animation: waterFloating 6s ease-in-out infinite; 
+            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.3));
+        }
+
+        @keyframes waterFloating {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-15px) rotate(1deg); }
+            66% { transform: translateY(-5px) rotate(-1deg); }
         }
 
         .glass {
@@ -48,62 +54,82 @@
         .reveal { opacity: 0; transform: translateY(40px); transition: all 1s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #0f172a; }
         ::-webkit-scrollbar-thumb { background: #004e92; border-radius: 10px; }
 
-/* Animasi buat shapes di background */
-@keyframes morph {
-    0% { border-radius: 40% 60% 60% 40% / 40% 30% 70% 60%; }
-    100% { border-radius: 40% 60% / 60% 40%; }
-}
+        /* BLOB CAIRAN NYATA - Pake Gooey Effect */
+        .blob-container {
+            filter: url('#goo'); /* Magic is here */
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
 
-.blob {
-    position: absolute;
-    background: linear-gradient(180deg, rgba(59, 130, 246, 0.2) 0%, rgba(37, 99, 235, 0.2) 100%);
-    filter: blur(40px);
-    z-index: 1;
-    animation: floating 10s infinite alternate ease-in-out;
-}
+        .blob-liquid {
+            position: absolute;
+            background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
+            border-radius: 50%;
+            opacity: 0.4;
+            animation: morph 8s infinite alternate ease-in-out;
+        }
 
-/* Footer link glow effect */
-.social-link {
-    position: relative;
-    overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
+        @keyframes morph {
+            0% { border-radius: 40% 60% 60% 40% / 40% 30% 70% 60%; transform: scale(1) translate(0, 0); }
+            50% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; transform: scale(1.1) translate(20px, -20px); }
+            100% { border-radius: 40% 60% / 60% 40%; transform: scale(1) translate(-10px, 10px); }
+        }
 
-.social-link::after {
-    content: '';
-    position: absolute;
-    width: 100%; height: 100%;
-    top: 0; left: 0;
-    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
-    transform: scale(0);
-    transition: transform 0.5s;
-}
-
-.social-link:hover::after {
-    transform: scale(2);
-}
-
-/* Mobile responsive tweak */
-@media (max-width: 768px) {
-    .hero-text { text-align: center; }
-    .hero-buttons { justify-content: center; }
-}
-
-
-/* Mobile responsive tweak */
-@media (max-width: 768px) {
-    .hero-text { text-align: center; }
-    .hero-buttons { justify-content: center; }
-}
+        /* Wave Ripple Effect */
+        .ripple {
+            position: absolute;
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            animation: ripple-effect 4s linear infinite;
+            opacity: 0;
+        }
         
+        @keyframes ripple-effect {
+            0% { transform: scale(0.8); opacity: 0; }
+            50% { opacity: 0.5; }
+            100% { transform: scale(2.5); opacity: 0; }
+        }
+
+        .social-link {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .social-link::after {
+            content: '';
+            position: absolute;
+            width: 100%; height: 100%;
+            top: 0; left: 0;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+            transform: scale(0);
+            transition: transform 0.5s;
+        }
+        .social-link:hover::after { transform: scale(2); }
+
+        @media (max-width: 768px) {
+            .hero-text { text-align: center; }
+            .hero-buttons { justify-content: center; }
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900 dark:bg-slate-950 dark:text-gray-100 transition-colors duration-500 overflow-x-hidden">
+
+    <svg style="visibility: hidden; position: absolute;" width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <defs>
+            <filter id="goo">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+                <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+            </filter>
+        </defs>
+    </svg>
 
     <nav id="navbar" class="fixed w-full z-50 top-0 transition-all duration-300 py-6">
         <div class="container mx-auto px-6 flex justify-between items-center">
@@ -129,8 +155,17 @@
     </nav>
 
 <section id="home" class="min-h-screen flex items-center pt-20 gradient-bg dark:dark-gradient text-white relative overflow-hidden">
-    <div class="blob w-72 h-72 top-20 right-10 animate-pulse-slow" style="border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;"></div>
-    <div class="blob w-96 h-96 bottom-10 right-1/4 opacity-50" style="animation-delay: -5s; border-radius: 50% 50% 20% 80% / 25% 80% 20% 75%;"></div>
+    <div class="blob-container opacity-60">
+        <div class="blob-liquid w-64 h-64 top-20 right-20" style="animation-duration: 10s;"></div>
+        <div class="blob-liquid w-80 h-80 top-40 right-40" style="animation-delay: -2s; animation-duration: 12s;"></div>
+        <div class="blob-liquid w-72 h-72 bottom-20 right-1/4" style="animation-delay: -5s; animation-duration: 15s;"></div>
+    </div>
+
+    <div class="absolute right-1/4 top-1/2 -translate-y-1/2 z-0">
+        <div class="ripple w-64 h-64"></div>
+        <div class="ripple w-64 h-64" style="animation-delay: 1.5s"></div>
+        <div class="ripple w-64 h-64" style="animation-delay: 3s"></div>
+    </div>
     
     <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between relative z-10">
         <div class="md:w-1/2 animate__animated animate__fadeInLeft hero-text">
@@ -153,141 +188,141 @@
         
         <div class="md:w-1/2 mt-16 md:mt-0 flex justify-center relative animate__animated animate__zoomIn">
             <div class="absolute inset-0 bg-blue-500/30 rounded-full blur-[100px] animate-pulse"></div>
-            <img src="./Sai_Hero.png" alt="Sai Hero" class="relative z-10 w-80 md:w-[480px] float drop-shadow-[0_35px_35px_rgba(0,0,0,0.5)]">
+            <img src="./Sai_Hero.png" alt="Sai Hero" class="relative z-10 w-80 md:w-[480px] float-water">
         </div>
     </div>
 </section>
 
-    <section id="about" class="py-32 bg-white dark:bg-slate-900 transition-colors duration-500">
-        <div class="container mx-auto px-6">
-            <div class="reveal max-w-5xl mx-auto">
-                <div class="grid md:grid-cols-5 gap-16 items-center">
-                    <div class="md:col-span-2">
-                        <h2 class="text-5xl font-black mb-6 uppercase italic tracking-tighter leading-none">About <br><span class="text-blue-600">The Dev</span></h2>
-                        <div class="w-20 h-2 bg-blue-600 mb-8"></div>
-                    </div>
-                    <div class="md:col-span-3 space-y-6">
-                        <p class="text-xl leading-relaxed text-gray-700 dark:text-gray-300 font-medium">
-                            Saya memiliki pengalaman di dunia IT dalam bidang riset sistem seperti install dan uninstall OS baik itu Windows based, Distro Linux, dan Mac OS dengan berbagai metode instalasi yang ada. 
-                        </p>
-                        <p class="text-xl leading-relaxed text-gray-700 dark:text-gray-300">
-                            Saya juga dapat melakukan perbaikan dan perawatan inventaris IT seperti desktop, laptop, dan server. Selain itu, saya aktif sebagai Developer dengan penguasaan tools <span class="text-blue-600 font-bold">Apache Cordova, Flutter, Laravel, Git, dan MySQL.</span>
-                        </p>
-                    </div>
+<section id="about" class="py-32 bg-white dark:bg-slate-900 transition-colors duration-500">
+    <div class="container mx-auto px-6">
+        <div class="reveal max-w-5xl mx-auto">
+            <div class="grid md:grid-cols-5 gap-16 items-center">
+                <div class="md:col-span-2">
+                    <h2 class="text-5xl font-black mb-6 uppercase italic tracking-tighter leading-none">About <br><span class="text-blue-600">The Dev</span></h2>
+                    <div class="w-20 h-2 bg-blue-600 mb-8"></div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="experience" class="py-32 bg-gray-50 dark:bg-slate-950 transition-colors duration-500 relative">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-black text-center mb-24 uppercase italic tracking-tighter">Professional <span class="text-blue-500 underline underline-offset-8">Journey</span></h2>
-            
-            <div class="grid md:grid-cols-2 gap-10">
-                <div class="reveal glass p-10 rounded-[2.5rem] hover:bg-white/[0.05] transition-all duration-500 group border-l-8 border-blue-600 shadow-2xl">
-                    <div class="flex justify-between items-start mb-8">
-                        <img src="./gfplogo.jpg" alt="GFP" class="h-12 rounded-xl grayscale group-hover:grayscale-0 transition-all">
-                        <span class="text-[10px] font-black bg-blue-600 text-white px-4 py-1.5 rounded-full uppercase">Aug 2025 - Active</span>
-                    </div>
-                    <h3 class="text-3xl font-black mb-1">IT Support</h3>
-                    <h4 class="text-gray-500 font-bold mb-8 text-sm tracking-widest">PT. GOLDEN FLEXIBLE PACKAGING</h4>
-                    <ul class="space-y-4 text-gray-600 dark:text-gray-400">
-                        <li class="flex items-start"><i class="fas fa-check-square text-blue-500 mt-1 mr-4"></i><span>Mengurusi helpdesk dan request user by ticket.</span></li>
-                        <li class="flex items-start"><i class="fas fa-check-square text-blue-500 mt-1 mr-4"></i><span>Perbaikan & perawatan inventaris laptop, desktop, dan server secara berkala.</span></li>
-                        <li class="flex items-start"><i class="fas fa-check-square text-blue-500 mt-1 mr-4"></i><span>Terlibat dalam project pengembangan aplikasi di perusahaan.</span></li>
-                    </ul>
-                </div>
-
-                <div class="reveal glass p-10 rounded-[2.5rem] hover:bg-white/[0.05] transition-all duration-500 group border-l-8 border-yellow-500 shadow-2xl" style="transition-delay: 0.1s">
-                    <div class="flex justify-between items-start mb-8">
-                        <img src="./kaizubuild.png" alt="Kaizu" class="h-12 grayscale group-hover:grayscale-0 transition-all">
-                        <span class="text-[10px] font-black bg-yellow-500 text-black px-4 py-1.5 rounded-full uppercase">Est. 2015 - Now</span>
-                    </div>
-                    <h3 class="text-3xl font-black mb-1">Full Stack Developer</h3>
-                    <h4 class="text-gray-500 font-bold mb-8 text-sm tracking-widest">KAIZU BUILD (SELF-EMPLOYED)</h4>
-                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
-                        UMKM milik sendiri yang fokus pada servis PC/Laptop serta jasa pembuatan aplikasi berbasis web dan mobile menggunakan <span class="font-bold text-white">Laravel, Cordova, dan Flutter.</span>
+                <div class="md:col-span-3 space-y-6">
+                    <p class="text-xl leading-relaxed text-gray-700 dark:text-gray-300 font-medium">
+                        Saya memiliki pengalaman di dunia IT dalam bidang riset sistem seperti install dan uninstall OS baik itu Windows based, Distro Linux, dan Mac OS dengan berbagai metode instalasi yang ada. 
                     </p>
-                </div>
-
-                <div class="reveal glass p-10 rounded-[2.5rem] hover:bg-white/[0.05] transition-all duration-500 group border-l-8 border-green-500 shadow-2xl">
-                    <div class="flex justify-between items-start mb-8">
-                        <img src="./abmlogo.jpg" alt="ABM" class="h-12 rounded-xl grayscale group-hover:grayscale-0 transition-all">
-                        <span class="text-[10px] font-black bg-green-500 text-white px-4 py-1.5 rounded-full uppercase">Aug 2023 - Feb 2025</span>
-                    </div>
-                    <h3 class="text-3xl font-black mb-1">Backend Developer (Intern)</h3>
-                    <h4 class="text-gray-500 font-bold mb-8 text-sm tracking-widest">PT. AGROBISNIS BANTEN MANDIRI</h4>
-                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-                        Mengerjakan sistem Trello, pemeriksaan relasi database, pembuatan UML, dan pengembangan aplikasi koperasi perusahaan.
-                    </p>
-                </div>
-
-                <div class="reveal glass p-10 rounded-[2.5rem] hover:bg-white/[0.05] transition-all duration-500 group border-l-8 border-red-600 shadow-2xl" style="transition-delay: 0.1s">
-                    <div class="flex justify-between items-start mb-8">
-                        <img src="./poslogo.jpg" alt="POS" class="h-12 rounded-xl grayscale group-hover:grayscale-0 transition-all">
-                        <span class="text-[10px] font-black bg-red-600 text-white px-4 py-1.5 rounded-full uppercase">May - Sep 2019</span>
-                    </div>
-                    <h3 class="text-3xl font-black mb-1">IT Support PKL</h3>
-                    <h4 class="text-gray-500 font-bold mb-8 text-sm tracking-widest">PT. POS INDONESIA</h4>
-                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed italic">
-                        "Mendapatkan nilai A dan menjadi titik balik karir saya di dunia IT."
+                    <p class="text-xl leading-relaxed text-gray-700 dark:text-gray-300">
+                        Saya juga dapat melakukan perbaikan dan perawatan inventaris IT seperti desktop, laptop, dan server. Selain itu, saya aktif sebagai Developer dengan penguasaan tools <span class="text-blue-600 font-bold">Apache Cordova, Flutter, Laravel, Git, dan MySQL.</span>
                     </p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="skills" class="py-24 bg-white dark:bg-slate-900 overflow-hidden">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-wrap justify-center gap-12 opacity-50 hover:opacity-100 transition-all duration-700">
-                <div class="flex flex-col items-center group cursor-pointer">
-                    <i class="devicon-laravel-plain colored text-6xl group-hover:scale-125 group-hover:-rotate-12 transition"></i>
-                    <span class="mt-4 font-black text-[10px] tracking-widest uppercase">Laravel</span>
+<section id="experience" class="py-32 bg-gray-50 dark:bg-slate-950 transition-colors duration-500 relative">
+    <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-black text-center mb-24 uppercase italic tracking-tighter">Professional <span class="text-blue-500 underline underline-offset-8">Journey</span></h2>
+        
+        <div class="grid md:grid-cols-2 gap-10">
+            <div class="reveal glass p-10 rounded-[2.5rem] hover:bg-white/[0.05] transition-all duration-500 group border-l-8 border-blue-600 shadow-2xl">
+                <div class="flex justify-between items-start mb-8">
+                    <img src="./gfplogo.jpg" alt="GFP" class="h-12 rounded-xl grayscale group-hover:grayscale-0 transition-all">
+                    <span class="text-[10px] font-black bg-blue-600 text-white px-4 py-1.5 rounded-full uppercase">Aug 2025 - Active</span>
                 </div>
-                <div class="flex flex-col items-center group cursor-pointer">
-                    <i class="devicon-flutter-plain colored text-6xl group-hover:scale-125 group-hover:rotate-12 transition"></i>
-                    <span class="mt-4 font-black text-[10px] tracking-widest uppercase">Flutter</span>
+                <h3 class="text-3xl font-black mb-1">IT Support</h3>
+                <h4 class="text-gray-500 font-bold mb-8 text-sm tracking-widest">PT. GOLDEN FLEXIBLE PACKAGING</h4>
+                <ul class="space-y-4 text-gray-600 dark:text-gray-400">
+                    <li class="flex items-start"><i class="fas fa-check-square text-blue-500 mt-1 mr-4"></i><span>Mengurusi helpdesk dan request user by ticket.</span></li>
+                    <li class="flex items-start"><i class="fas fa-check-square text-blue-500 mt-1 mr-4"></i><span>Perbaikan & perawatan inventaris laptop, desktop, dan server secara berkala.</span></li>
+                    <li class="flex items-start"><i class="fas fa-check-square text-blue-500 mt-1 mr-4"></i><span>Terlibat dalam project pengembangan aplikasi di perusahaan.</span></li>
+                </ul>
+            </div>
+
+            <div class="reveal glass p-10 rounded-[2.5rem] hover:bg-white/[0.05] transition-all duration-500 group border-l-8 border-yellow-500 shadow-2xl" style="transition-delay: 0.1s">
+                <div class="flex justify-between items-start mb-8">
+                    <img src="./kaizubuild.png" alt="Kaizu" class="h-12 grayscale group-hover:grayscale-0 transition-all">
+                    <span class="text-[10px] font-black bg-yellow-500 text-black px-4 py-1.5 rounded-full uppercase">Est. 2015 - Now</span>
                 </div>
-                <div class="flex flex-col items-center group cursor-pointer">
-                    <i class="devicon-mysql-plain colored text-6xl group-hover:scale-125 transition"></i>
-                    <span class="mt-4 font-black text-[10px] tracking-widest uppercase">MySQL</span>
+                <h3 class="text-3xl font-black mb-1">Full Stack Developer</h3>
+                <h4 class="text-gray-500 font-bold mb-8 text-sm tracking-widest">KAIZU BUILD (SELF-EMPLOYED)</h4>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
+                    UMKM milik sendiri yang fokus pada servis PC/Laptop serta jasa pembuatan aplikasi berbasis web dan mobile menggunakan <span class="font-bold text-white">Laravel, Cordova, dan Flutter.</span>
+                </p>
+            </div>
+
+            <div class="reveal glass p-10 rounded-[2.5rem] hover:bg-white/[0.05] transition-all duration-500 group border-l-8 border-green-500 shadow-2xl">
+                <div class="flex justify-between items-start mb-8">
+                    <img src="./abmlogo.jpg" alt="ABM" class="h-12 rounded-xl grayscale group-hover:grayscale-0 transition-all">
+                    <span class="text-[10px] font-black bg-green-500 text-white px-4 py-1.5 rounded-full uppercase">Aug 2023 - Feb 2025</span>
                 </div>
-                <div class="flex flex-col items-center group cursor-pointer">
-                    <i class="devicon-microsoftsqlserver-plain colored text-6xl group-hover:scale-125 transition"></i>
-                    <span class="mt-4 font-black text-[10px] tracking-widest uppercase">Microsoft SQL</span>
+                <h3 class="text-3xl font-black mb-1">Backend Developer (Intern)</h3>
+                <h4 class="text-gray-500 font-bold mb-8 text-sm tracking-widest">PT. AGROBISNIS BANTEN MANDIRI</h4>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                    Mengerjakan sistem Trello, pemeriksaan relasi database, pembuatan UML, dan pengembangan aplikasi koperasi perusahaan.
+                </p>
+            </div>
+
+            <div class="reveal glass p-10 rounded-[2.5rem] hover:bg-white/[0.05] transition-all duration-500 group border-l-8 border-red-600 shadow-2xl" style="transition-delay: 0.1s">
+                <div class="flex justify-between items-start mb-8">
+                    <img src="./poslogo.jpg" alt="POS" class="h-12 rounded-xl grayscale group-hover:grayscale-0 transition-all">
+                    <span class="text-[10px] font-black bg-red-600 text-white px-4 py-1.5 rounded-full uppercase">May - Sep 2019</span>
                 </div>
-                <div class="flex flex-col items-center group cursor-pointer">
-                    <i class="devicon-windows11-original colored text-6xl group-hover:scale-125 transition dark:text-white"></i>
-                    <span class="mt-4 font-black text-[10px] tracking-widest uppercase">Windows</span>
-                </div>
-                <div class="flex flex-col items-center group cursor-pointer">
-                    <i class="devicon-linux-plain text-6xl group-hover:scale-125 transition dark:text-white"></i>
-                    <span class="mt-4 font-black text-[10px] tracking-widest uppercase">Linux</span>
-                </div>
-                <div class="flex flex-col items-center group cursor-pointer">
-                    <i class="devicon-git-plain colored text-6xl group-hover:scale-125 transition"></i>
-                    <span class="mt-4 font-black text-[10px] tracking-widest uppercase">Git</span>
-                </div>
-                <div class="flex flex-col items-center group cursor-pointer">
-                    <i class="devicon-linuxmint-plain text-6xl group-hover:scale-125 transition dark:text-white"></i>
-                    <span class="mt-4 font-black text-[10px] tracking-widest uppercase">Linux Mint</span>
-                </div>
-                <div class="flex flex-col items-center group cursor-pointer">
-                    <i class="devicon-ubuntu-plain colored text-6xl group-hover:scale-125 transition"></i>
-                    <span class="mt-4 font-black text-[10px] tracking-widest uppercase">Ubuntu</span>
-                </div>
+                <h3 class="text-3xl font-black mb-1">IT Support PKL</h3>
+                <h4 class="text-gray-500 font-bold mb-8 text-sm tracking-widest">PT. POS INDONESIA</h4>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed italic">
+                    "Mendapatkan nilai A dan menjadi titik balik karir saya di dunia IT."
+                </p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="disqus_section" class="py-32 bg-gray-50 dark:bg-slate-950 transition-colors duration-500">
-        <div class="container mx-auto px-6">
-            <div class="reveal max-w-4xl mx-auto glass p-10 rounded-[3rem] shadow-2xl border-t border-white/10">
-                <h2 class="text-3xl font-black mb-10 italic uppercase tracking-tighter"><i class="fas fa-comment-dots mr-4 text-blue-500"></i>Let's Talk</h2>
-                <div id="disqus_thread"></div>
+<section id="skills" class="py-24 bg-white dark:bg-slate-900 overflow-hidden">
+    <div class="container mx-auto px-6">
+        <div class="flex flex-wrap justify-center gap-12 opacity-50 hover:opacity-100 transition-all duration-700">
+            <div class="flex flex-col items-center group cursor-pointer">
+                <i class="devicon-laravel-plain colored text-6xl group-hover:scale-125 group-hover:-rotate-12 transition"></i>
+                <span class="mt-4 font-black text-[10px] tracking-widest uppercase">Laravel</span>
+            </div>
+            <div class="flex flex-col items-center group cursor-pointer">
+                <i class="devicon-flutter-plain colored text-6xl group-hover:scale-125 group-hover:rotate-12 transition"></i>
+                <span class="mt-4 font-black text-[10px] tracking-widest uppercase">Flutter</span>
+            </div>
+            <div class="flex flex-col items-center group cursor-pointer">
+                <i class="devicon-mysql-plain colored text-6xl group-hover:scale-125 transition"></i>
+                <span class="mt-4 font-black text-[10px] tracking-widest uppercase">MySQL</span>
+            </div>
+            <div class="flex flex-col items-center group cursor-pointer">
+                <i class="devicon-microsoftsqlserver-plain colored text-6xl group-hover:scale-125 transition"></i>
+                <span class="mt-4 font-black text-[10px] tracking-widest uppercase">Microsoft SQL</span>
+            </div>
+            <div class="flex flex-col items-center group cursor-pointer">
+                <i class="devicon-windows11-original colored text-6xl group-hover:scale-125 transition dark:text-white"></i>
+                <span class="mt-4 font-black text-[10px] tracking-widest uppercase">Windows</span>
+            </div>
+            <div class="flex flex-col items-center group cursor-pointer">
+                <i class="devicon-linux-plain text-6xl group-hover:scale-125 transition dark:text-white"></i>
+                <span class="mt-4 font-black text-[10px] tracking-widest uppercase">Linux</span>
+            </div>
+            <div class="flex flex-col items-center group cursor-pointer">
+                <i class="devicon-git-plain colored text-6xl group-hover:scale-125 transition"></i>
+                <span class="mt-4 font-black text-[10px] tracking-widest uppercase">Git</span>
+            </div>
+            <div class="flex flex-col items-center group cursor-pointer">
+                <i class="devicon-linuxmint-plain text-6xl group-hover:scale-125 transition dark:text-white"></i>
+                <span class="mt-4 font-black text-[10px] tracking-widest uppercase">Linux Mint</span>
+            </div>
+            <div class="flex flex-col items-center group cursor-pointer">
+                <i class="devicon-ubuntu-plain colored text-6xl group-hover:scale-125 transition"></i>
+                <span class="mt-4 font-black text-[10px] tracking-widest uppercase">Ubuntu</span>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<section id="disqus_section" class="py-32 bg-gray-50 dark:bg-slate-950 transition-colors duration-500">
+    <div class="container mx-auto px-6">
+        <div class="reveal max-w-4xl mx-auto glass p-10 rounded-[3rem] shadow-2xl border-t border-white/10">
+            <h2 class="text-3xl font-black mb-10 italic uppercase tracking-tighter"><i class="fas fa-comment-dots mr-4 text-blue-500"></i>Let's Talk</h2>
+            <div id="disqus_thread"></div>
+        </div>
+    </div>
+</section>
 
 <footer class="py-20 bg-slate-950 text-white text-center relative overflow-hidden">
     <div class="container mx-auto px-6 relative z-10">
@@ -318,84 +353,70 @@
     </div>
 </footer>
 
-    <a href="https://wa.me/6281315255532" class="fixed bottom-10 right-10 z-50 group">
-        <div class="absolute -inset-4 bg-green-500 rounded-full blur-xl opacity-20 group-hover:opacity-60 transition duration-500"></div>
-        <div class="relative bg-green-500 p-6 rounded-3xl shadow-2xl text-white transform group-hover:scale-110 group-hover:-rotate-6 transition duration-500">
-            <i class="fab fa-whatsapp text-4xl"></i>
-        </div>
-    </a>
+<a href="https://wa.me/6281315255532" class="fixed bottom-10 right-10 z-50 group">
+    <div class="absolute -inset-4 bg-green-500 rounded-full blur-xl opacity-20 group-hover:opacity-60 transition duration-500"></div>
+    <div class="relative bg-green-500 p-6 rounded-3xl shadow-2xl text-white transform group-hover:scale-110 group-hover:-rotate-6 transition duration-500">
+        <i class="fab fa-whatsapp text-4xl"></i>
+    </div>
+</a>
 
-    <script>
-        // Reveal on scroll logic
-        const reveals = document.querySelectorAll(".reveal");
-        const handleScroll = () => {
-            reveals.forEach(reveal => {
-                const windowHeight = window.innerHeight;
-                const revealTop = reveal.getBoundingClientRect().top;
-                const revealPoint = 100;
-                if (revealTop < windowHeight - revealPoint) {
-                    reveal.classList.add("active");
-                }
-            });
-            
-            // Navbar Scroll Effect
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 100) {
-                nav.classList.add('glass', 'py-4', 'shadow-2xl');
-                nav.classList.remove('py-6');
-            } else {
-                nav.classList.remove('glass', 'py-4', 'shadow-2xl');
-                nav.classList.add('py-6');
+<script>
+    const reveals = document.querySelectorAll(".reveal");
+    const handleScroll = () => {
+        reveals.forEach(reveal => {
+            const windowHeight = window.innerHeight;
+            const revealTop = reveal.getBoundingClientRect().top;
+            const revealPoint = 100;
+            if (revealTop < windowHeight - revealPoint) {
+                reveal.classList.add("active");
             }
-        };
-
-        window.addEventListener("scroll", handleScroll);
-        window.addEventListener("load", handleScroll);
-
-        // Dark Mode Logic
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-        const html = document.documentElement;
-
-        const updateTheme = (isDark) => {
-            if (isDark) {
-                html.classList.add('dark');
-                themeIcon.classList.replace('fa-moon', 'fa-sun');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                html.classList.remove('dark');
-                themeIcon.classList.replace('fa-sun', 'fa-moon');
-                localStorage.setItem('theme', 'light');
-            }
-        }
-
-        themeToggle.addEventListener('click', () => {
-            updateTheme(!html.classList.contains('dark'));
         });
-
-        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            updateTheme(true);
+        
+        const nav = document.getElementById('navbar');
+        if (window.scrollY > 100) {
+            nav.classList.add('glass', 'py-4', 'shadow-2xl');
+            nav.classList.remove('py-6');
+        } else {
+            nav.classList.remove('glass', 'py-4', 'shadow-2xl');
+            nav.classList.add('py-6');
         }
-    /**
-    * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-    * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-    */
-    /*
-    var disqus_config = function () {
-    this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
-    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
-    */
-    (function () { // DON'T EDIT BELOW THIS LINE
-    var d = document, s = d.createElement('script');
-    s.src = 'https://portofolio-8.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
+
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("load", handleScroll);
+
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const html = document.documentElement;
+
+    const updateTheme = (isDark) => {
+        if (isDark) {
+            html.classList.add('dark');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            html.classList.remove('dark');
+            themeIcon.classList.replace('fa-sun', 'fa-moon');
+            localStorage.setItem('theme', 'light');
+        }
+    }
+
+    themeToggle.addEventListener('click', () => {
+        updateTheme(!html.classList.contains('dark'));
+    });
+
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        updateTheme(true);
+    }
+
+    (function () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://portofolio-8.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
     })();
 
-document.getElementById("year").innerHTML = new Date().getFullYear();
+    document.getElementById("year").innerHTML = new Date().getFullYear();
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
 </body>
 </html>
