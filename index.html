@@ -218,13 +218,15 @@
     </section>
 
     <section id="disqus_section" class="py-32 bg-gray-50 dark:bg-slate-950 transition-colors duration-500">
-        <div class="container mx-auto px-6">
-            <div class="reveal max-w-4xl mx-auto glass p-10 rounded-[3rem] shadow-2xl border-t border-white/10">
-                <h2 class="text-3xl font-black mb-10 italic uppercase tracking-tighter"><i class="fas fa-comment-dots mr-4 text-blue-500"></i>Let's Talk</h2>
-                <div id="disqus_thread"></div>
-            </div>
+    <div class="container mx-auto px-6">
+        <div class="reveal max-w-4xl mx-auto glass p-10 rounded-[3rem] shadow-2xl border-t border-white/10">
+            <h2 class="text-3xl font-black mb-10 italic uppercase tracking-tighter">
+                <i class="fas fa-comment-dots mr-4 text-blue-500"></i>Let's Talk
+            </h2>
+            <div id="disqus_thread"></div> 
         </div>
-    </section>
+    </div>
+</section>
 
     <footer class="py-20 bg-slate-950 text-white text-center relative overflow-hidden">
         <div class="container mx-auto px-6 relative z-10">
@@ -233,7 +235,7 @@
                 <a href="https://linkedin.com/in/sai-pratama-b0449b205/" class="text-3xl hover:text-blue-400 hover:-translate-y-3 transition-all duration-300"><i class="fab fa-linkedin"></i></a>
                 <a href="https://instagram.com/sai_pratama/" class="text-3xl hover:text-pink-500 hover:-translate-y-3 transition-all duration-300"><i class="fab fa-instagram"></i></a>
             </div>
-            <p class="font-black tracking-[0.4em] uppercase text-[10px] opacity-30">© 2026 SAI PRATAMA • MADE IN TANGERANG</p>
+            © <span id="current-year"></span> Sai Pratama. All rights reserved.</p>
         </div>
         <div class="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none">
             <svg width="100%" height="100%"><pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M 30 0 L 0 0 0 30" fill="none" stroke="white" stroke-width="0.5"/></pattern><rect width="100%" height="100%" fill="url(#grid)" /></svg>
@@ -274,42 +276,51 @@
         window.addEventListener("scroll", handleScroll);
         window.addEventListener("load", handleScroll);
 
-        // Dark Mode Logic
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-        const html = document.documentElement;
+<script>
+    // ... (Logika Reveal on scroll & Navbar Scroll tetap sama) ...
 
-        const updateTheme = (isDark) => {
-            if (isDark) {
-                html.classList.add('dark');
-                themeIcon.classList.replace('fa-moon', 'fa-sun');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                html.classList.remove('dark');
-                themeIcon.classList.replace('fa-sun', 'fa-moon');
-                localStorage.setItem('theme', 'light');
-            }
+    // --- DARK MODE LOGIC ---
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const html = document.documentElement;
+
+    const updateTheme = (isDark) => {
+        if (isDark) {
+            html.classList.add('dark');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            html.classList.remove('dark');
+            themeIcon.classList.replace('fa-sun', 'fa-moon');
+            localStorage.setItem('theme', 'light');
         }
-
-        themeToggle.addEventListener('click', () => {
-            updateTheme(!html.classList.contains('dark'));
-        });
-
-        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            updateTheme(true);
+        
+        // REVISI DISINI: Biar Disqus reset warna kalo ganti theme (Opsional tapi keren)
+        if (typeof DISQUS !== 'undefined') {
+            DISQUS.reset({ reload: true });
         }
+    }
 
-        /** DISQUS CONFIG **/
-        var disqus_config = function () {
-            this.page.url = window.location.href;  
-            this.page.identifier = 'sai-pratama-portfolio'; 
-        };
-        (function() { 
-            var d = document, s = d.createElement('script');
-            s.src = 'https://saipratama.disqus.com/embed.js'; 
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-        })();
-    </script>
+    themeToggle.addEventListener('click', () => {
+        updateTheme(!html.classList.contains('dark'));
+    });
+
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        updateTheme(true);
+    }
+
+    // --- DISQUS CONFIGURATION (SAMA KAYAK INDEX.TXT) ---
+    var disqus_config = function () {
+        this.page.url = window.location.href;  
+        this.page.identifier = 'sai-pratama-portfolio'; 
+    };
+
+    (function() { 
+        var d = document, s = d.createElement('script');
+        s.src = 'https://saipratama.disqus.com/embed.js'; // Pastikan shortname 'saipratama' udah bener di dashboard Disqus lo
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
 </body>
 </html>
