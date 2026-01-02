@@ -33,41 +33,48 @@
         .dark .dark-gradient { background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%); }
         html { scroll-behavior: smooth; }
 
-        /* --- WATER WAVE SYSTEM (KOGU RAY STYLE) --- */
-        .water-container {
-            position: relative;
-            filter: url(#water-filter); /* Manggil sihir filter SVG */
-        }
+/* --- WATER WAVE SYSTEM (FIXED - NO BLUR ON PHOTO) --- */
+.water-container {
+    position: relative;
+    /* Kita hapus filter dari sini biar foto gak blur */
+}
 
-        .water-surface {
-            position: absolute;
-            bottom: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.15) 0%, transparent 60%);
-            mix-blend-mode: overlay;
-            pointer-events: none;
-        }
+/* Ini layer khusus buat ombak/distorsi airnya aja */
+.water-effect-layer {
+    position: absolute;
+    inset: -20px;
+    filter: url(#water-filter); /* Sihir air cuma di sini */
+    pointer-events: none;
+    z-index: 5;
+}
 
-        /* Foto ngambang dengan distorsi gelombang */
-        .float-water {
-            animation: waterFloat 6s ease-in-out infinite;
-            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5));
-        }
+.water-surface {
+    position: absolute;
+    bottom: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1), transparent 70%);
+    mix-blend-mode: overlay;
+}
 
-        @keyframes waterFloat {
-            0%, 100% { transform: translateY(0) rotate(-1deg) scale(1); }
-            33% { transform: translateY(-15px) rotate(1deg) scale(1.02); }
-            66% { transform: translateY(-5px) rotate(-0.5deg) scale(0.98); }
-        }
+/* Foto tetep tajam, cuma gerak ngambang */
+.float-water {
+    animation: waterFloat 6s ease-in-out infinite;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4)); /* Drop shadow biar kesan 3D */
+    z-index: 10;
+}
 
-        /* Efek Garis Putih (Foam/Wave Ripples) */
-        .wave-line {
-            position: absolute;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            animation: ripple 8s infinite;
-            pointer-events: none;
-            z-index: 5;
-        }
+@keyframes waterFloat {
+    0%, 100% { transform: translateY(0) rotate(-0.5deg); }
+    50% { transform: translateY(-20px) rotate(0.5deg); }
+}
+
+/* Garis putih (Wave Ripples) */
+.wave-line {
+    position: absolute;
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    animation: ripple 6s infinite;
+    pointer-events: none;
+}
 
         @keyframes ripple {
             0% { transform: scale(0.8); opacity: 0; }
@@ -163,20 +170,21 @@
             </div>
         </div>
         
-        <div class="md:w-1/2 mt-16 md:mt-0 flex justify-center relative animate__animated animate__zoomIn">
-            <div class="water-container relative">
-                <div class="wave-line w-64 h-64 -bottom-10 -left-10" style="animation-delay: 0s;"></div>
-                <div class="wave-line w-80 h-80 -bottom-20 -right-20" style="animation-delay: 2s;"></div>
-                <div class="wave-line w-48 h-48 top-10 left-20" style="animation-delay: 4s;"></div>
-                
-                <div class="absolute inset-0 bg-blue-400/20 rounded-full blur-[80px] animate-pulse"></div>
-                
-                <img src="./Sai_Hero.png" alt="Sai Hero" class="relative z-10 w-80 md:w-[450px] float-water">
-                
-                <div class="water-surface"></div>
-            </div>
+<div class="md:w-1/2 mt-16 md:mt-0 flex justify-center relative animate__animated animate__zoomIn">
+    <div class="water-container relative">
+        
+        <div class="water-effect-layer">
+            <div class="wave-line w-64 h-64 -bottom-5 -left-5" style="animation-delay: 0s;"></div>
+            <div class="wave-line w-80 h-80 -bottom-10 -right-10" style="animation-delay: 2s;"></div>
+            <div class="water-surface"></div>
         </div>
+
+        <div class="absolute inset-0 bg-blue-500/20 rounded-full blur-[100px] animate-pulse"></div>
+        
+        <img src="./Sai_Hero.png" alt="Sai Hero" class="relative z-10 w-80 md:w-[450px] float-water">
+        
     </div>
+</div>
 </section>
 
 <section id="about" class="py-32 bg-white dark:bg-slate-900 transition-colors duration-500">
