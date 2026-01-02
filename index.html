@@ -52,39 +52,38 @@
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #0f172a; }
         ::-webkit-scrollbar-thumb { background: #004e92; border-radius: 10px; }
-/* Animasi buat shapes di background */
-@keyframes morph {
-    0% { border-radius: 40% 60% 60% 40% / 40% 30% 70% 60%; }
-    100% { border-radius: 40% 60% / 60% 40%; }
+/* Animasi Floating yang lebih dinamis */
+@keyframes floating-pro {
+    0% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-15px) rotate(1deg); }
+    66% { transform: translateY(-5px) rotate(-1deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
 }
 
-.blob {
+/* Efek cahaya di belakang foto */
+.photo-aura {
     position: absolute;
-    background: linear-gradient(180deg, rgba(59, 130, 246, 0.2) 0%, rgba(37, 99, 235, 0.2) 100%);
-    filter: blur(40px);
-    z-index: 1;
-    animation: floating 10s infinite alternate ease-in-out;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, transparent 70%);
+    filter: blur(50px);
+    animation: pulse-slow 4s infinite alternate;
 }
 
-/* Footer link glow effect */
+.float-custom {
+    animation: floating-pro 6s ease-in-out infinite;
+}
+
+/* Footer Link Enhancements */
 .social-link {
-    position: relative;
-    overflow: hidden;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.social-link::after {
-    content: '';
-    position: absolute;
-    width: 100%; height: 100%;
-    top: 0; left: 0;
-    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
-    transform: scale(0);
-    transition: transform 0.5s;
-}
-
-.social-link:hover::after {
-    transform: scale(2);
+.social-link:hover {
+    transform: translateY(-10px) scale(1.1);
+    box-shadow: 0 15px 30px rgba(59, 130, 246, 0.3);
 }
 
 /* Mobile responsive tweak */
@@ -121,12 +120,13 @@
     </nav>
 
 <section id="home" class="min-h-screen flex items-center pt-20 gradient-bg dark:dark-gradient text-white relative overflow-hidden">
-    <div class="blob w-72 h-72 top-20 right-10 animate-pulse-slow" style="border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;"></div>
-    <div class="blob w-96 h-96 bottom-10 right-1/4 opacity-50" style="animation-delay: -5s; border-radius: 50% 50% 20% 80% / 25% 80% 20% 75%;"></div>
-    
+    <div class="absolute inset-0 opacity-10 pointer-events-none">
+        <svg width="100%" height="100%"><pattern id="grid-home" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="white" stroke-width="0.5"/></pattern><rect width="100%" height="100%" fill="url(#grid-home)" /></svg>
+    </div>
+
     <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between relative z-10">
         <div class="md:w-1/2 animate__animated animate__fadeInLeft hero-text">
-            <div class="inline-block px-4 py-1.5 rounded-full border border-blue-400/30 bg-blue-400/10 mb-6 animate__animated animate__fadeInDown animate__delay-1s">
+            <div class="inline-block px-4 py-1.5 rounded-full border border-blue-400/30 bg-blue-400/10 mb-6">
                 <span class="text-blue-300 font-bold text-xs tracking-[0.2em] uppercase">Ready to Innovate</span>
             </div>
             <h1 class="text-6xl md:text-8xl font-black mb-6 leading-none tracking-tighter">SAI <br><span class="text-blue-400">PRATAMA</span></h1>
@@ -134,19 +134,22 @@
                 Full Stack Developer & IT Support. Berpengalaman dalam riset sistem operasional dan pengembangan aplikasi modern.
             </p>
             <div class="flex flex-wrap gap-5 hero-buttons">
-                <a href="https://wa.me/6281315255532" class="bg-white text-primary px-10 py-4 rounded-2xl font-black hover:shadow-[0_20px_50px_rgba(59,130,246,0.3)] transition transform hover:-translate-y-2 flex items-center">
+                <a href="https://wa.me/6281315255532" class="bg-white text-primary px-10 py-4 rounded-2xl font-black hover:shadow-2xl transition transform hover:-translate-y-2 flex items-center">
                     <i class="fab fa-whatsapp mr-3 text-xl text-green-500"></i> WHATSAPP
                 </a>
-                <a href="#experience" class="glass px-10 py-4 rounded-2xl font-black hover:bg-white/10 transition flex items-center border border-white/20 hover:border-blue-400">
+                <a href="#experience" class="glass px-10 py-4 rounded-2xl font-black hover:bg-white/10 transition flex items-center border border-white/20">
                     MY WORK <i class="fas fa-arrow-right ml-3 opacity-50"></i>
                 </a>
             </div>
         </div>
         
         <div class="md:w-1/2 mt-16 md:mt-0 flex justify-center relative animate__animated animate__zoomIn">
-            <div class="absolute inset-0 bg-blue-500/30 rounded-full blur-[100px] animate-pulse"></div>
-            <img src="./Sai_Hero.png" alt="Sai Hero" class="relative z-10 w-80 md:w-[480px] float drop-shadow-[0_35px_35px_rgba(0,0,0,0.5)]">
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] border-2 border-dashed border-white/10 rounded-full animate-spin-slow"></div>
+            <div class="photo-aura"></div>
+            
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[105%] h-[105%] border border-blue-400/20 rounded-full animate-spin-slow"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] border border-white/5 rounded-full animate-spin-slow" style="animation-direction: reverse;"></div>
+
+            <img src="./Sai_Hero.png" alt="Sai Hero" class="relative z-10 w-80 md:w-[480px] float-custom drop-shadow-[0_40px_50px_rgba(0,0,0,0.6)]">
         </div>
     </div>
 </section>
@@ -273,29 +276,25 @@
 <footer class="py-20 bg-slate-950 text-white text-center relative overflow-hidden">
     <div class="container mx-auto px-6 relative z-10">
         <div class="flex justify-center space-x-6 md:space-x-10 mb-12">
-            <a href="https://github.com/saikaizu" class="social-link w-16 h-16 flex items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-3xl hover:text-white hover:bg-gray-800 hover:border-gray-600 hover:-translate-y-3 transition-all duration-300">
+            <a href="https://github.com/saikaizu" class="social-link w-16 h-16 flex items-center justify-center rounded-3xl text-3xl hover:bg-gray-800 hover:text-white">
                 <i class="fab fa-github"></i>
             </a>
-            <a href="https://linkedin.com/in/sai-pratama-b0449b205/" class="social-link w-16 h-16 flex items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-3xl hover:text-white hover:bg-blue-600 hover:border-blue-500 hover:-translate-y-3 transition-all duration-300">
+            <a href="https://linkedin.com/in/sai-pratama-b0449b205/" class="social-link w-16 h-16 flex items-center justify-center rounded-3xl text-3xl hover:bg-blue-600 hover:text-white">
                 <i class="fab fa-linkedin"></i>
             </a>
-            <a href="https://instagram.com/sai_pratama/" class="social-link w-16 h-16 flex items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-3xl hover:text-white hover:bg-gradient-to-tr from-yellow-500 via-pink-500 to-purple-600 hover:border-pink-400 hover:-translate-y-3 transition-all duration-300">
+            <a href="https://instagram.com/sai_pratama/" class="social-link w-16 h-16 flex items-center justify-center rounded-3xl text-3xl hover:bg-gradient-to-tr from-yellow-500 via-pink-500 to-purple-600 hover:text-white">
                 <i class="fab fa-instagram"></i>
             </a>
         </div>
         
         <div class="mb-8">
-            <div class="h-[1px] w-1/4 bg-gradient-to-r from-transparent via-blue-500 to-transparent mx-auto mb-8"></div>
-            <p class="text-gray-400 font-medium mb-2">Let's build something legendary together.</p>
+            <div class="h-[2px] w-32 bg-gradient-to-r from-transparent via-blue-500 to-transparent mx-auto mb-8"></div>
+            <p class="text-gray-400 font-medium italic">"Building the future, one line of code at a time."</p>
         </div>
 
-        <p class="font-black tracking-[0.4em] uppercase text-[10px] opacity-30">
-            © <span id="year"></span> <span class="text-blue-500">Sai Pratama</span>. Crafted with <i class="fas fa-heart text-red-500 animate-pulse"></i>
+        <p class="font-black tracking-[0.4em] uppercase text-[10px] opacity-40">
+            © <span id="year"></span> <span class="text-blue-500">Sai Pratama</span>
         </p>
-    </div>
-    
-    <div class="absolute top-0 left-0 w-full h-full opacity-[0.05] pointer-events-none">
-        <svg width="100%" height="100%"><pattern id="grid-footer" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="1"/></pattern><rect width="100%" height="100%" fill="url(#grid-footer)" /></svg>
     </div>
 </footer>
 
