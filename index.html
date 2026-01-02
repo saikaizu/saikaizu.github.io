@@ -174,7 +174,7 @@
                 <div class="reveal glass p-10 rounded-[2.5rem] hover:bg-white/[0.05] transition-all duration-500 group border-l-8 border-red-600 shadow-2xl" style="transition-delay: 0.1s">
                     <div class="flex justify-between items-start mb-8">
                         <img src="./poslogo.jpg" alt="POS" class="h-12 rounded-xl grayscale group-hover:grayscale-0 transition-all">
-                        <span class="text-[10px] font-black bg-red-600 text-white px-4 py-1.5 rounded-full uppercase">3 Months Internship</span>
+                        <span class="text-[10px] font-black bg-red-600 text-white px-4 py-1.5 rounded-full uppercase">May - Sep 2019</span>
                     </div>
                     <h3 class="text-3xl font-black mb-1">IT Support PKL</h3>
                     <h4 class="text-gray-500 font-bold mb-8 text-sm tracking-widest">PT. POS INDONESIA</h4>
@@ -233,7 +233,7 @@
                 <a href="https://linkedin.com/in/sai-pratama-b0449b205/" class="text-3xl hover:text-blue-400 hover:-translate-y-3 transition-all duration-300"><i class="fab fa-linkedin"></i></a>
                 <a href="https://instagram.com/sai_pratama/" class="text-3xl hover:text-pink-500 hover:-translate-y-3 transition-all duration-300"><i class="fab fa-instagram"></i></a>
             </div>
-            <p class="font-black tracking-[0.4em] uppercase text-[10px] opacity-30">© 2026 SAI PRATAMA</p>
+            <p class="font-black tracking-[0.4em] uppercase text-[10px] opacity-30">© <span id="year"></span> Sai Pratama. All rights reserved.</p>
         </div>
         <div class="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none">
             <svg width="100%" height="100%"><pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M 30 0 L 0 0 0 30" fill="none" stroke="white" stroke-width="0.5"/></pattern><rect width="100%" height="100%" fill="url(#grid)" /></svg>
@@ -314,6 +314,8 @@
     s.setAttribute('data-timestamp', +new Date());
     (d.head || d.body).appendChild(s);
     })();
+
+document.getElementById("year").innerHTML = new Date().getFullYear();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
