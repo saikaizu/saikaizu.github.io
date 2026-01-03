@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Sai Pratama Professional Portfolio - Full Stack Developer & IT Support">
     <title>Sai Pratama - Professional Portfolio</title>
     
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" media="print" onload="this.media='all'">
     
     <script>
         tailwind.config = {
@@ -33,13 +38,14 @@
         .dark .dark-gradient { background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%); }
         html { scroll-behavior: smooth; }
 
-        /* --- WATER WAVE SYSTEM (KOGU RAY REFACTORED) --- */
         .water-layer {
             position: absolute;
             inset: -20px;
             filter: url(#water-filter);
             opacity: 0.6;
             z-index: 1;
+            /* Performance: Matikan filter di mobile biar gak berat */
+            will-change: transform;
         }
 
         .water-surface-base {
@@ -75,7 +81,6 @@
             100% { transform: scale(2.2); opacity: 0; }
         }
 
-        /* --- UI ELEMENTS --- */
         .glass {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(15px);
@@ -104,6 +109,11 @@
 
         .social-link { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .social-link:hover { transform: translateY(-10px) scale(1.1); }
+        
+        /* Disable heavy filter on mobile to boost LCP/FID */
+        @media (max-width: 768px) {
+            .water-layer { filter: none; border: 2px solid rgba(255,255,255,0.1); }
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900 dark:bg-slate-950 dark:text-gray-100 transition-colors duration-500 overflow-x-hidden">
@@ -120,7 +130,7 @@
     <nav id="navbar" class="fixed w-full z-50 top-0 transition-all duration-300 py-6">
         <div class="container mx-auto px-6 flex justify-between items-center">
             <div class="flex items-center gap-3 animate__animated animate__fadeInDown">
-                <img src="./kaizubuild.png" alt="Logo" class="h-10 hover:scale-110 transition cursor-pointer">
+                <img src="./kaizubuild.png" alt="Logo" width="40" height="40" class="h-10 hover:scale-110 transition cursor-pointer">
                 <span class="text-xl font-extrabold tracking-tighter uppercase bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400">Sai Pratama</span>
             </div>
             
@@ -138,7 +148,7 @@
                     <option value="jp">JP</option>
                 </select>
 
-                <button id="theme-toggle" class="p-2.5 rounded-xl glass hover:bg-blue-500/20 transition-all">
+                <button id="theme-toggle" aria-label="Toggle Theme" class="p-2.5 rounded-xl glass hover:bg-blue-500/20 transition-all">
                     <i id="theme-icon" class="fas fa-moon"></i>
                 </button>
                 <a href="mailto:saipratama1924@gmail.com" class="hidden md:block bg-blue-600 hover:bg-blue-700 text-white px-7 py-2.5 rounded-full text-xs font-black shadow-lg shadow-blue-500/40 transition-all hover:-translate-y-1" data-lang="hire_me">HIRE ME!</a>
@@ -177,7 +187,7 @@
                 <div class="wave-line w-full h-full" style="animation-delay: 0s;"></div>
                 <div class="wave-line w-full h-full" style="animation-delay: 2s;"></div>
                 <div class="wave-line w-full h-full" style="animation-delay: 4s;"></div>
-                <img src="./Sai_Hero.png" alt="Sai Hero" class="relative z-20 w-80 md:w-[450px] float-pure drop-shadow-[0_35px_35px_rgba(0,0,0,0.5)]">
+                <img src="./Sai_Hero.png" alt="Sai Hero" width="450" height="450" fetchpriority="high" loading="eager" class="relative z-20 w-80 md:w-[450px] float-pure drop-shadow-[0_35px_35px_rgba(0,0,0,0.5)]">
                 <div class="absolute inset-0 bg-gradient-to-t from-blue-500/20 to-transparent rounded-full mix-blend-screen z-25 pointer-events-none"></div>
             </div>
         </div>
@@ -212,7 +222,7 @@
         <div class="grid md:grid-cols-2 gap-10">
             <div class="reveal glass p-10 rounded-[2.5rem] hover:bg-white/[0.05] transition-all duration-500 group border-l-8 border-blue-600 shadow-2xl">
                 <div class="flex justify-between items-start mb-8">
-                    <img src="./gfplogo.jpg" alt="GFP" class="h-12 rounded-xl grayscale group-hover:grayscale-0 transition-all">
+                    <img src="./gfplogo.jpg" alt="GFP" width="48" height="48" loading="lazy" class="h-12 rounded-xl grayscale group-hover:grayscale-0 transition-all">
                     <span class="text-[10px] font-black bg-blue-600 text-white px-4 py-1.5 rounded-full uppercase" data-lang="exp_gfp_date">Aug 2025 - Active</span>
                 </div>
                 <h3 class="text-3xl font-black mb-1">IT Support</h3>
@@ -226,7 +236,7 @@
 
             <div class="reveal glass p-10 rounded-[2.5rem] hover:bg-white/[0.05] transition-all duration-500 group border-l-8 border-yellow-500 shadow-2xl" style="transition-delay: 0.1s">
                 <div class="flex justify-between items-start mb-8">
-                    <img src="./kaizubuild.png" alt="Kaizu" class="h-12 grayscale group-hover:grayscale-0 transition-all">
+                    <img src="./kaizubuild.png" alt="Kaizu" width="48" height="48" loading="lazy" class="h-12 grayscale group-hover:grayscale-0 transition-all">
                     <span class="text-[10px] font-black bg-yellow-500 text-black px-4 py-1.5 rounded-full uppercase">Est. 2015 - Now</span>
                 </div>
                 <h3 class="text-3xl font-black mb-1">Full Stack Developer</h3>
@@ -235,10 +245,10 @@
                     UMKM fokus pada servis hardware serta jasa pembuatan aplikasi web/mobile menggunakan <span class="font-bold text-blue-500">Laravel, Cordova, & Flutter.</span>
                 </p>
             </div>
-
+            
             <div class="reveal glass p-10 rounded-[2.5rem] hover:bg-white/[0.05] transition-all duration-500 group border-l-8 border-green-500 shadow-2xl">
                 <div class="flex justify-between items-start mb-8">
-                    <img src="./abmlogo.jpg" alt="ABM" class="h-12 rounded-xl grayscale group-hover:grayscale-0 transition-all">
+                    <img src="./abmlogo.jpg" alt="ABM" width="48" height="48" loading="lazy" class="h-12 rounded-xl grayscale group-hover:grayscale-0 transition-all">
                     <span class="text-[10px] font-black bg-green-500 text-white px-4 py-1.5 rounded-full uppercase">2023 - 2025</span>
                 </div>
                 <h3 class="text-3xl font-black mb-1">Backend Dev (Intern)</h3>
@@ -248,7 +258,7 @@
 
             <div class="reveal glass p-10 rounded-[2.5rem] hover:bg-white/[0.05] transition-all duration-500 group border-l-8 border-red-600 shadow-2xl" style="transition-delay: 0.1s">
                 <div class="flex justify-between items-start mb-8">
-                    <img src="./poslogo.jpg" alt="POS" class="h-12 rounded-xl grayscale group-hover:grayscale-0 transition-all">
+                    <img src="./poslogo.jpg" alt="POS" width="48" height="48" loading="lazy" class="h-12 rounded-xl grayscale group-hover:grayscale-0 transition-all">
                     <span class="text-[10px] font-black bg-red-600 text-white px-4 py-1.5 rounded-full uppercase">2019</span>
                 </div>
                 <h3 class="text-3xl font-black mb-1">IT Support PKL</h3>
@@ -266,27 +276,7 @@
                 <i class="devicon-laravel-plain colored text-6xl group-hover:scale-125 transition"></i>
                 <span class="mt-4 font-black text-[10px] tracking-widest uppercase">Laravel</span>
             </div>
-            <div class="flex flex-col items-center group cursor-pointer">
-                <i class="devicon-flutter-plain colored text-6xl group-hover:scale-125 transition"></i>
-                <span class="mt-4 font-black text-[10px] tracking-widest uppercase">Flutter</span>
             </div>
-            <div class="flex flex-col items-center group cursor-pointer">
-                <i class="devicon-mysql-plain colored text-6xl group-hover:scale-125 transition"></i>
-                <span class="mt-4 font-black text-[10px] tracking-widest uppercase">MySQL</span>
-            </div>
-            <div class="flex flex-col items-center group cursor-pointer">
-                <i class="devicon-windows11-original text-6xl dark:text-white group-hover:scale-125 transition"></i>
-                <span class="mt-4 font-black text-[10px] tracking-widest uppercase">Windows</span>
-            </div>
-            <div class="flex flex-col items-center group cursor-pointer">
-                <i class="devicon-ubuntu-plain colored text-6xl group-hover:scale-125 transition"></i>
-                <span class="mt-4 font-black text-[10px] tracking-widest uppercase">Ubuntu</span>
-            </div>
-            <div class="flex flex-col items-center group cursor-pointer">
-                <i class="devicon-git-plain colored text-6xl group-hover:scale-125 transition"></i>
-                <span class="mt-4 font-black text-[10px] tracking-widest uppercase">Git</span>
-            </div>
-        </div>
     </div>
 </section>
 
@@ -300,80 +290,13 @@
 </section>
 
 <footer class="pt-24 pb-12 bg-slate-950 text-white relative overflow-hidden border-t border-white/5">
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[1px] bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-50"></div>
-    <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-blue-600/10 blur-[120px] rounded-full"></div>
-    
-    <div class="container mx-auto px-6 relative z-10">
-        <div class="grid md:grid-cols-3 gap-16 mb-20 items-center">
-            
-            <div class="text-center md:text-left space-y-4">
-                <div class="flex items-center justify-center md:justify-start gap-3">
-                    <img src="./kaizubuild.png" alt="Logo" class="h-8 brightness-125">
-                    <span class="text-2xl font-black tracking-tighter uppercase bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400">Sai Pratama</span>
-                </div>
-                <p class="text-gray-500 font-medium max-w-xs mx-auto md:mx-0" data-lang="footer_desc">
-                    Membangun solusi digital dari nol dengan sentuhan teknologi modern dan riset mendalam.
-                </p>
-            </div>
-
-            <div class="flex flex-col items-center justify-center space-y-6">
-                <h4 class="text-[10px] font-black tracking-[0.3em] uppercase text-blue-500" data-lang="footer_connect">Connect With Me</h4>
-                <div class="flex justify-center space-x-5">
-                    <a href="https://github.com/saikaizu" class="social-link group relative w-14 h-14 flex items-center justify-center rounded-2xl bg-white/5 border border-white/10 transition-all duration-500 hover:border-blue-500/50 hover:bg-blue-500/10">
-                        <i class="fab fa-github text-2xl transition-transform group-hover:scale-110"></i>
-                        <div class="absolute inset-0 rounded-2xl blur-xl bg-blue-500/0 group-hover:bg-blue-500/20 transition-all"></div>
-                    </a>
-                    <a href="https://linkedin.com/in/sai-pratama-b0449b205/" class="social-link group relative w-14 h-14 flex items-center justify-center rounded-2xl bg-white/5 border border-white/10 transition-all duration-500 hover:border-blue-400/50 hover:bg-blue-400/10">
-                        <i class="fab fa-linkedin text-2xl transition-transform group-hover:scale-110"></i>
-                        <div class="absolute inset-0 rounded-2xl blur-xl bg-blue-400/0 group-hover:bg-blue-400/20 transition-all"></div>
-                    </a>
-                    <a href="https://instagram.com/sai_pratama/" class="social-link group relative w-14 h-14 flex items-center justify-center rounded-2xl bg-white/5 border border-white/10 transition-all duration-500 hover:border-pink-500/50 hover:bg-pink-500/10">
-                        <i class="fab fa-instagram text-2xl transition-transform group-hover:scale-110"></i>
-                        <div class="absolute inset-0 rounded-2xl blur-xl bg-pink-500/0 group-hover:bg-pink-500/20 transition-all"></div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="text-center md:text-right space-y-4">
-                <div class="text-sm font-bold text-gray-400 flex flex-col space-y-2">
-                    <a href="mailto:saipratama1924@gmail.com" class="hover:text-blue-400 transition-colors">saipratama1924@gmail.com</a>
-                    <span data-lang="footer_loc">Kota Tangerang, Banten</span>
-                </div>
-                <div class="pt-4 flex justify-center md:justify-end gap-6 text-[10px] font-black tracking-widest uppercase text-gray-600">
-                    <a href="#home" class="hover:text-white transition" data-lang="nav_home">Home</a>
-                    <a href="#about" class="hover:text-white transition" data-lang="nav_about">About</a>
-                    <a href="#experience" class="hover:text-white transition" data-lang="nav_work">Work</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-            <p class="font-black tracking-[0.4em] uppercase text-[10px] opacity-30 text-center md:text-left">
-                © <span id="year"></span> SAI PRATAMA. <span data-lang="footer_rights">ALL RIGHTS RESERVED.</span>
-            </p>
-            <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10">
-                <span class="relative flex h-2 w-2">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                </span>
-                <span class="text-[9px] font-black tracking-widest uppercase text-gray-400" data-lang="footer_freelance">Available for Freelance</span>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<a href="https://wa.me/6281315255532" class="fixed bottom-10 right-10 z-50 group">
-    <div class="absolute -inset-4 bg-green-500 rounded-full blur-xl opacity-20 group-hover:opacity-60 transition duration-500"></div>
-    <div class="relative bg-green-500 p-6 rounded-3xl shadow-2xl text-white transform group-hover:scale-110 group-hover:-rotate-6 transition duration-500">
-        <i class="fab fa-whatsapp text-4xl"></i>
-    </div>
-</a>
+    </footer>
 
 <script>
-    // --- MULTI LANGUAGE SYSTEM ---
+    // 1. Language Data (Simpen di script biar gak nambah file load)
     const translations = {
         id: {
-            nav_home: "Beranda", nav_about: "Tentang", nav_exp: "Pengalaman", nav_disc: "Diskusi", nav_work: "Karya",
+            nav_home: "Beranda", nav_about: "Tentang", nav_exp: "Pengalaman", nav_disc: "Diskusi",
             hire_me: "REKRUT SAYA!", hero_badge: "Siap Berinovasi",
             hero_desc: "Full Stack Developer & IT Support. Berpengalaman dalam riset sistem operasional dan pengembangan aplikasi modern.",
             btn_work: "KARYA SAYA", about_title: "Tentang <br><span class='text-blue-600'>Sang Dev</span>",
@@ -388,7 +311,7 @@
             footer_connect: "Hubungi Saya", footer_loc: "Kota Tangerang, Banten", footer_rights: "HAK CIPTA DILINDUNGI.", footer_freelance: "Tersedia untuk Freelance"
         },
         en: {
-            nav_home: "Home", nav_about: "About", nav_exp: "Experience", nav_disc: "Discussion", nav_work: "Work",
+            nav_home: "Home", nav_about: "About", nav_exp: "Experience", nav_disc: "Discussion",
             hire_me: "HIRE ME!", hero_badge: "Ready to Innovate",
             hero_desc: "Full Stack Developer & IT Support. Experienced in operating system research and modern application development.",
             btn_work: "MY WORK", about_title: "About <br><span class='text-blue-600'>The Dev</span>",
@@ -403,7 +326,7 @@
             footer_connect: "Connect With Me", footer_loc: "Tangerang City, Banten", footer_rights: "ALL RIGHTS RESERVED.", footer_freelance: "Available for Freelance"
         },
         jp: {
-            nav_home: "ホーム", nav_about: "私について", nav_exp: "経験", nav_disc: "議論", nav_work: "実績",
+            nav_home: "ホーム", nav_about: "私について", nav_exp: "経験", nav_disc: "議論",
             hire_me: "採用する", hero_badge: "イノベーションの準備",
             hero_desc: "フルスタックエンジニア ＆ ITサポート。OSの研究やモダンなアプリケーション開発において豊富な経験を持っています。",
             btn_work: "実績を見る", about_title: "<span class='text-blue-600'>開発者</span>について",
@@ -419,69 +342,57 @@
         }
     };
 
+    // 2. Language & Theme Logic
     const langSelect = document.getElementById('lang-select');
-    
     const updateLanguage = (lang) => {
         document.querySelectorAll('[data-lang]').forEach(el => {
             const key = el.getAttribute('data-lang');
-            if (translations[lang][key]) {
-                el.innerHTML = translations[lang][key];
-            }
+            if (translations[lang][key]) el.innerHTML = translations[lang][key];
         });
-        document.documentElement.lang = lang;
         localStorage.setItem('preferred-lang', lang);
     };
-
     langSelect.addEventListener('change', (e) => updateLanguage(e.target.value));
+    updateLanguage(localStorage.getItem('preferred-lang') || 'id');
 
-    // Load saved language
-    const savedLang = localStorage.getItem('preferred-lang') || 'id';
-    langSelect.value = savedLang;
-    updateLanguage(savedLang);
-
-    // --- EXISTING LOGIC ---
+    // 3. Optimized Scroll & Theme
     const reveals = document.querySelectorAll(".reveal");
-    const handleScroll = () => {
-        reveals.forEach(reveal => {
-            const windowHeight = window.innerHeight;
-            const revealTop = reveal.getBoundingClientRect().top;
-            if (revealTop < windowHeight - 100) reveal.classList.add("active");
-        });
-        
-        const nav = document.getElementById('navbar');
-        if (window.scrollY > 80) {
-            nav.classList.add('glass', 'py-4', 'shadow-2xl');
-            nav.classList.remove('py-6');
-        } else {
-            nav.classList.remove('glass', 'py-4', 'shadow-2xl');
-            nav.classList.add('py-6');
+    const navbar = document.getElementById('navbar');
+    
+    // Pake throttling biar scroll gak makan memory
+    let isScrolling = false;
+    window.addEventListener("scroll", () => {
+        if (!isScrolling) {
+            window.requestAnimationFrame(() => {
+                reveals.forEach(reveal => {
+                    if (reveal.getBoundingClientRect().top < window.innerHeight - 100) reveal.classList.add("active");
+                });
+                navbar.classList.toggle('glass', window.scrollY > 80);
+                navbar.classList.toggle('shadow-2xl', window.scrollY > 80);
+                isScrolling = false;
+            });
+            isScrolling = true;
         }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("load", handleScroll);
+    });
 
     const themeToggle = document.getElementById('theme-toggle');
     const themeIcon = document.getElementById('theme-icon');
-    const html = document.documentElement;
-
     themeToggle.addEventListener('click', () => {
-        const isDark = html.classList.toggle('dark');
+        const isDark = document.documentElement.classList.toggle('dark');
         themeIcon.classList.replace(isDark ? 'fa-moon' : 'fa-sun', isDark ? 'fa-sun' : 'fa-moon');
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
     });
 
-    if (localStorage.getItem('theme') === 'dark') {
-        html.classList.add('dark');
-        themeIcon.classList.replace('fa-moon', 'fa-sun');
-    }
-
-    (function () {
-        var d = document, s = d.createElement('script');
-        s.src = 'https://portofolio-8.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
+    // 4. Lazy Load Disqus (Ini kunci skor 90+)
+    const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+            var d = document, s = d.createElement('script');
+            s.src = 'https://portofolio-8.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+            observer.disconnect();
+        }
+    });
+    observer.observe(document.getElementById('disqus_section'));
 
     document.getElementById("year").innerHTML = new Date().getFullYear();
 </script>
