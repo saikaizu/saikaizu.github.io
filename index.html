@@ -104,6 +104,26 @@
 
         .social-link { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .social-link:hover { transform: translateY(-10px) scale(1.1); }
+
+        /* Styling biar option dalem select ga ngerusak pemandangan */
+#lang-select option {
+    background-color: inherit; /* Ngikutin parent-nya */
+    color: inherit;
+    padding: 10px;
+}
+
+/* Pas dark mode, kita paksa select option-nya jadi gelap */
+.dark #lang-select {
+    background-color: rgba(15, 23, 42, 0.8);
+    color: #60a5fa; /* Blue 400 */
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Efek transisi biar smooth pas ganti tema */
+#lang-select {
+    transition: all 0.3s ease;
+}
+        
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900 dark:bg-slate-950 dark:text-gray-100 transition-colors duration-500 overflow-x-hidden">
@@ -132,9 +152,13 @@
             </div>
 
 <div class="flex items-center gap-4 animate__animated animate__fadeInDown">
-                <select id="lang-select" aria-label="Select Language" class="bg-transparent text-xs font-bold border border-white/20 rounded-lg px-2 py-1 glass outline-none cursor-pointer">
-                    <option value="id">ID</option><option value="en">EN</option><option value="jp">JP</option>
-                </select>
+<select id="lang-select" aria-label="Select Language" 
+    class="bg-transparent text-xs font-bold border border-white/20 rounded-lg px-2 py-1 glass outline-none cursor-pointer appearance-none text-center
+    dark:bg-slate-900 dark:text-blue-400 light:bg-white light:text-primary">
+    <option value="id" class="bg-white text-gray-900 dark:bg-slate-900 dark:text-gray-100">ID</option>
+    <option value="en" class="bg-white text-gray-900 dark:bg-slate-900 dark:text-gray-100">EN</option>
+    <option value="jp" class="bg-white text-gray-900 dark:bg-slate-900 dark:text-gray-100">JP</option>
+</select>
                 <button id="theme-toggle" aria-label="Toggle Theme" class="p-2.5 rounded-xl glass hover:bg-blue-500/20 transition-all">
                     <i id="theme-icon" class="fas fa-moon"></i>
                 </button>
