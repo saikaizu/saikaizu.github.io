@@ -3,132 +3,49 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sai Pratama - Professional Portfolio</title>
+    <title>Sai Pratama - Professional Portfolio | Full Stack Developer</title>
     
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="description" content="Portfolio Sai Pratama, Full Stack Developer dan IT Support profesional berpengalaman di Laravel, Flutter, dan Riset Sistem Operasi.">
+    <meta name="keywords" content="Sai Pratama, Full Stack Developer, IT Support, Laravel, Flutter, Portfolio">
+    <meta name="author" content="Sai Pratama">
+
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-    
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#004e92',
-                        secondary: '#000428',
-                    },
-                    animation: {
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'spin-slow': 'spin 8s linear infinite',
-                    }
-                }
-            }
-        }
-    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" media="print" onload="this.media='all'">
 
     <style>
+        /* CSS Utama tetep di head biar pas web buka gak "polos" banget (FOUC) */
         .gradient-bg { background: linear-gradient(90deg, #000428 0%, #004e92 100%); }
         .dark .dark-gradient { background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%); }
         html { scroll-behavior: smooth; }
 
-        /* --- WATER WAVE SYSTEM (KOGU RAY REFACTORED) --- */
-        .water-layer {
-            position: absolute;
-            inset: -20px;
-            filter: url(#water-filter);
-            opacity: 0.6;
-            z-index: 1;
-        }
-
-        .water-surface-base {
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.4) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-
-        .float-pure {
-            animation: floating 4s ease-in-out infinite;
-            position: relative;
-            z-index: 10;
-        }
-
-        @keyframes floating {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-25px) rotate(1deg); }
-        }
-
-        .wave-line {
-            position: absolute;
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            border-radius: 50%;
-            animation: ripple 6s infinite;
-            pointer-events: none;
-            z-index: 5;
-        }
-
-        @keyframes ripple {
-            0% { transform: scale(0.6); opacity: 0; }
-            50% { opacity: 0.5; border-width: 1px; }
-            100% { transform: scale(2.2); opacity: 0; }
-        }
-
-        /* --- UI ELEMENTS --- */
-        .glass {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
+        .water-layer { position: absolute; inset: -20px; filter: url(#water-filter); opacity: 0.6; z-index: 1; }
+        .water-surface-base { width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.4) 0%, transparent 70%); border-radius: 50%; }
+        .float-pure { animation: floating 4s ease-in-out infinite; position: relative; z-index: 10; }
+        @keyframes floating { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-25px) rotate(1deg); } }
+        .wave-line { position: absolute; border: 2px solid rgba(255, 255, 255, 0.4); border-radius: 50%; animation: ripple 6s infinite; pointer-events: none; z-index: 5; }
+        @keyframes ripple { 0% { transform: scale(0.6); opacity: 0; } 50% { opacity: 0.5; border-width: 1px; } 100% { transform: scale(2.2); opacity: 0; } }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
         .reveal { opacity: 0; transform: translateY(40px); transition: all 1s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
-
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #0f172a; }
         ::-webkit-scrollbar-thumb { background: #004e92; border-radius: 10px; }
-
-        .blob {
-            position: absolute;
-            background: linear-gradient(180deg, rgba(59, 130, 246, 0.2) 0%, rgba(37, 99, 235, 0.2) 100%);
-            filter: blur(40px);
-            z-index: 0;
-            animation: morphing 12s infinite alternate ease-in-out;
-        }
-
-        @keyframes morphing {
-            0% { border-radius: 40% 60% 60% 40% / 40% 30% 70% 60%; }
-            100% { border-radius: 60% 40% 40% 60% / 60% 70% 30% 40%; }
-        }
-
+        .blob { position: absolute; background: linear-gradient(180deg, rgba(59, 130, 246, 0.2) 0%, rgba(37, 99, 235, 0.2) 100%); filter: blur(40px); z-index: 0; animation: morphing 12s infinite alternate ease-in-out; }
+        @keyframes morphing { 0% { border-radius: 40% 60% 60% 40% / 40% 30% 70% 60%; } 100% { border-radius: 60% 40% 40% 60% / 60% 70% 30% 40%; } }
         .social-link { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .social-link:hover { transform: translateY(-10px) scale(1.1); }
-
-        /* Styling biar option dalem select ga ngerusak pemandangan */
-#lang-select option {
-    background-color: inherit; /* Ngikutin parent-nya */
-    color: inherit;
-    padding: 10px;
-}
-
-/* Pas dark mode, kita paksa select option-nya jadi gelap */
-.dark #lang-select {
-    background-color: rgba(15, 23, 42, 0.8);
-    color: #60a5fa; /* Blue 400 */
-    border-color: rgba(255, 255, 255, 0.1);
-}
-
-/* Efek transisi biar smooth pas ganti tema */
-#lang-select {
-    transition: all 0.3s ease;
-}
-        
+        #lang-select option { background-color: white; color: black; padding: 10px; }
+        .dark #lang-select option { background-color: #0f172a; color: white; }
     </style>
 </head>
+
 <body class="bg-gray-50 text-gray-900 dark:bg-slate-950 dark:text-gray-100 transition-colors duration-500 overflow-x-hidden">
 
-    <svg style="position: absolute; width: 0; height: 0;">
+    <svg style="position: absolute; width: 0; height: 0;" aria-hidden="true">
         <filter id="water-filter">
             <feTurbulence type="fractalNoise" baseFrequency="0.015 0.02" numOctaves="3" result="noise" seed="5">
                 <animate attributeName="baseFrequency" dur="8s" values="0.015 0.02; 0.025 0.03; 0.015 0.02" repeatCount="indefinite" />
@@ -140,7 +57,7 @@
     <nav id="navbar" class="fixed w-full z-50 top-0 transition-all duration-300 py-6">
         <div class="container mx-auto px-6 flex justify-between items-center">
             <div class="flex items-center gap-3 animate__animated animate__fadeInDown">
-                <img src="./kaizubuild.png" alt="Logo" class="h-10 hover:scale-110 transition cursor-pointer">
+                <img src="./kaizubuild.png" alt="Sai Pratama Logo Kaizu Build" width="40" height="40" class="h-10 hover:scale-110 transition cursor-pointer">
                 <span class="text-xl font-extrabold tracking-tighter uppercase bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400">Sai Pratama</span>
             </div>
             
@@ -151,14 +68,13 @@
                 <a href="#disqus_section" class="hover:text-blue-500 transition" data-lang="nav_disc">Discussion</a>
             </div>
 
-<div class="flex items-center gap-4 animate__animated animate__fadeInDown">
-<select id="lang-select" aria-label="Select Language" 
-    class="bg-transparent text-xs font-bold border border-white/20 rounded-lg px-2 py-1 glass outline-none cursor-pointer appearance-none text-center
-    dark:bg-slate-900 dark:text-blue-400 light:bg-white light:text-primary">
-    <option value="id" class="bg-white text-gray-900 dark:bg-slate-900 dark:text-gray-100">ID</option>
-    <option value="en" class="bg-white text-gray-900 dark:bg-slate-900 dark:text-gray-100">EN</option>
-    <option value="jp" class="bg-white text-gray-900 dark:bg-slate-900 dark:text-gray-100">JP</option>
-</select>
+            <div class="flex items-center gap-4 animate__animated animate__fadeInDown">
+                <select id="lang-select" aria-label="Select Language" 
+                    class="bg-transparent text-xs font-bold border border-white/20 rounded-lg px-2 py-1 glass outline-none cursor-pointer appearance-none text-center">
+                    <option value="id">ID</option>
+                    <option value="en">EN</option>
+                    <option value="jp">JP</option>
+                </select>
                 <button id="theme-toggle" aria-label="Toggle Theme" class="p-2.5 rounded-xl glass hover:bg-blue-500/20 transition-all">
                     <i id="theme-icon" class="fas fa-moon"></i>
                 </button>
@@ -167,344 +83,151 @@
         </div>
     </nav>
 
-<section id="home" class="min-h-screen flex items-center pt-20 gradient-bg dark:dark-gradient text-white relative overflow-hidden">
-    <div class="blob w-72 h-72 top-20 right-10 opacity-50"></div>
-    <div class="blob w-96 h-96 bottom-10 left-10 opacity-30" style="animation-delay: -5s;"></div>
-    
-    <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between relative z-10">
-        <div class="md:w-1/2 animate__animated animate__fadeInLeft hero-text">
-            <div class="inline-block px-4 py-1.5 rounded-full border border-blue-400/30 bg-blue-400/10 mb-6">
-                <span class="text-blue-300 font-bold text-xs tracking-[0.2em] uppercase" data-lang="hero_badge">Ready to Innovate</span>
-            </div>
-            <h1 class="text-6xl md:text-8xl font-black mb-6 leading-none tracking-tighter uppercase italic">SAI <br><span class="text-blue-400">PRATAMA</span></h1>
-            <p class="text-lg md:text-xl opacity-80 mb-10 leading-relaxed font-medium max-w-lg" data-lang="hero_desc">
-                Full Stack Developer & IT Support. Berpengalaman dalam riset sistem operasional dan pengembangan aplikasi modern.
-            </p>
-            <div class="flex flex-wrap gap-5 hero-buttons">
-                <a href="https://wa.me/6281315255532" class="bg-white text-primary px-10 py-4 rounded-2xl font-black hover:shadow-[0_20px_50px_rgba(59,130,246,0.3)] transition transform hover:-translate-y-2 flex items-center">
-                    <i class="fab fa-whatsapp mr-3 text-xl text-green-500"></i> WHATSAPP
-                </a>
-                <a href="#experience" class="glass px-10 py-4 rounded-2xl font-black hover:bg-white/10 transition flex items-center border border-white/20">
-                    <span data-lang="btn_work">MY WORK</span> <i class="fas fa-arrow-right ml-3 opacity-50"></i>
-                </a>
-            </div>
-        </div>
+    <section id="home" class="min-h-screen flex items-center pt-20 gradient-bg dark:dark-gradient text-white relative overflow-hidden">
+        <div class="blob w-72 h-72 top-20 right-10 opacity-50"></div>
+        <div class="blob w-96 h-96 bottom-10 left-10 opacity-30" style="animation-delay: -5s;"></div>
         
-        <div class="md:w-1/2 mt-16 md:mt-0 flex justify-center relative animate__animated animate__zoomIn">
-            <div class="relative w-[320px] h-[320px] md:w-[500px] md:h-[500px] flex items-center justify-center">
-                <div class="water-layer">
-                    <div class="water-surface-base"></div>
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between relative z-10">
+            <div class="md:w-1/2 animate__animated animate__fadeInLeft hero-text">
+                <div class="inline-block px-4 py-1.5 rounded-full border border-blue-400/30 bg-blue-400/10 mb-6">
+                    <span class="text-blue-300 font-bold text-xs tracking-[0.2em] uppercase" data-lang="hero_badge">Ready to Innovate</span>
                 </div>
-                <div class="wave-line w-full h-full" style="animation-delay: 0s;"></div>
-                <div class="wave-line w-full h-full" style="animation-delay: 2s;"></div>
-                <div class="wave-line w-full h-full" style="animation-delay: 4s;"></div>
-                <img src="./Sai_Hero.png" alt="Sai Hero" class="relative z-20 w-80 md:w-[450px] float-pure drop-shadow-[0_35px_35px_rgba(0,0,0,0.5)]">
-                <div class="absolute inset-0 bg-gradient-to-t from-blue-500/20 to-transparent rounded-full mix-blend-screen z-25 pointer-events-none"></div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="about" class="py-32 bg-white dark:bg-slate-900 transition-colors duration-500">
-    <div class="container mx-auto px-6">
-        <div class="reveal max-w-5xl mx-auto">
-            <div class="grid md:grid-cols-5 gap-16 items-center">
-                <div class="md:col-span-2">
-                    <h2 class="text-5xl font-black mb-6 uppercase italic tracking-tighter leading-none" data-lang="about_title">About <br><span class="text-blue-600">The Dev</span></h2>
-                    <div class="w-20 h-2 bg-blue-600 mb-8"></div>
-                </div>
-                <div class="md:col-span-3 space-y-6">
-                    <p class="text-xl leading-relaxed text-gray-700 dark:text-gray-300 font-medium" data-lang="about_p1">
-                        Saya memiliki pengalaman di dunia IT dalam bidang riset sistem seperti install dan uninstall OS baik itu Windows based, Distro Linux, dan Mac OS dengan berbagai metode instalasi yang ada. 
-                    </p>
-                    <p class="text-xl leading-relaxed text-gray-700 dark:text-gray-300" data-lang="about_p2">
-                        Saya juga dapat melakukan perbaikan dan perawatan inventaris IT seperti desktop, laptop, dan server. Selain itu, saya aktif sebagai Developer dengan penguasaan tools <span class="text-blue-600 font-bold">Apache Cordova, Flutter, Laravel, Git, dan MySQL.</span>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="experience" class="py-32 bg-gray-50 dark:bg-slate-950 transition-colors duration-500 relative">
-    <div class="container mx-auto px-6">
-        <h2 class="text-4xl font-black text-center mb-24 uppercase italic tracking-tighter" data-lang="exp_title">Professional <span class="text-blue-500 underline underline-offset-8">Journey</span></h2>
-        
-        <div class="grid md:grid-cols-2 gap-10">
-            <div class="reveal glass p-10 rounded-[2.5rem] hover:bg-white/[0.05] transition-all duration-500 group border-l-8 border-blue-600 shadow-2xl">
-                <div class="flex justify-between items-start mb-8">
-                    <img src="./gfplogo.jpg" alt="GFP" class="h-12 rounded-xl grayscale group-hover:grayscale-0 transition-all">
-                    <span class="text-[10px] font-black bg-blue-600 text-white px-4 py-1.5 rounded-full uppercase" data-lang="exp_gfp_date">Aug 2025 - Active</span>
-                </div>
-                <h3 class="text-3xl font-black mb-1">IT Support</h3>
-                <h4 class="text-gray-500 font-bold mb-8 text-sm tracking-widest uppercase">PT. Golden Flexible Packaging</h4>
-                <ul class="space-y-4 text-gray-600 dark:text-gray-400">
-                    <li class="flex items-start"><i class="fas fa-check-square text-blue-500 mt-1 mr-4"></i><span data-lang="exp_gfp_1">Helpdesk & Ticket System.</span></li>
-                    <li class="flex items-start"><i class="fas fa-check-square text-blue-500 mt-1 mr-4"></i><span data-lang="exp_gfp_2">Maintenance Laptop, Desktop, & Server.</span></li>
-                    <li class="flex items-start"><i class="fas fa-check-square text-blue-500 mt-1 mr-4"></i><span data-lang="exp_gfp_3">Project Development Team.</span></li>
-                </ul>
-            </div>
-
-            <div class="reveal glass p-10 rounded-[2.5rem] hover:bg-white/[0.05] transition-all duration-500 group border-l-8 border-yellow-500 shadow-2xl" style="transition-delay: 0.1s">
-                <div class="flex justify-between items-start mb-8">
-                    <img src="./kaizubuild.png" alt="Kaizu" class="h-12 grayscale group-hover:grayscale-0 transition-all">
-                    <span class="text-[10px] font-black bg-yellow-500 text-black px-4 py-1.5 rounded-full uppercase">Est. 2015 - Now</span>
-                </div>
-                <h3 class="text-3xl font-black mb-1">Full Stack Developer</h3>
-                <h4 class="text-gray-500 font-bold mb-8 text-sm tracking-widest uppercase">Kaizu Build (Self-Employed)</h4>
-                <p class="text-gray-600 dark:text-gray-400 leading-relaxed" data-lang="exp_kaizu">
-                    UMKM fokus pada servis hardware serta jasa pembuatan aplikasi web/mobile menggunakan <span class="font-bold text-blue-500">Laravel, Cordova, & Flutter.</span>
+                <h1 class="text-6xl md:text-8xl font-black mb-6 leading-none tracking-tighter uppercase italic">SAI <br><span class="text-blue-400">PRATAMA</span></h1>
+                <p class="text-lg md:text-xl opacity-80 mb-10 leading-relaxed font-medium max-w-lg" data-lang="hero_desc">
+                    Full Stack Developer & IT Support. Berpengalaman dalam riset sistem operasional dan pengembangan aplikasi modern.
                 </p>
-            </div>
-
-            <div class="reveal glass p-10 rounded-[2.5rem] hover:bg-white/[0.05] transition-all duration-500 group border-l-8 border-green-500 shadow-2xl">
-                <div class="flex justify-between items-start mb-8">
-                    <img src="./abmlogo.jpg" alt="ABM" class="h-12 rounded-xl grayscale group-hover:grayscale-0 transition-all">
-                    <span class="text-[10px] font-black bg-green-500 text-white px-4 py-1.5 rounded-full uppercase">2023 - 2025</span>
+                <div class="flex flex-wrap gap-5 hero-buttons">
+                    <a href="https://wa.me/6281315255532" class="bg-white text-blue-900 px-10 py-4 rounded-2xl font-black hover:shadow-[0_20px_50px_rgba(59,130,246,0.3)] transition transform hover:-translate-y-2 flex items-center">
+                        <i class="fab fa-whatsapp mr-3 text-xl text-green-500"></i> WHATSAPP
+                    </a>
+                    <a href="#experience" class="glass px-10 py-4 rounded-2xl font-black hover:bg-white/10 transition flex items-center border border-white/20">
+                        <span data-lang="btn_work">MY WORK</span> <i class="fas fa-arrow-right ml-3 opacity-50"></i>
+                    </a>
                 </div>
-                <h3 class="text-3xl font-black mb-1">Backend Dev (Intern)</h3>
-                <h4 class="text-gray-500 font-bold mb-8 text-sm tracking-widest uppercase">PT. Agrobisnis Banten Mandiri</h4>
-                <p class="text-gray-600 dark:text-gray-400 leading-relaxed" data-lang="exp_abm">Pemeriksaan relasi database, pembuatan UML, dan pengembangan aplikasi koperasi.</p>
             </div>
-
-            <div class="reveal glass p-10 rounded-[2.5rem] hover:bg-white/[0.05] transition-all duration-500 group border-l-8 border-red-600 shadow-2xl" style="transition-delay: 0.1s">
-                <div class="flex justify-between items-start mb-8">
-                    <img src="./poslogo.jpg" alt="POS" class="h-12 rounded-xl grayscale group-hover:grayscale-0 transition-all">
-                    <span class="text-[10px] font-black bg-red-600 text-white px-4 py-1.5 rounded-full uppercase">2019</span>
-                </div>
-                <h3 class="text-3xl font-black mb-1">IT Support PKL</h3>
-                <h4 class="text-gray-500 font-bold mb-8 text-sm tracking-widest uppercase">PT. Pos Indonesia</h4>
-                <p class="text-gray-600 dark:text-gray-400 italic font-medium" data-lang="exp_pos">"Mendapatkan nilai A dan menjadi titik balik karir saya."</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="skills" class="py-24 bg-white dark:bg-slate-900 overflow-hidden">
-    <div class="container mx-auto px-6">
-        <div class="flex flex-wrap justify-center gap-12 opacity-50 hover:opacity-100 transition-all duration-700">
-            <div class="flex flex-col items-center group cursor-pointer">
-                <i class="devicon-laravel-plain colored text-6xl group-hover:scale-125 transition"></i>
-                <span class="mt-4 font-black text-[10px] tracking-widest uppercase">Laravel</span>
-            </div>
-            <div class="flex flex-col items-center group cursor-pointer">
-                <i class="devicon-flutter-plain colored text-6xl group-hover:scale-125 transition"></i>
-                <span class="mt-4 font-black text-[10px] tracking-widest uppercase">Flutter</span>
-            </div>
-            <div class="flex flex-col items-center group cursor-pointer">
-                <i class="devicon-mysql-plain colored text-6xl group-hover:scale-125 transition"></i>
-                <span class="mt-4 font-black text-[10px] tracking-widest uppercase">MySQL</span>
-            </div>
-            <div class="flex flex-col items-center group cursor-pointer">
-                <i class="devicon-windows11-original text-6xl dark:text-white group-hover:scale-125 transition"></i>
-                <span class="mt-4 font-black text-[10px] tracking-widest uppercase">Windows</span>
-            </div>
-            <div class="flex flex-col items-center group cursor-pointer">
-                <i class="devicon-ubuntu-plain colored text-6xl group-hover:scale-125 transition"></i>
-                <span class="mt-4 font-black text-[10px] tracking-widest uppercase">Ubuntu</span>
-            </div>
-            <div class="flex flex-col items-center group cursor-pointer">
-                <i class="devicon-git-plain colored text-6xl group-hover:scale-125 transition"></i>
-                <span class="mt-4 font-black text-[10px] tracking-widest uppercase">Git</span>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="disqus_section" class="py-32 bg-gray-50 dark:bg-slate-950 transition-colors duration-500">
-    <div class="container mx-auto px-6">
-        <div class="reveal max-w-4xl mx-auto glass p-10 rounded-[3rem] shadow-2xl border-t border-white/10">
-            <h2 class="text-3xl font-black mb-10 italic uppercase tracking-tighter"><i class="fas fa-comment-dots mr-4 text-blue-500"></i><span data-lang="talk_title">Let's Talk</span></h2>
-            <div id="disqus_thread"></div>
-        </div>
-    </div>
-</section>
-
-<footer class="pt-24 pb-12 bg-slate-950 text-white relative overflow-hidden border-t border-white/5">
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[1px] bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-50"></div>
-    <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-blue-600/10 blur-[120px] rounded-full"></div>
-    
-    <div class="container mx-auto px-6 relative z-10">
-        <div class="grid md:grid-cols-3 gap-16 mb-20 items-center">
             
-            <div class="text-center md:text-left space-y-4">
-                <div class="flex items-center justify-center md:justify-start gap-3">
-                    <img src="./kaizubuild.png" alt="Logo" class="h-8 brightness-125">
-                    <span class="text-2xl font-black tracking-tighter uppercase bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400">Sai Pratama</span>
-                </div>
-                <p class="text-gray-500 font-medium max-w-xs mx-auto md:mx-0" data-lang="footer_desc">
-                    Membangun solusi digital dari nol dengan sentuhan teknologi modern dan riset mendalam.
-                </p>
-            </div>
-
-            <div class="flex flex-col items-center justify-center space-y-6">
-                <h4 class="text-[10px] font-black tracking-[0.3em] uppercase text-blue-500" data-lang="footer_connect">Connect With Me</h4>
-                <div class="flex justify-center space-x-5">
-                    <a href="https://github.com/saikaizu" class="social-link group relative w-14 h-14 flex items-center justify-center rounded-2xl bg-white/5 border border-white/10 transition-all duration-500 hover:border-blue-500/50 hover:bg-blue-500/10">
-                        <i class="fab fa-github text-2xl transition-transform group-hover:scale-110"></i>
-                        <div class="absolute inset-0 rounded-2xl blur-xl bg-blue-500/0 group-hover:bg-blue-500/20 transition-all"></div>
-                    </a>
-                    <a href="https://linkedin.com/in/sai-pratama-b0449b205/" class="social-link group relative w-14 h-14 flex items-center justify-center rounded-2xl bg-white/5 border border-white/10 transition-all duration-500 hover:border-blue-400/50 hover:bg-blue-400/10">
-                        <i class="fab fa-linkedin text-2xl transition-transform group-hover:scale-110"></i>
-                        <div class="absolute inset-0 rounded-2xl blur-xl bg-blue-400/0 group-hover:bg-blue-400/20 transition-all"></div>
-                    </a>
-                    <a href="https://instagram.com/sai_pratama/" class="social-link group relative w-14 h-14 flex items-center justify-center rounded-2xl bg-white/5 border border-white/10 transition-all duration-500 hover:border-pink-500/50 hover:bg-pink-500/10">
-                        <i class="fab fa-instagram text-2xl transition-transform group-hover:scale-110"></i>
-                        <div class="absolute inset-0 rounded-2xl blur-xl bg-pink-500/0 group-hover:bg-pink-500/20 transition-all"></div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="text-center md:text-right space-y-4">
-                <div class="text-sm font-bold text-gray-400 flex flex-col space-y-2">
-                    <a href="mailto:saipratama1924@gmail.com" class="hover:text-blue-400 transition-colors">saipratama1924@gmail.com</a>
-                    <span data-lang="footer_loc">Kota Tangerang, Banten</span>
-                </div>
-                <div class="pt-4 flex justify-center md:justify-end gap-6 text-[10px] font-black tracking-widest uppercase text-gray-600">
-                    <a href="#home" class="hover:text-white transition" data-lang="nav_home">Home</a>
-                    <a href="#about" class="hover:text-white transition" data-lang="nav_about">About</a>
-                    <a href="#experience" class="hover:text-white transition" data-lang="nav_work">Work</a>
+            <div class="md:w-1/2 mt-16 md:mt-0 flex justify-center relative animate__animated animate__zoomIn">
+                <div class="relative w-[320px] h-[320px] md:w-[500px] md:h-[500px] flex items-center justify-center">
+                    <div class="water-layer"><div class="water-surface-base"></div></div>
+                    <div class="wave-line w-full h-full" style="animation-delay: 0s;"></div>
+                    <div class="wave-line w-full h-full" style="animation-delay: 2s;"></div>
+                    <div class="wave-line w-full h-full" style="animation-delay: 4s;"></div>
+                    <img src="./Sai_Hero.png" alt="Sai Pratama Hero Illustration" width="450" height="450" class="relative z-20 w-80 md:w-[450px] float-pure drop-shadow-[0_35px_35px_rgba(0,0,0,0.5)]">
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-            <p class="font-black tracking-[0.4em] uppercase text-[10px] opacity-30 text-center md:text-left">
-                © <span id="year"></span> SAI PRATAMA. <span data-lang="footer_rights">ALL RIGHTS RESERVED.</span>
-            </p>
-            <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10">
-                <span class="relative flex h-2 w-2">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                </span>
-                <span class="text-[9px] font-black tracking-widest uppercase text-gray-400" data-lang="footer_freelance">Available for Freelance</span>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<a href="https://wa.me/6281315255532" class="fixed bottom-10 right-10 z-50 group">
-    <div class="absolute -inset-4 bg-green-500 rounded-full blur-xl opacity-20 group-hover:opacity-60 transition duration-500"></div>
-    <div class="relative bg-green-500 p-6 rounded-3xl shadow-2xl text-white transform group-hover:scale-110 group-hover:-rotate-6 transition duration-500">
-        <i class="fab fa-whatsapp text-4xl"></i>
-    </div>
-</a>
-
-<script>
-    // --- MULTI LANGUAGE SYSTEM ---
-    const translations = {
-        id: {
-            nav_home: "Beranda", nav_about: "Tentang", nav_exp: "Pengalaman", nav_disc: "Diskusi", nav_work: "Karya",
-            hire_me: "REKRUT SAYA!", hero_badge: "Siap Berinovasi",
-            hero_desc: "Full Stack Developer & IT Support. Berpengalaman dalam riset sistem operasional dan pengembangan aplikasi modern.",
-            btn_work: "KARYA SAYA", about_title: "Tentang <br><span class='text-blue-600'>Sang Dev</span>",
-            about_p1: "Saya memiliki pengalaman di dunia IT dalam bidang riset sistem seperti install dan uninstall OS baik itu Windows based, Distro Linux, dan Mac OS dengan berbagai metode instalasi yang ada.",
-            about_p2: "Saya juga dapat melakukan perbaikan dan perawatan inventaris IT seperti desktop, laptop, dan server. Selain itu, saya aktif sebagai Developer dengan penguasaan tools Apache Cordova, Flutter, Laravel, Git, dan MySQL.",
-            exp_title: "Perjalanan <span class='text-blue-500 underline underline-offset-8'>Profesional</span>",
-            exp_gfp_date: "Agu 2025 - Aktif", exp_gfp_1: "Sistem Helpdesk & Tiket.", exp_gfp_2: "Pemeliharaan Laptop, Desktop, & Server.", exp_gfp_3: "Tim Pengembangan Proyek.",
-            exp_kaizu: "UMKM fokus pada servis hardware serta jasa pembuatan aplikasi web/mobile menggunakan Laravel, Cordova, & Flutter.",
-            exp_abm: "Pemeriksaan relasi database, pembuatan UML, dan pengembangan aplikasi koperasi.",
-            exp_pos: "'Mendapatkan nilai A dan menjadi titik balik karir saya.'",
-            talk_title: "Mari Bicara", footer_desc: "Membangun solusi digital dari nol dengan sentuhan teknologi modern dan riset mendalam.",
-            footer_connect: "Hubungi Saya", footer_loc: "Kota Tangerang, Banten", footer_rights: "HAK CIPTA DILINDUNGI.", footer_freelance: "Tersedia untuk Freelance"
-        },
-        en: {
-            nav_home: "Home", nav_about: "About", nav_exp: "Experience", nav_disc: "Discussion", nav_work: "Work",
-            hire_me: "HIRE ME!", hero_badge: "Ready to Innovate",
-            hero_desc: "Full Stack Developer & IT Support. Experienced in operating system research and modern application development.",
-            btn_work: "MY WORK", about_title: "About <br><span class='text-blue-600'>The Dev</span>",
-            about_p1: "I have experience in the IT world in the field of system research such as installing and uninstalling OS, whether it's Windows based, Linux Distros, or Mac OS with various existing installation methods.",
-            about_p2: "I can also perform repair and maintenance of IT inventory such as desktops, laptops, and servers. In addition, I am active as a Developer mastering tools like Apache Cordova, Flutter, Laravel, Git, and MySQL.",
-            exp_title: "Professional <span class='text-blue-500 underline underline-offset-8'>Journey</span>",
-            exp_gfp_date: "Aug 2025 - Active", exp_gfp_1: "Helpdesk & Ticket System.", exp_gfp_2: "Maintenance Laptop, Desktop, & Server.", exp_gfp_3: "Project Development Team.",
-            exp_kaizu: "SME focused on hardware services and web/mobile application development services using Laravel, Cordova, & Flutter.",
-            exp_abm: "Database relationship checks, UML creation, and cooperative application development.",
-            exp_pos: "'Received an A grade and it became the turning point of my career.'",
-            talk_title: "Let's Talk", footer_desc: "Building digital solutions from scratch with a touch of modern technology and deep research.",
-            footer_connect: "Connect With Me", footer_loc: "Tangerang City, Banten", footer_rights: "ALL RIGHTS RESERVED.", footer_freelance: "Available for Freelance"
-        },
-        jp: {
-            nav_home: "ホーム", nav_about: "私について", nav_exp: "経験", nav_disc: "議論", nav_work: "実績",
-            hire_me: "採用する", hero_badge: "イノベーションの準備",
-            hero_desc: "フルスタックエンジニア ＆ ITサポート。OSの研究やモダンなアプリケーション開発において豊富な経験を持っています。",
-            btn_work: "実績を見る", about_title: "<span class='text-blue-600'>開発者</span>について",
-            about_p1: "IT業界において、Windows、Linux、Mac OSのインストール・アンインストールなど、様々な手法を用いたシステム研究の経験があります。",
-            about_p2: "デスクトップ、ノートPC、サーバーなどのIT資産の修理やメンテナンスも可能です。また、Apache Cordova、Flutter、Laravel、Git、MySQLを駆使するデベロッパーとしても活動しています。",
-            exp_title: "プロの<span class='text-blue-500 underline underline-offset-8'>歩み</span>",
-            exp_gfp_date: "2025年8月 - 現在", exp_gfp_1: "ヘルプデスク＆チケットシステム", exp_gfp_2: "PC・サーバーのメンテナンス", exp_gfp_3: "プロジェクト開発チーム",
-            exp_kaizu: "Laravel、Cordova、Flutterを使用したハードウェア修理およびWeb/モバイルアプリ開発に注力する中小企業。",
-            exp_abm: "データベース関連のチェック、UML作成、および組合向けアプリの開発。",
-            exp_pos: "「A評価をいただき、私のキャリアの転機となりました。」",
-            talk_title: "お問い合わせ", footer_desc: "最新のテクノロジーと深い研究を融合させ、ゼロからデジタルソリューションを構築します。",
-            footer_connect: "SNSでつながる", footer_loc: "インドネシア、バンテン州タンゲラン市", footer_rights: "全著作権所有。", footer_freelance: "フリーランス受付中"
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Konfigurasi Tailwind ditaruh sini biar kebaca setelah script load
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: { primary: '#004e92', secondary: '#000428' },
+                    animation: { 'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite', 'spin-slow': 'spin 8s linear infinite' }
+                }
+            }
         }
-    };
+    </script>
 
-    const langSelect = document.getElementById('lang-select');
-    
-    const updateLanguage = (lang) => {
-        document.querySelectorAll('[data-lang]').forEach(el => {
-            const key = el.getAttribute('data-lang');
-            if (translations[lang][key]) {
-                el.innerHTML = translations[lang][key];
+    <script>
+        // Copy Paste Logik Multi Language, Theme Toggle, & Scroll lu di sini
+        const translations = {
+            id: {
+                nav_home: "Beranda", nav_about: "Tentang", nav_exp: "Pengalaman", nav_disc: "Diskusi", nav_work: "Karya",
+                hire_me: "REKRUT SAYA!", hero_badge: "Siap Berinovasi",
+                hero_desc: "Full Stack Developer & IT Support. Berpengalaman dalam riset sistem operasional dan pengembangan aplikasi modern.",
+                btn_work: "KARYA SAYA", about_title: "Tentang <br><span class='text-blue-600'>Sang Dev</span>",
+                about_p1: "Saya memiliki pengalaman di dunia IT dalam bidang riset sistem seperti install dan uninstall OS baik itu Windows based, Distro Linux, dan Mac OS.",
+                about_p2: "Saya juga dapat melakukan perbaikan dan perawatan inventaris IT. Tools: Cordova, Flutter, Laravel, Git, dan MySQL.",
+                exp_title: "Perjalanan <span class='text-blue-500 underline underline-offset-8'>Profesional</span>",
+                exp_gfp_date: "Agu 2025 - Aktif", exp_gfp_1: "Sistem Helpdesk & Tiket.", exp_gfp_2: "Pemeliharaan Hardware.", exp_gfp_3: "Tim Pengembangan Proyek.",
+                exp_kaizu: "UMKM fokus pada servis hardware serta jasa pembuatan aplikasi web/mobile menggunakan Laravel, Cordova, & Flutter.",
+                exp_abm: "Pemeriksaan relasi database, pembuatan UML, dan pengembangan aplikasi koperasi.",
+                exp_pos: "'Mendapatkan nilai A dan menjadi titik balik karir saya.'",
+                talk_title: "Mari Bicara", footer_desc: "Membangun solusi digital dari nol.",
+                footer_connect: "Hubungi Saya", footer_loc: "Kota Tangerang, Banten", footer_rights: "HAK CIPTA DILINDUNGI.", footer_freelance: "Tersedia untuk Freelance"
+            },
+            en: {
+                nav_home: "Home", nav_about: "About", nav_exp: "Experience", nav_disc: "Discussion", nav_work: "Work",
+                hire_me: "HIRE ME!", hero_badge: "Ready to Innovate",
+                hero_desc: "Full Stack Developer & IT Support. Experienced in operating system research and modern application development.",
+                btn_work: "MY WORK", about_title: "About <br><span class='text-blue-600'>The Dev</span>",
+                about_p1: "I have experience in IT system research like OS installation, Linux, and Mac OS.",
+                about_p2: "I can perform IT inventory maintenance. Tools: Cordova, Flutter, Laravel, Git, and MySQL.",
+                exp_title: "Professional <span class='text-blue-500 underline underline-offset-8'>Journey</span>",
+                exp_gfp_date: "Aug 2025 - Active", exp_gfp_1: "Helpdesk & Ticket System.", exp_gfp_2: "Hardware Maintenance.", exp_gfp_3: "Project Development Team.",
+                exp_kaizu: "SME focused on hardware and web/mobile apps using Laravel, Cordova, & Flutter.",
+                exp_abm: "Database checks, UML, and cooperative app development.",
+                exp_pos: "'Received an A grade and it became the turning point of my career.'",
+                talk_title: "Let's Talk", footer_desc: "Building digital solutions from scratch.",
+                footer_connect: "Connect With Me", footer_loc: "Tangerang City, Banten", footer_rights: "ALL RIGHTS RESERVED.", footer_freelance: "Available for Freelance"
+            }
+            // Tambahin JP kalau perlu
+        };
+
+        // Logic Language
+        const langSelect = document.getElementById('lang-select');
+        const updateLanguage = (lang) => {
+            document.querySelectorAll('[data-lang]').forEach(el => {
+                const key = el.getAttribute('data-lang');
+                if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
+            });
+            document.documentElement.lang = lang;
+            localStorage.setItem('preferred-lang', lang);
+        };
+        langSelect.addEventListener('change', (e) => updateLanguage(e.target.value));
+        const savedLang = localStorage.getItem('preferred-lang') || 'id';
+        langSelect.value = savedLang;
+        updateLanguage(savedLang);
+
+        // Logic Scroll & Reveal
+        const reveals = document.querySelectorAll(".reveal");
+        const handleScroll = () => {
+            reveals.forEach(reveal => {
+                const windowHeight = window.innerHeight;
+                if (reveal.getBoundingClientRect().top < windowHeight - 100) reveal.classList.add("active");
+            });
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 80) {
+                nav.classList.add('glass', 'py-4', 'shadow-2xl');
+                nav.classList.remove('py-6');
+            } else {
+                nav.classList.remove('glass', 'py-4', 'shadow-2xl');
+                nav.classList.add('py-6');
+            }
+        };
+        window.addEventListener("scroll", handleScroll);
+        window.addEventListener("load", handleScroll);
+
+        // Logic Theme
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.toggle('dark');
+            themeIcon.classList.replace(isDark ? 'fa-moon' : 'fa-sun', isDark ? 'fa-sun' : 'fa-moon');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        }
+
+        // Disqus Defer (Load pas scroll aja biar kenceng)
+        let disqusLoaded = false;
+        window.addEventListener('scroll', () => {
+            if (!disqusLoaded && window.scrollY > 1000) {
+                var d = document, s = d.createElement('script');
+                s.src = 'https://portofolio-8.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                disqusLoaded = true;
             }
         });
-        document.documentElement.lang = lang;
-        localStorage.setItem('preferred-lang', lang);
-    };
 
-    langSelect.addEventListener('change', (e) => updateLanguage(e.target.value));
-
-    // Load saved language
-    const savedLang = localStorage.getItem('preferred-lang') || 'id';
-    langSelect.value = savedLang;
-    updateLanguage(savedLang);
-
-    // --- EXISTING LOGIC ---
-    const reveals = document.querySelectorAll(".reveal");
-    const handleScroll = () => {
-        reveals.forEach(reveal => {
-            const windowHeight = window.innerHeight;
-            const revealTop = reveal.getBoundingClientRect().top;
-            if (revealTop < windowHeight - 100) reveal.classList.add("active");
-        });
-        
-        const nav = document.getElementById('navbar');
-        if (window.scrollY > 80) {
-            nav.classList.add('glass', 'py-4', 'shadow-2xl');
-            nav.classList.remove('py-6');
-        } else {
-            nav.classList.remove('glass', 'py-4', 'shadow-2xl');
-            nav.classList.add('py-6');
-        }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("load", handleScroll);
-
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeIcon = document.getElementById('theme-icon');
-    const html = document.documentElement;
-
-    themeToggle.addEventListener('click', () => {
-        const isDark = html.classList.toggle('dark');
-        themeIcon.classList.replace(isDark ? 'fa-moon' : 'fa-sun', isDark ? 'fa-sun' : 'fa-moon');
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    });
-
-    if (localStorage.getItem('theme') === 'dark') {
-        html.classList.add('dark');
-        themeIcon.classList.replace('fa-moon', 'fa-sun');
-    }
-
-    (function () {
-        var d = document, s = d.createElement('script');
-        s.src = 'https://portofolio-8.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-
-    document.getElementById("year").innerHTML = new Date().getFullYear();
-</script>
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+    </script>
 </body>
 </html>
