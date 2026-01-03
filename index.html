@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -33,7 +33,7 @@
         .dark .dark-gradient { background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%); }
         html { scroll-behavior: smooth; }
 
-        /* --- WATER WAVE SYSTEM --- */
+        /* --- WATER WAVE SYSTEM (KOGU RAY REFACTORED) --- */
         .water-layer {
             position: absolute;
             inset: -20px;
@@ -75,6 +75,7 @@
             100% { transform: scale(2.2); opacity: 0; }
         }
 
+        /* --- UI ELEMENTS --- */
         .glass {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(15px);
@@ -124,16 +125,17 @@
             </div>
             
             <div class="hidden md:flex space-x-8 font-bold text-sm uppercase tracking-widest animate__animated animate__fadeInDown">
-                <a href="#home" class="hover:text-blue-500 transition" data-lang="home">Home</a>
-                <a href="#about" class="hover:text-blue-500 transition" data-lang="about">About</a>
-                <a href="#experience" class="hover:text-blue-500 transition" data-lang="experience">Experience</a>
-                <a href="#disqus_section" class="hover:text-blue-500 transition" data-lang="discussion">Discussion</a>
+                <a href="#home" class="hover:text-blue-500 transition" data-lang="nav_home">Home</a>
+                <a href="#about" class="hover:text-blue-500 transition" data-lang="nav_about">About</a>
+                <a href="#experience" class="hover:text-blue-500 transition" data-lang="nav_exp">Experience</a>
+                <a href="#disqus_section" class="hover:text-blue-500 transition" data-lang="nav_disc">Discussion</a>
             </div>
 
             <div class="flex items-center gap-4 animate__animated animate__fadeInDown">
-                <select id="lang-switch" class="bg-transparent border border-white/20 rounded-lg text-xs font-bold px-2 py-1 outline-none glass">
-                    <option value="en" class="text-black">EN</option>
-                    <option value="jp" class="text-black">JP</option>
+                <select id="lang-select" class="bg-transparent text-xs font-bold border border-white/20 rounded-lg px-2 py-1 glass outline-none cursor-pointer">
+                    <option value="id">ID</option>
+                    <option value="en">EN</option>
+                    <option value="jp">JP</option>
                 </select>
 
                 <button id="theme-toggle" class="p-2.5 rounded-xl glass hover:bg-blue-500/20 transition-all">
@@ -151,18 +153,18 @@
     <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between relative z-10">
         <div class="md:w-1/2 animate__animated animate__fadeInLeft hero-text">
             <div class="inline-block px-4 py-1.5 rounded-full border border-blue-400/30 bg-blue-400/10 mb-6">
-                <span class="text-blue-300 font-bold text-xs tracking-[0.2em] uppercase" data-lang="status">Ready to Innovate</span>
+                <span class="text-blue-300 font-bold text-xs tracking-[0.2em] uppercase" data-lang="hero_badge">Ready to Innovate</span>
             </div>
             <h1 class="text-6xl md:text-8xl font-black mb-6 leading-none tracking-tighter uppercase italic">SAI <br><span class="text-blue-400">PRATAMA</span></h1>
             <p class="text-lg md:text-xl opacity-80 mb-10 leading-relaxed font-medium max-w-lg" data-lang="hero_desc">
-                Full Stack Developer & IT Support. Experienced in OS research and modern application development.
+                Full Stack Developer & IT Support. Berpengalaman dalam riset sistem operasional dan pengembangan aplikasi modern.
             </p>
             <div class="flex flex-wrap gap-5 hero-buttons">
                 <a href="https://wa.me/6281315255532" class="bg-white text-primary px-10 py-4 rounded-2xl font-black hover:shadow-[0_20px_50px_rgba(59,130,246,0.3)] transition transform hover:-translate-y-2 flex items-center">
                     <i class="fab fa-whatsapp mr-3 text-xl text-green-500"></i> WHATSAPP
                 </a>
-                <a href="#experience" class="glass px-10 py-4 rounded-2xl font-black hover:bg-white/10 transition flex items-center border border-white/20" data-lang="my_work">
-                    MY WORK <i class="fas fa-arrow-right ml-3 opacity-50"></i>
+                <a href="#experience" class="glass px-10 py-4 rounded-2xl font-black hover:bg-white/10 transition flex items-center border border-white/20">
+                    <span data-lang="btn_work">MY WORK</span> <i class="fas fa-arrow-right ml-3 opacity-50"></i>
                 </a>
             </div>
         </div>
@@ -192,10 +194,10 @@
                 </div>
                 <div class="md:col-span-3 space-y-6">
                     <p class="text-xl leading-relaxed text-gray-700 dark:text-gray-300 font-medium" data-lang="about_p1">
-                        I have extensive experience in IT systems research, specifically managing OS deployments (Windows, Linux Distros, Mac OS) using various installation methods.
+                        Saya memiliki pengalaman di dunia IT dalam bidang riset sistem seperti install dan uninstall OS baik itu Windows based, Distro Linux, dan Mac OS dengan berbagai metode instalasi yang ada. 
                     </p>
                     <p class="text-xl leading-relaxed text-gray-700 dark:text-gray-300" data-lang="about_p2">
-                        I also specialize in the maintenance and repair of IT inventory including desktops, laptops, and servers. Active as a Developer proficient in <span class="text-blue-600 font-bold">Apache Cordova, Flutter, Laravel, Git, and MySQL.</span>
+                        Saya juga dapat melakukan perbaikan dan perawatan inventaris IT seperti desktop, laptop, dan server. Selain itu, saya aktif sebagai Developer dengan penguasaan tools <span class="text-blue-600 font-bold">Apache Cordova, Flutter, Laravel, Git, dan MySQL.</span>
                     </p>
                 </div>
             </div>
@@ -211,26 +213,26 @@
             <div class="reveal glass p-10 rounded-[2.5rem] hover:bg-white/[0.05] transition-all duration-500 group border-l-8 border-blue-600 shadow-2xl">
                 <div class="flex justify-between items-start mb-8">
                     <img src="./gfplogo.jpg" alt="GFP" class="h-12 rounded-xl grayscale group-hover:grayscale-0 transition-all">
-                    <span class="text-[10px] font-black bg-blue-600 text-white px-4 py-1.5 rounded-full uppercase">Aug 2025 - Active</span>
+                    <span class="text-[10px] font-black bg-blue-600 text-white px-4 py-1.5 rounded-full uppercase" data-lang="exp_gfp_date">Aug 2025 - Active</span>
                 </div>
                 <h3 class="text-3xl font-black mb-1">IT Support</h3>
                 <h4 class="text-gray-500 font-bold mb-8 text-sm tracking-widest uppercase">PT. Golden Flexible Packaging</h4>
                 <ul class="space-y-4 text-gray-600 dark:text-gray-400">
-                    <li class="flex items-start"><i class="fas fa-check-square text-blue-500 mt-1 mr-4"></i><span data-lang="exp1_1">Helpdesk & Ticket System.</span></li>
-                    <li class="flex items-start"><i class="fas fa-check-square text-blue-500 mt-1 mr-4"></i><span data-lang="exp1_2">Maintenance Laptop, Desktop, & Server.</span></li>
-                    <li class="flex items-start"><i class="fas fa-check-square text-blue-500 mt-1 mr-4"></i><span data-lang="exp1_3">Project Development Team.</span></li>
+                    <li class="flex items-start"><i class="fas fa-check-square text-blue-500 mt-1 mr-4"></i><span data-lang="exp_gfp_1">Helpdesk & Ticket System.</span></li>
+                    <li class="flex items-start"><i class="fas fa-check-square text-blue-500 mt-1 mr-4"></i><span data-lang="exp_gfp_2">Maintenance Laptop, Desktop, & Server.</span></li>
+                    <li class="flex items-start"><i class="fas fa-check-square text-blue-500 mt-1 mr-4"></i><span data-lang="exp_gfp_3">Project Development Team.</span></li>
                 </ul>
             </div>
 
             <div class="reveal glass p-10 rounded-[2.5rem] hover:bg-white/[0.05] transition-all duration-500 group border-l-8 border-yellow-500 shadow-2xl" style="transition-delay: 0.1s">
                 <div class="flex justify-between items-start mb-8">
                     <img src="./kaizubuild.png" alt="Kaizu" class="h-12 grayscale group-hover:grayscale-0 transition-all">
-                    <span class="text-[10px] font-black bg-yellow-500 text-black px-4 py-1.5 rounded-full uppercase" data-lang="est">Est. 2015 - Now</span>
+                    <span class="text-[10px] font-black bg-yellow-500 text-black px-4 py-1.5 rounded-full uppercase">Est. 2015 - Now</span>
                 </div>
                 <h3 class="text-3xl font-black mb-1">Full Stack Developer</h3>
                 <h4 class="text-gray-500 font-bold mb-8 text-sm tracking-widest uppercase">Kaizu Build (Self-Employed)</h4>
-                <p class="text-gray-600 dark:text-gray-400 leading-relaxed" data-lang="exp2_desc">
-                    SME focused on hardware services and web/mobile application development using <span class="font-bold text-blue-500">Laravel, Cordova, & Flutter.</span>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed" data-lang="exp_kaizu">
+                    UMKM fokus pada servis hardware serta jasa pembuatan aplikasi web/mobile menggunakan <span class="font-bold text-blue-500">Laravel, Cordova, & Flutter.</span>
                 </p>
             </div>
 
@@ -241,7 +243,7 @@
                 </div>
                 <h3 class="text-3xl font-black mb-1">Backend Dev (Intern)</h3>
                 <h4 class="text-gray-500 font-bold mb-8 text-sm tracking-widest uppercase">PT. Agrobisnis Banten Mandiri</h4>
-                <p class="text-gray-600 dark:text-gray-400 leading-relaxed" data-lang="exp3_desc">Database relation audits, UML creation, and cooperative application development.</p>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed" data-lang="exp_abm">Pemeriksaan relasi database, pembuatan UML, dan pengembangan aplikasi koperasi.</p>
             </div>
 
             <div class="reveal glass p-10 rounded-[2.5rem] hover:bg-white/[0.05] transition-all duration-500 group border-l-8 border-red-600 shadow-2xl" style="transition-delay: 0.1s">
@@ -249,9 +251,9 @@
                     <img src="./poslogo.jpg" alt="POS" class="h-12 rounded-xl grayscale group-hover:grayscale-0 transition-all">
                     <span class="text-[10px] font-black bg-red-600 text-white px-4 py-1.5 rounded-full uppercase">2019</span>
                 </div>
-                <h3 class="text-3xl font-black mb-1">IT Support Intern</h3>
+                <h3 class="text-3xl font-black mb-1">IT Support PKL</h3>
                 <h4 class="text-gray-500 font-bold mb-8 text-sm tracking-widest uppercase">PT. Pos Indonesia</h4>
-                <p class="text-gray-600 dark:text-gray-400 italic font-medium" data-lang="exp4_desc">"Earned an A grade and it became the turning point of my career."</p>
+                <p class="text-gray-600 dark:text-gray-400 italic font-medium" data-lang="exp_pos">"Mendapatkan nilai A dan menjadi titik balik karir saya."</p>
             </div>
         </div>
     </div>
@@ -291,7 +293,7 @@
 <section id="disqus_section" class="py-32 bg-gray-50 dark:bg-slate-950 transition-colors duration-500">
     <div class="container mx-auto px-6">
         <div class="reveal max-w-4xl mx-auto glass p-10 rounded-[3rem] shadow-2xl border-t border-white/10">
-            <h2 class="text-3xl font-black mb-10 italic uppercase tracking-tighter" data-lang="talk_title"><i class="fas fa-comment-dots mr-4 text-blue-500"></i>Let's Talk</h2>
+            <h2 class="text-3xl font-black mb-10 italic uppercase tracking-tighter"><i class="fas fa-comment-dots mr-4 text-blue-500"></i><span data-lang="talk_title">Let's Talk</span></h2>
             <div id="disqus_thread"></div>
         </div>
     </div>
@@ -303,18 +305,19 @@
     
     <div class="container mx-auto px-6 relative z-10">
         <div class="grid md:grid-cols-3 gap-16 mb-20 items-center">
+            
             <div class="text-center md:text-left space-y-4">
                 <div class="flex items-center justify-center md:justify-start gap-3">
                     <img src="./kaizubuild.png" alt="Logo" class="h-8 brightness-125">
                     <span class="text-2xl font-black tracking-tighter uppercase bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400">Sai Pratama</span>
                 </div>
                 <p class="text-gray-500 font-medium max-w-xs mx-auto md:mx-0" data-lang="footer_desc">
-                    Building digital solutions from scratch with a touch of modern technology and deep research.
+                    Membangun solusi digital dari nol dengan sentuhan teknologi modern dan riset mendalam.
                 </p>
             </div>
 
             <div class="flex flex-col items-center justify-center space-y-6">
-                <h4 class="text-[10px] font-black tracking-[0.3em] uppercase text-blue-500" data-lang="connect">Connect With Me</h4>
+                <h4 class="text-[10px] font-black tracking-[0.3em] uppercase text-blue-500" data-lang="footer_connect">Connect With Me</h4>
                 <div class="flex justify-center space-x-5">
                     <a href="https://github.com/saikaizu" class="social-link group relative w-14 h-14 flex items-center justify-center rounded-2xl bg-white/5 border border-white/10 transition-all duration-500 hover:border-blue-500/50 hover:bg-blue-500/10">
                         <i class="fab fa-github text-2xl transition-transform group-hover:scale-110"></i>
@@ -334,26 +337,26 @@
             <div class="text-center md:text-right space-y-4">
                 <div class="text-sm font-bold text-gray-400 flex flex-col space-y-2">
                     <a href="mailto:saipratama1924@gmail.com" class="hover:text-blue-400 transition-colors">saipratama1924@gmail.com</a>
-                    <span data-lang="location">Tangerang City, Banten</span>
+                    <span data-lang="footer_loc">Kota Tangerang, Banten</span>
                 </div>
                 <div class="pt-4 flex justify-center md:justify-end gap-6 text-[10px] font-black tracking-widest uppercase text-gray-600">
-                    <a href="#home" class="hover:text-white transition" data-lang="home">Home</a>
-                    <a href="#about" class="hover:text-white transition" data-lang="about">About</a>
-                    <a href="#experience" class="hover:text-white transition" data-lang="experience">Work</a>
+                    <a href="#home" class="hover:text-white transition" data-lang="nav_home">Home</a>
+                    <a href="#about" class="hover:text-white transition" data-lang="nav_about">About</a>
+                    <a href="#experience" class="hover:text-white transition" data-lang="nav_work">Work</a>
                 </div>
             </div>
         </div>
 
         <div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
             <p class="font-black tracking-[0.4em] uppercase text-[10px] opacity-30 text-center md:text-left">
-                © <span id="year"></span> SAI PRATAMA. ALL RIGHTS RESERVED.
+                © <span id="year"></span> SAI PRATAMA. <span data-lang="footer_rights">ALL RIGHTS RESERVED.</span>
             </p>
             <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10">
                 <span class="relative flex h-2 w-2">
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                 </span>
-                <span class="text-[9px] font-black tracking-widest uppercase text-gray-400" data-lang="freelance">Available for Freelance</span>
+                <span class="text-[9px] font-black tracking-widest uppercase text-gray-400" data-lang="footer_freelance">Available for Freelance</span>
             </div>
         </div>
     </div>
@@ -367,57 +370,76 @@
 </a>
 
 <script>
-    // --- TRANSLATION DATA ---
-    const langData = {
+    // --- MULTI LANGUAGE SYSTEM ---
+    const translations = {
+        id: {
+            nav_home: "Beranda", nav_about: "Tentang", nav_exp: "Pengalaman", nav_disc: "Diskusi", nav_work: "Karya",
+            hire_me: "REKRUT SAYA!", hero_badge: "Siap Berinovasi",
+            hero_desc: "Full Stack Developer & IT Support. Berpengalaman dalam riset sistem operasional dan pengembangan aplikasi modern.",
+            btn_work: "KARYA SAYA", about_title: "Tentang <br><span class='text-blue-600'>Sang Dev</span>",
+            about_p1: "Saya memiliki pengalaman di dunia IT dalam bidang riset sistem seperti install dan uninstall OS baik itu Windows based, Distro Linux, dan Mac OS dengan berbagai metode instalasi yang ada.",
+            about_p2: "Saya juga dapat melakukan perbaikan dan perawatan inventaris IT seperti desktop, laptop, dan server. Selain itu, saya aktif sebagai Developer dengan penguasaan tools Apache Cordova, Flutter, Laravel, Git, dan MySQL.",
+            exp_title: "Perjalanan <span class='text-blue-500 underline underline-offset-8'>Profesional</span>",
+            exp_gfp_date: "Agu 2025 - Aktif", exp_gfp_1: "Sistem Helpdesk & Tiket.", exp_gfp_2: "Pemeliharaan Laptop, Desktop, & Server.", exp_gfp_3: "Tim Pengembangan Proyek.",
+            exp_kaizu: "UMKM fokus pada servis hardware serta jasa pembuatan aplikasi web/mobile menggunakan Laravel, Cordova, & Flutter.",
+            exp_abm: "Pemeriksaan relasi database, pembuatan UML, dan pengembangan aplikasi koperasi.",
+            exp_pos: "'Mendapatkan nilai A dan menjadi titik balik karir saya.'",
+            talk_title: "Mari Bicara", footer_desc: "Membangun solusi digital dari nol dengan sentuhan teknologi modern dan riset mendalam.",
+            footer_connect: "Hubungi Saya", footer_loc: "Kota Tangerang, Banten", footer_rights: "HAK CIPTA DILINDUNGI.", footer_freelance: "Tersedia untuk Freelance"
+        },
         en: {
-            home: "Home", about: "About", experience: "Experience", discussion: "Discussion", hire_me: "HIRE ME!",
-            status: "Ready to Innovate", hero_desc: "Full Stack Developer & IT Support. Experienced in OS research and modern application development.",
-            my_work: "MY WORK", about_title: "About The Dev",
-            about_p1: "I have extensive experience in IT systems research, specifically managing OS deployments (Windows, Linux, Mac OS) using various installation methods.",
-            about_p2: "I specialize in maintenance and repair of IT hardware. Active developer proficient in Laravel, Flutter, and MySQL.",
-            exp_title: "Professional Journey", est: "Est. 2015 - Now",
-            exp1_1: "Helpdesk & Ticket System.", exp1_2: "Maintenance Laptop, Desktop, & Server.", exp1_3: "Project Development Team.",
-            exp2_desc: "SME focused on hardware services and web/mobile app development using Laravel, Cordova, & Flutter.",
-            exp3_desc: "Database audits, UML creation, and cooperative application development.",
-            exp4_desc: "Earned an A grade and it became the turning point of my career.",
-            talk_title: "Let's Talk", footer_desc: "Building digital solutions with modern technology.",
-            connect: "Connect With Me", location: "Tangerang City, Indonesia", freelance: "Available for Freelance"
+            nav_home: "Home", nav_about: "About", nav_exp: "Experience", nav_disc: "Discussion", nav_work: "Work",
+            hire_me: "HIRE ME!", hero_badge: "Ready to Innovate",
+            hero_desc: "Full Stack Developer & IT Support. Experienced in operating system research and modern application development.",
+            btn_work: "MY WORK", about_title: "About <br><span class='text-blue-600'>The Dev</span>",
+            about_p1: "I have experience in the IT world in the field of system research such as installing and uninstalling OS, whether it's Windows based, Linux Distros, or Mac OS with various existing installation methods.",
+            about_p2: "I can also perform repair and maintenance of IT inventory such as desktops, laptops, and servers. In addition, I am active as a Developer mastering tools like Apache Cordova, Flutter, Laravel, Git, and MySQL.",
+            exp_title: "Professional <span class='text-blue-500 underline underline-offset-8'>Journey</span>",
+            exp_gfp_date: "Aug 2025 - Active", exp_gfp_1: "Helpdesk & Ticket System.", exp_gfp_2: "Maintenance Laptop, Desktop, & Server.", exp_gfp_3: "Project Development Team.",
+            exp_kaizu: "SME focused on hardware services and web/mobile application development services using Laravel, Cordova, & Flutter.",
+            exp_abm: "Database relationship checks, UML creation, and cooperative application development.",
+            exp_pos: "'Received an A grade and it became the turning point of my career.'",
+            talk_title: "Let's Talk", footer_desc: "Building digital solutions from scratch with a touch of modern technology and deep research.",
+            footer_connect: "Connect With Me", footer_loc: "Tangerang City, Banten", footer_rights: "ALL RIGHTS RESERVED.", footer_freelance: "Available for Freelance"
         },
         jp: {
-            home: "ホーム", about: "概要", experience: "経験", discussion: "議論", hire_me: "採用する",
-            status: "イノベーションの準備完了", hero_desc: "フルスタックエンジニア ＆ ITサポート。OSリサーチとモダンアプリ開発の経験豊富。",
-            my_work: "実績を見る", about_title: "開発者について",
-            about_p1: "ITシステムリサーチにおいて、Windows、Linux、Mac OSのインストール管理など、幅広い経験を持っています。",
-            about_p2: "デスクトップ、ノートPC、サーバーの保守・修理も得意としています。Laravel、Flutter、MySQLを駆使する現役デベロッパーです。",
-            exp_title: "職歴の軌跡", est: "2015年設立 - 現在",
-            exp1_1: "ヘルプデスク ＆ チケットシステム。", exp1_2: "PC・サーバーのメンテナンス。", exp1_3: "プロジェクト開発チーム。",
-            exp2_desc: "ハードウェア保守およびLaravel、Flutter等を用いたアプリ開発に特化した個人事業。",
-            exp3_desc: "DBリレーションの監査、UML作成、および協同組合向けアプリ開発。",
-            exp4_desc: "評価『A』を獲得。私のキャリアの大きな転換点となりました。",
-            talk_title: "お話ししましょう", footer_desc: "最新技術と深いリサーチで、デジタルソリューションを構築します。",
-            connect: "SNSでつながる", location: "インドネシア、タンゲラン市", freelance: "フリーランス受付中"
+            nav_home: "ホーム", nav_about: "私について", nav_exp: "経験", nav_disc: "議論", nav_work: "実績",
+            hire_me: "採用する", hero_badge: "イノベーションの準備",
+            hero_desc: "フルスタックエンジニア ＆ ITサポート。OSの研究やモダンなアプリケーション開発において豊富な経験を持っています。",
+            btn_work: "実績を見る", about_title: "<span class='text-blue-600'>開発者</span>について",
+            about_p1: "IT業界において、Windows、Linux、Mac OSのインストール・アンインストールなど、様々な手法を用いたシステム研究の経験があります。",
+            about_p2: "デスクトップ、ノートPC、サーバーなどのIT資産の修理やメンテナンスも可能です。また、Apache Cordova、Flutter、Laravel、Git、MySQLを駆使するデベロッパーとしても活動しています。",
+            exp_title: "プロの<span class='text-blue-500 underline underline-offset-8'>歩み</span>",
+            exp_gfp_date: "2025年8月 - 現在", exp_gfp_1: "ヘルプデスク＆チケットシステム", exp_gfp_2: "PC・サーバーのメンテナンス", exp_gfp_3: "プロジェクト開発チーム",
+            exp_kaizu: "Laravel、Cordova、Flutterを使用したハードウェア修理およびWeb/モバイルアプリ開発に注力する中小企業。",
+            exp_abm: "データベース関連のチェック、UML作成、および組合向けアプリの開発。",
+            exp_pos: "「A評価をいただき、私のキャリアの転機となりました。」",
+            talk_title: "お問い合わせ", footer_desc: "最新のテクノロジーと深い研究を融合させ、ゼロからデジタルソリューションを構築します。",
+            footer_connect: "SNSでつながる", footer_loc: "インドネシア、バンテン州タンゲラン市", footer_rights: "全著作権所有。", footer_freelance: "フリーランス受付中"
         }
     };
 
-    function changeLanguage(lang) {
+    const langSelect = document.getElementById('lang-select');
+    
+    const updateLanguage = (lang) => {
         document.querySelectorAll('[data-lang]').forEach(el => {
             const key = el.getAttribute('data-lang');
-            if (langData[lang][key]) {
-                el.innerHTML = langData[lang][key];
+            if (translations[lang][key]) {
+                el.innerHTML = translations[lang][key];
             }
         });
-        localStorage.setItem('selectedLang', lang);
-    }
+        document.documentElement.lang = lang;
+        localStorage.setItem('preferred-lang', lang);
+    };
 
-    document.getElementById('lang-switch').addEventListener('change', (e) => changeLanguage(e.target.value));
+    langSelect.addEventListener('change', (e) => updateLanguage(e.target.value));
 
-    // Initialize Language
-    const savedLang = localStorage.getItem('selectedLang') || 'en';
-    document.getElementById('lang-switch').value = savedLang;
-    changeLanguage(savedLang);
+    // Load saved language
+    const savedLang = localStorage.getItem('preferred-lang') || 'id';
+    langSelect.value = savedLang;
+    updateLanguage(savedLang);
 
-
-    // --- ORIGINAL LOGIC ---
+    // --- EXISTING LOGIC ---
     const reveals = document.querySelectorAll(".reveal");
     const handleScroll = () => {
         reveals.forEach(reveal => {
