@@ -3,122 +3,52 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Sai Pratama Professional Portfolio - Full Stack Developer & IT Support">
+    <meta name="description" content="Sai Pratama - Professional Portfolio Full Stack Developer & IT Support">
     <title>Sai Pratama - Professional Portfolio</title>
     
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
-
-    <script src="https://cdn.tailwindcss.com"></script>
     
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" media="print" onload="this.media='all'">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="print" onload="this.media='all'">
+
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
-                    colors: {
-                        primary: '#004e92',
-                        secondary: '#000428',
-                    },
-                    animation: {
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'spin-slow': 'spin 8s linear infinite',
-                    }
+                    colors: { primary: '#004e92', secondary: '#000428' },
+                    animation: { 'pulse-slow': 'pulse 4s infinite', 'spin-slow': 'spin 8s linear infinite' }
                 }
             }
         }
     </script>
 
     <style>
+        /* CSS yang krusial banget buat tampilan awal ditaruh sini */
         .gradient-bg { background: linear-gradient(90deg, #000428 0%, #004e92 100%); }
         .dark .dark-gradient { background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%); }
         html { scroll-behavior: smooth; }
-
-        .water-layer {
-            position: absolute;
-            inset: -20px;
-            filter: url(#water-filter);
-            opacity: 0.6;
-            z-index: 1;
-            /* Performance: Matikan filter di mobile biar gak berat */
-            will-change: transform;
-        }
-
-        .water-surface-base {
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.4) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-
-        .float-pure {
-            animation: floating 4s ease-in-out infinite;
-            position: relative;
-            z-index: 10;
-        }
-
-        @keyframes floating {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-25px) rotate(1deg); }
-        }
-
-        .wave-line {
-            position: absolute;
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            border-radius: 50%;
-            animation: ripple 6s infinite;
-            pointer-events: none;
-            z-index: 5;
-        }
-
-        @keyframes ripple {
-            0% { transform: scale(0.6); opacity: 0; }
-            50% { opacity: 0.5; border-width: 1px; }
-            100% { transform: scale(2.2); opacity: 0; }
-        }
-
-        .glass {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
+        .water-layer { position: absolute; inset: -20px; filter: url(#water-filter); opacity: 0.6; z-index: 1; }
+        .water-surface-base { width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.4) 0%, transparent 70%); border-radius: 50%; }
+        .float-pure { animation: floating 4s ease-in-out infinite; position: relative; z-index: 10; }
+        @keyframes floating { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-25px) rotate(1deg); } }
+        .wave-line { position: absolute; border: 2px solid rgba(255, 255, 255, 0.4); border-radius: 50%; animation: ripple 6s infinite; pointer-events: none; z-index: 5; }
+        @keyframes ripple { 0% { transform: scale(0.6); opacity: 0; } 50% { opacity: 0.5; border-width: 1px; } 100% { transform: scale(2.2); opacity: 0; } }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
         .reveal { opacity: 0; transform: translateY(40px); transition: all 1s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
-
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0f172a; }
-        ::-webkit-scrollbar-thumb { background: #004e92; border-radius: 10px; }
-
-        .blob {
-            position: absolute;
-            background: linear-gradient(180deg, rgba(59, 130, 246, 0.2) 0%, rgba(37, 99, 235, 0.2) 100%);
-            filter: blur(40px);
-            z-index: 0;
-            animation: morphing 12s infinite alternate ease-in-out;
-        }
-
-        @keyframes morphing {
-            0% { border-radius: 40% 60% 60% 40% / 40% 30% 70% 60%; }
-            100% { border-radius: 60% 40% 40% 60% / 60% 70% 30% 40%; }
-        }
-
+        .blob { position: absolute; background: linear-gradient(180deg, rgba(59, 130, 246, 0.2) 0%, rgba(37, 99, 235, 0.2) 100%); filter: blur(40px); z-index: 0; animation: morphing 12s infinite alternate ease-in-out; }
+        @keyframes morphing { 0% { border-radius: 40% 60% 60% 40% / 40% 30% 70% 60%; } 100% { border-radius: 60% 40% 40% 60% / 60% 70% 30% 40%; } }
         .social-link { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .social-link:hover { transform: translateY(-10px) scale(1.1); }
-        
-        /* Disable heavy filter on mobile to boost LCP/FID */
-        @media (max-width: 768px) {
-            .water-layer { filter: none; border: 2px solid rgba(255,255,255,0.1); }
-        }
+        content-visibility: auto; /* Optimasi render browser modern */
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900 dark:bg-slate-950 dark:text-gray-100 transition-colors duration-500 overflow-x-hidden">
 
-    <svg style="position: absolute; width: 0; height: 0;">
+    <svg style="position: absolute; width: 0; height: 0;" aria-hidden="true">
         <filter id="water-filter">
             <feTurbulence type="fractalNoise" baseFrequency="0.015 0.02" numOctaves="3" result="noise" seed="5">
                 <animate attributeName="baseFrequency" dur="8s" values="0.015 0.02; 0.025 0.03; 0.015 0.02" repeatCount="indefinite" />
@@ -130,7 +60,7 @@
     <nav id="navbar" class="fixed w-full z-50 top-0 transition-all duration-300 py-6">
         <div class="container mx-auto px-6 flex justify-between items-center">
             <div class="flex items-center gap-3 animate__animated animate__fadeInDown">
-                <img src="./kaizubuild.png" alt="Logo" width="40" height="40" class="h-10 hover:scale-110 transition cursor-pointer">
+                <img src="./kaizubuild.png" alt="Logo" class="h-10 hover:scale-110 transition cursor-pointer" width="40" height="40">
                 <span class="text-xl font-extrabold tracking-tighter uppercase bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400">Sai Pratama</span>
             </div>
             
@@ -147,8 +77,7 @@
                     <option value="en">EN</option>
                     <option value="jp">JP</option>
                 </select>
-
-                <button id="theme-toggle" aria-label="Toggle Theme" class="p-2.5 rounded-xl glass hover:bg-blue-500/20 transition-all">
+                <button id="theme-toggle" class="p-2.5 rounded-xl glass hover:bg-blue-500/20 transition-all" aria-label="Toggle Dark Mode">
                     <i id="theme-icon" class="fas fa-moon"></i>
                 </button>
                 <a href="mailto:saipratama1924@gmail.com" class="hidden md:block bg-blue-600 hover:bg-blue-700 text-white px-7 py-2.5 rounded-full text-xs font-black shadow-lg shadow-blue-500/40 transition-all hover:-translate-y-1" data-lang="hire_me">HIRE ME!</a>
@@ -187,7 +116,7 @@
                 <div class="wave-line w-full h-full" style="animation-delay: 0s;"></div>
                 <div class="wave-line w-full h-full" style="animation-delay: 2s;"></div>
                 <div class="wave-line w-full h-full" style="animation-delay: 4s;"></div>
-                <img src="./Sai_Hero.png" alt="Sai Hero" width="450" height="450" fetchpriority="high" loading="eager" class="relative z-20 w-80 md:w-[450px] float-pure drop-shadow-[0_35px_35px_rgba(0,0,0,0.5)]">
+                <img src="./Sai_Hero.png" alt="Sai Hero" class="relative z-20 w-80 md:w-[450px] float-pure drop-shadow-[0_35px_35px_rgba(0,0,0,0.5)]" fetchpriority="high" decoding="async">
                 <div class="absolute inset-0 bg-gradient-to-t from-blue-500/20 to-transparent rounded-full mix-blend-screen z-25 pointer-events-none"></div>
             </div>
         </div>
@@ -218,11 +147,10 @@
 <section id="experience" class="py-32 bg-gray-50 dark:bg-slate-950 transition-colors duration-500 relative">
     <div class="container mx-auto px-6">
         <h2 class="text-4xl font-black text-center mb-24 uppercase italic tracking-tighter" data-lang="exp_title">Professional <span class="text-blue-500 underline underline-offset-8">Journey</span></h2>
-        
         <div class="grid md:grid-cols-2 gap-10">
             <div class="reveal glass p-10 rounded-[2.5rem] hover:bg-white/[0.05] transition-all duration-500 group border-l-8 border-blue-600 shadow-2xl">
                 <div class="flex justify-between items-start mb-8">
-                    <img src="./gfplogo.jpg" alt="GFP" width="48" height="48" loading="lazy" class="h-12 rounded-xl grayscale group-hover:grayscale-0 transition-all">
+                    <img src="./gfplogo.jpg" alt="GFP" class="h-12 rounded-xl grayscale group-hover:grayscale-0 transition-all" loading="lazy" decoding="async">
                     <span class="text-[10px] font-black bg-blue-600 text-white px-4 py-1.5 rounded-full uppercase" data-lang="exp_gfp_date">Aug 2025 - Active</span>
                 </div>
                 <h3 class="text-3xl font-black mb-1">IT Support</h3>
@@ -233,48 +161,14 @@
                     <li class="flex items-start"><i class="fas fa-check-square text-blue-500 mt-1 mr-4"></i><span data-lang="exp_gfp_3">Project Development Team.</span></li>
                 </ul>
             </div>
-
             <div class="reveal glass p-10 rounded-[2.5rem] hover:bg-white/[0.05] transition-all duration-500 group border-l-8 border-yellow-500 shadow-2xl" style="transition-delay: 0.1s">
                 <div class="flex justify-between items-start mb-8">
-                    <img src="./kaizubuild.png" alt="Kaizu" width="48" height="48" loading="lazy" class="h-12 grayscale group-hover:grayscale-0 transition-all">
+                    <img src="./kaizubuild.png" alt="Kaizu" class="h-12 grayscale group-hover:grayscale-0 transition-all" loading="lazy" decoding="async">
                     <span class="text-[10px] font-black bg-yellow-500 text-black px-4 py-1.5 rounded-full uppercase">Est. 2015 - Now</span>
                 </div>
                 <h3 class="text-3xl font-black mb-1">Full Stack Developer</h3>
                 <h4 class="text-gray-500 font-bold mb-8 text-sm tracking-widest uppercase">Kaizu Build (Self-Employed)</h4>
-                <p class="text-gray-600 dark:text-gray-400 leading-relaxed" data-lang="exp_kaizu">
-                    UMKM fokus pada servis hardware serta jasa pembuatan aplikasi web/mobile menggunakan <span class="font-bold text-blue-500">Laravel, Cordova, & Flutter.</span>
-                </p>
-            </div>
-            
-            <div class="reveal glass p-10 rounded-[2.5rem] hover:bg-white/[0.05] transition-all duration-500 group border-l-8 border-green-500 shadow-2xl">
-                <div class="flex justify-between items-start mb-8">
-                    <img src="./abmlogo.jpg" alt="ABM" width="48" height="48" loading="lazy" class="h-12 rounded-xl grayscale group-hover:grayscale-0 transition-all">
-                    <span class="text-[10px] font-black bg-green-500 text-white px-4 py-1.5 rounded-full uppercase">2023 - 2025</span>
-                </div>
-                <h3 class="text-3xl font-black mb-1">Backend Dev (Intern)</h3>
-                <h4 class="text-gray-500 font-bold mb-8 text-sm tracking-widest uppercase">PT. Agrobisnis Banten Mandiri</h4>
-                <p class="text-gray-600 dark:text-gray-400 leading-relaxed" data-lang="exp_abm">Pemeriksaan relasi database, pembuatan UML, dan pengembangan aplikasi koperasi.</p>
-            </div>
-
-            <div class="reveal glass p-10 rounded-[2.5rem] hover:bg-white/[0.05] transition-all duration-500 group border-l-8 border-red-600 shadow-2xl" style="transition-delay: 0.1s">
-                <div class="flex justify-between items-start mb-8">
-                    <img src="./poslogo.jpg" alt="POS" width="48" height="48" loading="lazy" class="h-12 rounded-xl grayscale group-hover:grayscale-0 transition-all">
-                    <span class="text-[10px] font-black bg-red-600 text-white px-4 py-1.5 rounded-full uppercase">2019</span>
-                </div>
-                <h3 class="text-3xl font-black mb-1">IT Support PKL</h3>
-                <h4 class="text-gray-500 font-bold mb-8 text-sm tracking-widest uppercase">PT. Pos Indonesia</h4>
-                <p class="text-gray-600 dark:text-gray-400 italic font-medium" data-lang="exp_pos">"Mendapatkan nilai A dan menjadi titik balik karir saya."</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="skills" class="py-24 bg-white dark:bg-slate-900 overflow-hidden">
-    <div class="container mx-auto px-6">
-        <div class="flex flex-wrap justify-center gap-12 opacity-50 hover:opacity-100 transition-all duration-700">
-            <div class="flex flex-col items-center group cursor-pointer">
-                <i class="devicon-laravel-plain colored text-6xl group-hover:scale-125 transition"></i>
-                <span class="mt-4 font-black text-[10px] tracking-widest uppercase">Laravel</span>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed" data-lang="exp_kaizu">UMKM fokus pada servis hardware serta jasa pembuatan aplikasi web/mobile menggunakan <span class="font-bold text-blue-500">Laravel, Cordova, & Flutter.</span></p>
             </div>
             </div>
     </div>
@@ -289,61 +183,22 @@
     </div>
 </section>
 
-<footer class="pt-24 pb-12 bg-slate-950 text-white relative overflow-hidden border-t border-white/5">
-    </footer>
+<footer class="pt-24 pb-12 bg-slate-950 text-white relative overflow-hidden">
+    <div class="container mx-auto px-6 relative z-10 text-center">
+        <p class="font-black tracking-[0.4em] uppercase text-[10px] opacity-30">
+            © <span id="year"></span> SAI PRATAMA. <span data-lang="footer_rights">ALL RIGHTS RESERVED.</span>
+        </p>
+    </div>
+</footer>
 
 <script>
-    // 1. Language Data (Simpen di script biar gak nambah file load)
+    // 1. Multi Language System (Simpel & Cepat)
     const translations = {
-        id: {
-            nav_home: "Beranda", nav_about: "Tentang", nav_exp: "Pengalaman", nav_disc: "Diskusi",
-            hire_me: "REKRUT SAYA!", hero_badge: "Siap Berinovasi",
-            hero_desc: "Full Stack Developer & IT Support. Berpengalaman dalam riset sistem operasional dan pengembangan aplikasi modern.",
-            btn_work: "KARYA SAYA", about_title: "Tentang <br><span class='text-blue-600'>Sang Dev</span>",
-            about_p1: "Saya memiliki pengalaman di dunia IT dalam bidang riset sistem seperti install dan uninstall OS baik itu Windows based, Distro Linux, dan Mac OS dengan berbagai metode instalasi yang ada.",
-            about_p2: "Saya juga dapat melakukan perbaikan dan perawatan inventaris IT seperti desktop, laptop, dan server. Selain itu, saya aktif sebagai Developer dengan penguasaan tools Apache Cordova, Flutter, Laravel, Git, dan MySQL.",
-            exp_title: "Perjalanan <span class='text-blue-500 underline underline-offset-8'>Profesional</span>",
-            exp_gfp_date: "Agu 2025 - Aktif", exp_gfp_1: "Sistem Helpdesk & Tiket.", exp_gfp_2: "Pemeliharaan Laptop, Desktop, & Server.", exp_gfp_3: "Tim Pengembangan Proyek.",
-            exp_kaizu: "UMKM fokus pada servis hardware serta jasa pembuatan aplikasi web/mobile menggunakan Laravel, Cordova, & Flutter.",
-            exp_abm: "Pemeriksaan relasi database, pembuatan UML, dan pengembangan aplikasi koperasi.",
-            exp_pos: "'Mendapatkan nilai A dan menjadi titik balik karir saya.'",
-            talk_title: "Mari Bicara", footer_desc: "Membangun solusi digital dari nol dengan sentuhan teknologi modern dan riset mendalam.",
-            footer_connect: "Hubungi Saya", footer_loc: "Kota Tangerang, Banten", footer_rights: "HAK CIPTA DILINDUNGI.", footer_freelance: "Tersedia untuk Freelance"
-        },
-        en: {
-            nav_home: "Home", nav_about: "About", nav_exp: "Experience", nav_disc: "Discussion",
-            hire_me: "HIRE ME!", hero_badge: "Ready to Innovate",
-            hero_desc: "Full Stack Developer & IT Support. Experienced in operating system research and modern application development.",
-            btn_work: "MY WORK", about_title: "About <br><span class='text-blue-600'>The Dev</span>",
-            about_p1: "I have experience in the IT world in the field of system research such as installing and uninstalling OS, whether it's Windows based, Linux Distros, or Mac OS with various existing installation methods.",
-            about_p2: "I can also perform repair and maintenance of IT inventory such as desktops, laptops, and servers. In addition, I am active as a Developer mastering tools like Apache Cordova, Flutter, Laravel, Git, and MySQL.",
-            exp_title: "Professional <span class='text-blue-500 underline underline-offset-8'>Journey</span>",
-            exp_gfp_date: "Aug 2025 - Active", exp_gfp_1: "Helpdesk & Ticket System.", exp_gfp_2: "Maintenance Laptop, Desktop, & Server.", exp_gfp_3: "Project Development Team.",
-            exp_kaizu: "SME focused on hardware services and web/mobile application development services using Laravel, Cordova, & Flutter.",
-            exp_abm: "Database relationship checks, UML creation, and cooperative application development.",
-            exp_pos: "'Received an A grade and it became the turning point of my career.'",
-            talk_title: "Let's Talk", footer_desc: "Building digital solutions from scratch with a touch of modern technology and deep research.",
-            footer_connect: "Connect With Me", footer_loc: "Tangerang City, Banten", footer_rights: "ALL RIGHTS RESERVED.", footer_freelance: "Available for Freelance"
-        },
-        jp: {
-            nav_home: "ホーム", nav_about: "私について", nav_exp: "経験", nav_disc: "議論",
-            hire_me: "採用する", hero_badge: "イノベーションの準備",
-            hero_desc: "フルスタックエンジニア ＆ ITサポート。OSの研究やモダンなアプリケーション開発において豊富な経験を持っています。",
-            btn_work: "実績を見る", about_title: "<span class='text-blue-600'>開発者</span>について",
-            about_p1: "IT業界において、Windows、Linux、Mac OSのインストール・アンインストールなど、様々な手法を用いたシステム研究の経験があります。",
-            about_p2: "デスクトップ、ノートPC、サーバーなどのIT資産の修理やメンテナンスも可能です。また、Apache Cordova、Flutter、Laravel、Git、MySQLを駆使するデベロッパーとしても活動しています。",
-            exp_title: "プロの<span class='text-blue-500 underline underline-offset-8'>歩み</span>",
-            exp_gfp_date: "2025年8月 - 現在", exp_gfp_1: "ヘルプデスク＆チケットシステム", exp_gfp_2: "PC・サーバーのメンテナンス", exp_gfp_3: "プロジェクト開発チーム",
-            exp_kaizu: "Laravel、Cordova、Flutterを使用したハードウェア修理およびWeb/モバイルアプリ開発に注力する中小企業。",
-            exp_abm: "データベース関連のチェック、UML作成、および組合向けアプリの開発。",
-            exp_pos: "「A評価をいただき、私のキャリアの転機となりました。」",
-            talk_title: "お問い合わせ", footer_desc: "最新のテクノロジーと深い研究を融合させ、ゼロからデジタルソリューションを構築します。",
-            footer_connect: "SNSでつながる", footer_loc: "インドネシア、バンテン州タンゲラン市", footer_rights: "全著作権所有。", footer_freelance: "フリーランス受付中"
-        }
+        id: { nav_home: "Beranda", nav_about: "Tentang", nav_exp: "Pengalaman", nav_disc: "Diskusi", hire_me: "REKRUT SAYA!", hero_badge: "Siap Berinovasi", hero_desc: "Full Stack Developer & IT Support. Berpengalaman dalam riset sistem operasional dan pengembangan aplikasi modern.", btn_work: "KARYA SAYA", about_title: "Tentang <br><span class='text-blue-600'>Sang Dev</span>", about_p1: "Saya memiliki pengalaman di dunia IT dalam bidang riset sistem...", about_p2: "Saya juga dapat melakukan perbaikan...", exp_title: "Perjalanan <span class='text-blue-500 underline underline-offset-8'>Profesional</span>", exp_gfp_date: "Agu 2025 - Aktif", exp_gfp_1: "Sistem Helpdesk & Tiket.", exp_gfp_2: "Pemeliharaan Laptop...", exp_gfp_3: "Tim Pengembangan...", exp_kaizu: "UMKM fokus pada servis hardware...", talk_title: "Mari Bicara", footer_rights: "HAK CIPTA DILINDUNGI." },
+        en: { nav_home: "Home", nav_about: "About", nav_exp: "Experience", nav_disc: "Discussion", hire_me: "HIRE ME!", hero_badge: "Ready to Innovate", hero_desc: "Full Stack Developer & IT Support. Experienced in operating system research...", btn_work: "MY WORK", about_title: "About <br><span class='text-blue-600'>The Dev</span>", about_p1: "I have experience in the IT world...", about_p2: "I can also perform repair...", exp_title: "Professional <span class='text-blue-500 underline underline-offset-8'>Journey</span>", exp_gfp_date: "Aug 2025 - Active", exp_gfp_1: "Helpdesk & Ticket System.", exp_gfp_2: "Maintenance Laptop...", exp_gfp_3: "Project Development...", exp_kaizu: "SME focused on hardware...", talk_title: "Let's Talk", footer_rights: "ALL RIGHTS RESERVED." },
+        jp: { nav_home: "ホーム", nav_about: "私について", nav_exp: "経験", nav_disc: "議論", hire_me: "採用する", hero_badge: "イノベーションの準備", hero_desc: "フルスタックエンジニア ＆ ITサポート。OSの研究やモダンなアプリ開発に...", btn_work: "実績を見る", about_title: "<span class='text-blue-600'>開発者</span>について", about_p1: "IT業界において、Windows、Linux、Mac OSの...", about_p2: "デスクトップ、ノートPC...", exp_title: "プロの<span class='text-blue-500 underline underline-offset-8'>歩み</span>", exp_gfp_date: "2025年8月 - 現在", exp_gfp_1: "ヘルプデスク＆チケット", exp_gfp_2: "PC・サーバーのメンテ", exp_gfp_3: "プロジェクトチーム", exp_kaizu: "Laravel、Cordovaを使用した...", talk_title: "お問い合わせ", footer_rights: "全著作権所有。" }
     };
 
-    // 2. Language & Theme Logic
-    const langSelect = document.getElementById('lang-select');
     const updateLanguage = (lang) => {
         document.querySelectorAll('[data-lang]').forEach(el => {
             const key = el.getAttribute('data-lang');
@@ -351,48 +206,42 @@
         });
         localStorage.setItem('preferred-lang', lang);
     };
-    langSelect.addEventListener('change', (e) => updateLanguage(e.target.value));
-    updateLanguage(localStorage.getItem('preferred-lang') || 'id');
 
-    // 3. Optimized Scroll & Theme
-    const reveals = document.querySelectorAll(".reveal");
-    const navbar = document.getElementById('navbar');
-    
-    // Pake throttling biar scroll gak makan memory
-    let isScrolling = false;
-    window.addEventListener("scroll", () => {
-        if (!isScrolling) {
-            window.requestAnimationFrame(() => {
-                reveals.forEach(reveal => {
-                    if (reveal.getBoundingClientRect().top < window.innerHeight - 100) reveal.classList.add("active");
-                });
-                navbar.classList.toggle('glass', window.scrollY > 80);
-                navbar.classList.toggle('shadow-2xl', window.scrollY > 80);
-                isScrolling = false;
-            });
-            isScrolling = true;
-        }
-    });
+    document.getElementById('lang-select').addEventListener('change', (e) => updateLanguage(e.target.value));
+    const savedLang = localStorage.getItem('preferred-lang') || 'id';
+    document.getElementById('lang-select').value = savedLang;
+    updateLanguage(savedLang);
 
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeIcon = document.getElementById('theme-icon');
-    themeToggle.addEventListener('click', () => {
+    // 2. Scroll & Theme Logic (Optimized)
+    const handleScroll = () => {
+        const reveals = document.querySelectorAll(".reveal");
+        reveals.forEach(reveal => {
+            if (reveal.getBoundingClientRect().top < window.innerHeight - 100) reveal.classList.add("active");
+        });
+        const nav = document.getElementById('navbar');
+        window.scrollY > 80 ? nav.classList.add('glass', 'py-4', 'shadow-2xl') : nav.classList.remove('glass', 'py-4', 'shadow-2xl');
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    document.getElementById('theme-toggle').addEventListener('click', () => {
         const isDark = document.documentElement.classList.toggle('dark');
-        themeIcon.classList.replace(isDark ? 'fa-moon' : 'fa-sun', isDark ? 'fa-sun' : 'fa-moon');
+        document.getElementById('theme-icon').classList.replace(isDark ? 'fa-moon' : 'fa-sun', isDark ? 'fa-sun' : 'fa-moon');
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
     });
 
-    // 4. Lazy Load Disqus (Ini kunci skor 90+)
-    const observer = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-            var d = document, s = d.createElement('script');
-            s.src = 'https://portofolio-8.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-            observer.disconnect();
+    // 3. LAZY LOAD DISQUS (PENTING BUAT SKOR 90+)
+    let disqusLoaded = false;
+    window.addEventListener('scroll', () => {
+        if (!disqusLoaded && window.scrollY > 1000) {
+            disqusLoaded = true;
+            (function() {
+                var d = document, s = d.createElement('script');
+                s.src = 'https://portofolio-8.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
         }
-    });
-    observer.observe(document.getElementById('disqus_section'));
+    }, { passive: true });
 
     document.getElementById("year").innerHTML = new Date().getFullYear();
 </script>
